@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vigyaan.ai | AI & Tech Services</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', system-ui, sans-serif; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-14px); }
+        }
+        @keyframes gradient-shift {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes orbit {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
+        @keyframes orbit-rev {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(-360deg); }
+        }
+        @keyframes fade-up {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa, #a78bfa, #34d399);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 5s ease infinite;
+        }
+        .grid-bg {
+            background-image:
+                linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+            background-size: 56px 56px;
+        }
+        .card-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 24px 60px rgba(59,130,246,0.12);
+        }
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -3px; left: 0;
+            width: 0; height: 2px;
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        .floating { animation: float 5s ease-in-out infinite; }
+        .floating-slow { animation: float 7s ease-in-out infinite 1.5s; }
+
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .section-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        input, textarea, select { outline: none; }
+        input:focus, textarea:focus, select:focus {
+            border-color: rgba(59,130,246,0.5) !important;
+        }
+        select option { background: #111118; }
+    </style>
+</head>
+<body class="bg-[#06060c] text-white overflow-x-hidden">
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300"
+     style="background:rgba(6,6,12,0.75); backdrop-filter:blur(20px); border-bottom:1px solid rgba(255,255,255,0.06);">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+        <a href="#" class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center font-black text-base">V</div>
+            <span class="text-xl font-bold tracking-tight">Vigyaan<span class="text-blue-400">.ai</span></span>
+        </a>
+
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+            <a href="#services"      class="nav-link hover:text-white transition-colors">Services</a>
+            <a href="#about"         class="nav-link hover:text-white transition-colors">About</a>
+            <a href="#testimonials"  class="nav-link hover:text-white transition-colors">Testimonials</a>
+            <a href="#contact"       class="nav-link hover:text-white transition-colors">Contact</a>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <a href="#contact"
+               class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 rounded-full text-sm font-semibold transition-all duration-300"
+               style="box-shadow:0 0 30px rgba(99,102,241,0.35);">
+                Get Started <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+            <button id="menu-btn" onclick="toggleMenu()"
+                    class="md:hidden p-2.5 rounded-lg"
+                    style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);">
+                <i class="fa-solid fa-bars text-sm"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-5 space-y-1"
+         style="border-top:1px solid rgba(255,255,255,0.06);">
+        <a href="#services"     onclick="toggleMenu()" class="block py-3 text-zinc-400 hover:text-white transition-colors">Services</a>
+        <a href="#about"        onclick="toggleMenu()" class="block py-3 text-zinc-400 hover:text-white transition-colors">About</a>
+        <a href="#testimonials" onclick="toggleMenu()" class="block py-3 text-zinc-400 hover:text-white transition-colors">Testimonials</a>
+        <a href="#contact"      onclick="toggleMenu()" class="block py-3 text-zinc-400 hover:text-white transition-colors">Contact</a>
+        <a href="#contact"      onclick="toggleMenu()"
+           class="block mt-3 text-center py-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-sm font-semibold">
+            Get Started
+        </a>
+    </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="relative min-h-screen flex items-center justify-center pt-20 grid-bg overflow-hidden">
+    <div class="absolute top-1/4 left-1/5  w-96 h-96 bg-blue-700/10   rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 right-1/5 w-96 h-96 bg-purple-700/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-5xl mx-auto px-6 py-28 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-blue-300 mb-8"
+             style="background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.2);">
+            <span class="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse"></span>
+            Next-Generation AI Solutions
+        </div>
+
+        <h1 class="text-6xl md:text-7xl lg:text-8xl font-black leading-none tracking-tighter mb-6">
+            <span class="block">Intelligence</span>
+            <span class="block gradient-text">Redefined</span>
+        </h1>
+
+        <p class="max-w-2xl mx-auto text-lg md:text-xl text-zinc-400 leading-relaxed mb-10">
+            Vigyaan.ai builds cutting-edge AI solutions that transform how businesses operate —
+            from strategy to deployment, we engineer your competitive edge.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+            <a href="#contact"
+               class="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 font-bold rounded-full text-lg transition-all duration-300"
+               style="box-shadow:0 0 40px rgba(99,102,241,0.4);">
+                Start Your AI Journey
+                <i class="fa-solid fa-rocket text-sm group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="#services"
+               class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full text-lg font-bold transition-all hover:bg-white/5"
+               style="border:1px solid rgba(255,255,255,0.15);">
+                Explore Services <i class="fa-solid fa-chevron-down text-sm"></i>
+            </a>
+        </div>
+
+        <!-- Stats row -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+            <div class="p-4 rounded-2xl text-center" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);">
+                <div class="text-3xl font-black gradient-text">50+</div>
+                <div class="text-xs text-zinc-500 mt-1 font-medium">Projects Delivered</div>
+            </div>
+            <div class="p-4 rounded-2xl text-center" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);">
+                <div class="text-3xl font-black gradient-text">98%</div>
+                <div class="text-xs text-zinc-500 mt-1 font-medium">Client Satisfaction</div>
+            </div>
+            <div class="p-4 rounded-2xl text-center" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);">
+                <div class="text-3xl font-black gradient-text">5×</div>
+                <div class="text-xs text-zinc-500 mt-1 font-medium">Average ROI</div>
+            </div>
+            <div class="p-4 rounded-2xl text-center" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);">
+                <div class="text-3xl font-black gradient-text">24/7</div>
+                <div class="text-xs text-zinc-500 mt-1 font-medium">Support</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30 pointer-events-none">
+        <span class="text-[10px] tracking-widest uppercase text-zinc-500 font-medium">Scroll</span>
+        <div class="w-px h-10 bg-gradient-to-b from-zinc-500 to-transparent"></div>
+    </div>
+</section>
+
+<!-- ═══════════ SERVICES ═══════════ -->
+<section id="services" class="py-24 section-reveal">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-purple-300 mb-5"
+                 style="background:rgba(139,92,246,0.1); border:1px solid rgba(139,92,246,0.2);">
+                <i class="fa-solid fa-bolt"></i> What We Do
+            </div>
+            <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4">
+                Services Built for <span class="gradient-text">Scale</span>
+            </h2>
+            <p class="text-zinc-400 max-w-lg mx-auto">
+                End-to-end AI solutions — from ideation to production — that create lasting business impact.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- AI Consulting -->
+            <div class="card-lift group relative p-8 rounded-3xl overflow-hidden"
+                 style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08);">
+                <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
+                <div class="absolute -top-16 -right-16 w-40 h-40 bg-blue-600/10 rounded-full blur-3xl transition-all duration-500 group-hover:bg-blue-600/20"></div>
+                <div class="relative">
+                    <div class="w-13 h-13 w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110"
+                         style="background:rgba(59,130,246,0.12); border:1px solid rgba(59,130,246,0.25);">
+                        <i class="fa-solid fa-brain text-blue-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">AI Consulting</h3>
+                    <p class="text-zinc-400 leading-relaxed mb-6">
+                        Strategic AI roadmaps tailored to your business. We assess your current state and design a clear,
+                        ROI-driven path to AI adoption — from quick wins to long-term transformation.
+                    </p>
+                    <ul class="space-y-2 text-sm text-zinc-500">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400 text-xs"></i>AI Readiness Assessments</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400 text-xs"></i>Technology Selection &amp; Architecture</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400 text-xs"></i>Implementation Roadmaps</li>
+                    </ul>
+                    <span class="mt-6 inline-flex items-center gap-2 text-blue-400 text-sm font-semibold transition-all duration-300 group-hover:gap-4">
+                        Learn more <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Custom AI Development -->
+            <div class="card-lift group relative p-8 rounded-3xl overflow-hidden"
+                 style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08);">
+                <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
+                <div class="absolute -top-16 -right-16 w-40 h-40 bg-purple-600/10 rounded-full blur-3xl transition-all duration-500 group-hover:bg-purple-600/20"></div>
+                <div class="relative">
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110"
+                         style="background:rgba(139,92,246,0.12); border:1px solid rgba(139,92,246,0.25);">
+                        <i class="fa-solid fa-code text-purple-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Custom AI Development</h3>
+                    <p class="text-zinc-400 leading-relaxed mb-6">
+                        Bespoke AI models and applications built for your specific needs. From LLM fine-tuning to
+                        computer vision pipelines, we engineer production-grade AI that actually works.
+                    </p>
+                    <ul class="space-y-2 text-sm text-zinc-500">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400 text-xs"></i>LLM Fine-tuning &amp; RAG Systems</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400 text-xs"></i>Computer Vision &amp; NLP</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400 text-xs"></i>MLOps &amp; Production Deployment</li>
+                    </ul>
+                    <span class="mt-6 inline-flex items-center gap-2 text-purple-400 text-sm font-semibold transition-all duration-300 group-hover:gap-4">
+                        Learn more <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Tech Strategy -->
+            <div class="card-lift group relative p-8 rounded-3xl overflow-hidden"
+                 style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08);">
+                <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"></div>
+                <div class="absolute -top-16 -right-16 w-40 h-40 bg-cyan-600/10 rounded-full blur-3xl transition-all duration-500 group-hover:bg-cyan-600/20"></div>
+                <div class="relative">
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110"
+                         style="background:rgba(6,182,212,0.12); border:1px solid rgba(6,182,212,0.25);">
+                        <i class="fa-solid fa-chess-king text-cyan-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Tech Strategy</h3>
+                    <p class="text-zinc-400 leading-relaxed mb-6">
+                        Comprehensive technology strategy that aligns investments with business outcomes. We help you build
+                        future-proof architectures and make smarter, faster technology decisions.
+                    </p>
+                    <ul class="space-y-2 text-sm text-zinc-500">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400 text-xs"></i>Digital Transformation Planning</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400 text-xs"></i>Cloud &amp; Infrastructure Strategy</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400 text-xs"></i>Technology Stack Optimisation</li>
+                    </ul>
+                    <span class="mt-6 inline-flex items-center gap-2 text-cyan-400 text-sm font-semibold transition-all duration-300 group-hover:gap-4">
+                        Learn more <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Automation Solutions -->
+            <div class="card-lift group relative p-8 rounded-3xl overflow-hidden"
+                 style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08);">
+                <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent"></div>
+                <div class="absolute -top-16 -right-16 w-40 h-40 bg-emerald-600/10 rounded-full blur-3xl transition-all duration-500 group-hover:bg-emerald-600/20"></div>
+                <div class="relative">
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110"
+                         style="background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.25);">
+                        <i class="fa-solid fa-gears text-emerald-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Automation Solutions</h3>
+                    <p class="text-zinc-400 leading-relaxed mb-6">
+                        Intelligent automation that eliminates bottlenecks and scales operations. From workflow automation
+                        to AI agents, we free your team for the work that truly matters.
+                    </p>
+                    <ul class="space-y-2 text-sm text-zinc-500">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-xs"></i>Intelligent Process Automation</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-xs"></i>AI Agents &amp; Agentic Workflows</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-xs"></i>API &amp; System Integration</li>
+                    </ul>
+                    <span class="mt-6 inline-flex items-center gap-2 text-emerald-400 text-sm font-semibold transition-all duration-300 group-hover:gap-4">
+                        Learn more <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section id="about" class="py-24 relative section-reveal overflow-hidden">
+    <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-900/8 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+            <!-- Visual -->
+            <div class="relative flex items-center justify-center order-2 lg:order-1">
+                <div class="relative w-72 h-72">
+                    <!-- Centre glow + logo -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="absolute w-40 h-40 rounded-full bg-gradient-to-br from-blue-600/30 to-purple-600/30 blur-2xl"></div>
+                        <div class="relative w-28 h-28 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-4xl font-black"
+                             style="box-shadow:0 0 60px rgba(99,102,241,0.5);">V</div>
+                    </div>
+                    <!-- Orbit 1 -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-64 h-64 rounded-full relative" style="border:1px dashed rgba(59,130,246,0.25); animation:orbit 18s linear infinite;">
+                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-[9px]">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Orbit 2 -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-48 h-48 rounded-full relative" style="border:1px dashed rgba(139,92,246,0.25); animation:orbit-rev 12s linear infinite;">
+                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-purple-600 flex items-center justify-center text-[9px]">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Floating chips -->
+                    <div class="floating absolute top-2 -right-12 px-3 py-2 rounded-xl text-xs font-medium"
+                         style="background:rgba(59,130,246,0.12); border:1px solid rgba(59,130,246,0.2);">
+                        <div class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></div>
+                            Model training complete
+                        </div>
+                    </div>
+                    <div class="floating-slow absolute bottom-2 -left-12 px-3 py-2 rounded-xl text-xs font-medium"
+                         style="background:rgba(139,92,246,0.12); border:1px solid rgba(139,92,246,0.2);">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-chart-line text-purple-400"></i>
+                            99.2% accuracy
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text -->
+            <div class="order-1 lg:order-2">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-blue-300 mb-6"
+                     style="background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.2);">
+                    <i class="fa-solid fa-building-columns"></i> About Vigyaan.ai
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-6">
+                    We Build AI That <span class="gradient-text">Matters</span>
+                </h2>
+                <p class="text-zinc-400 leading-relaxed mb-4">
+                    Vigyaan.ai was founded by AI researchers, engineers, and business strategists who believe that AI should
+                    be accessible, practical, and transformative — not just a buzzword.
+                </p>
+                <p class="text-zinc-400 leading-relaxed mb-10">
+                    We combine deep technical expertise with a sharp business lens. Every solution is designed to deliver
+                    measurable outcomes: reduced costs, faster processes, and new revenue streams.
+                </p>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-4 rounded-2xl" style="background:rgba(59,130,246,0.05); border:1px solid rgba(59,130,246,0.12);">
+                        <div class="text-blue-400 mb-2"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div class="font-semibold text-sm mb-1">Trustworthy AI</div>
+                        <div class="text-zinc-500 text-xs">Responsible, explainable, and auditable systems</div>
+                    </div>
+                    <div class="p-4 rounded-2xl" style="background:rgba(139,92,246,0.05); border:1px solid rgba(139,92,246,0.12);">
+                        <div class="text-purple-400 mb-2"><i class="fa-solid fa-microscope"></i></div>
+                        <div class="font-semibold text-sm mb-1">Research-Driven</div>
+                        <div class="text-zinc-500 text-xs">Grounded in the latest AI research and best practices</div>
+                    </div>
+                    <div class="p-4 rounded-2xl" style="background:rgba(6,182,212,0.05); border:1px solid rgba(6,182,212,0.12);">
+                        <div class="text-cyan-400 mb-2"><i class="fa-solid fa-handshake"></i></div>
+                        <div class="font-semibold text-sm mb-1">Partner-First</div>
+                        <div class="text-zinc-500 text-xs">We succeed when your business succeeds</div>
+                    </div>
+                    <div class="p-4 rounded-2xl" style="background:rgba(16,185,129,0.05); border:1px solid rgba(16,185,129,0.12);">
+                        <div class="text-emerald-400 mb-2"><i class="fa-solid fa-bolt"></i></div>
+                        <div class="font-semibold text-sm mb-1">Speed &amp; Quality</div>
+                        <div class="text-zinc-500 text-xs">Fast delivery without sacrificing production quality</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ TESTIMONIALS ═══════════ -->
+<section id="testimonials" class="py-24 section-reveal relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-purple-950/8 to-transparent pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-emerald-300 mb-5"
+                 style="background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.2);">
+                <i class="fa-solid fa-star"></i> Client Stories
+            </div>
+            <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4">
+                Trusted by <span class="gradient-text">Innovators</span>
+            </h2>
+            <p class="text-zinc-400 max-w-lg mx-auto">See what industry leaders say about transforming their business with Vigyaan.ai.</p>
+        </div>
+
+        <!-- Track -->
+        <div class="overflow-hidden" id="track-outer">
+            <div id="testimonial-track" class="flex"
+                 style="transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);">
+
+                <!-- Card 1 -->
+                <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-3 box-border">
+                    <div class="p-8 rounded-3xl h-full relative" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);">
+                        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent"></div>
+                        <div class="flex gap-1 mb-5">
+                            <i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                        </div>
+                        <p class="text-zinc-300 leading-relaxed mb-6 italic text-sm">
+                            "Vigyaan.ai didn't just build us a model — they built us a competitive moat. Our AI pipeline processes 10× the data with half the team. The ROI in year one was extraordinary."
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center font-bold text-xs">SM</div>
+                            <div>
+                                <div class="font-semibold text-sm">Sarah Mitchell</div>
+                                <div class="text-zinc-500 text-xs">CTO, NexaLogic</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-3 box-border">
+                    <div class="p-8 rounded-3xl h-full relative" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);">
+                        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"></div>
+                        <div class="flex gap-1 mb-5">
+                            <i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                        </div>
+                        <p class="text-zinc-300 leading-relaxed mb-6 italic text-sm">
+                            "The AI consulting engagement helped us avoid a $2M mistake in platform selection. Their strategic depth and technical expertise is genuinely rare in the market."
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center font-bold text-xs">JR</div>
+                            <div>
+                                <div class="font-semibold text-sm">James Rodriguez</div>
+                                <div class="text-zinc-500 text-xs">VP Engineering, Meridian AI</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-3 box-border">
+                    <div class="p-8 rounded-3xl h-full relative" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);">
+                        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent"></div>
+                        <div class="flex gap-1 mb-5">
+                            <i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                        </div>
+                        <p class="text-zinc-300 leading-relaxed mb-6 italic text-sm">
+                            "We automated 70% of our manual data workflows in under 3 months. Vigyaan.ai's team is fast, precise, and genuinely care about outcomes, not just deliverables."
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-teal-600 flex items-center justify-center font-bold text-xs">PK</div>
+                            <div>
+                                <div class="font-semibold text-sm">Priya Kumar</div>
+                                <div class="text-zinc-500 text-xs">Head of Data, FinScale</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-3 box-border">
+                    <div class="p-8 rounded-3xl h-full relative" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);">
+                        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent"></div>
+                        <div class="flex gap-1 mb-5">
+                            <i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                        </div>
+                        <p class="text-zinc-300 leading-relaxed mb-6 italic text-sm">
+                            "Their custom LLM solution transformed our customer support. Ticket resolution time dropped 60% while CSAT scores hit an all-time high."
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center font-bold text-xs">AT</div>
+                            <div>
+                                <div class="font-semibold text-sm">Alex Thompson</div>
+                                <div class="text-zinc-500 text-xs">CEO, Velox Commerce</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-3 box-border">
+                    <div class="p-8 rounded-3xl h-full relative" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);">
+                        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-rose-500/30 to-transparent"></div>
+                        <div class="flex gap-1 mb-5">
+                            <i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                        </div>
+                        <p class="text-zinc-300 leading-relaxed mb-6 italic text-sm">
+                            "Vigyaan.ai's tech strategy gave us a clear 3-year digital roadmap. Their team became an extension of ours, and we executed flawlessly against our board timeline."
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-rose-500 to-orange-600 flex items-center justify-center font-bold text-xs">MN</div>
+                            <div>
+                                <div class="font-semibold text-sm">Maya Nair</div>
+                                <div class="text-zinc-500 text-xs">CDO, Orion Health</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel controls -->
+        <div class="flex items-center justify-center gap-4 mt-10">
+            <button onclick="prevSlide()" class="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110"
+                    style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);">
+                <i class="fa-solid fa-chevron-left text-sm"></i>
+            </button>
+            <div id="carousel-dots" class="flex gap-2"></div>
+            <button onclick="nextSlide()" class="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110"
+                    style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);">
+                <i class="fa-solid fa-chevron-right text-sm"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact" class="py-24 relative section-reveal overflow-hidden">
+    <div class="absolute inset-0 grid-bg opacity-30 pointer-events-none"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent pointer-events-none"></div>
+
+    <div class="relative max-w-6xl mx-auto px-6">
+        <div class="grid lg:grid-cols-5 gap-12 items-start">
+
+            <!-- Info -->
+            <div class="lg:col-span-2">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-blue-300 mb-6"
+                     style="background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.2);">
+                    <i class="fa-solid fa-paper-plane"></i> Get In Touch
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-6">
+                    Let's Build <span class="gradient-text">Together</span>
+                </h2>
+                <p class="text-zinc-400 leading-relaxed mb-10">
+                    Ready to unlock AI's potential? Tell us about your challenge and we'll be in touch within 24 hours.
+                </p>
+
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 p-4 rounded-2xl"
+                         style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.07);">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                             style="background:rgba(59,130,246,0.12); border:1px solid rgba(59,130,246,0.2);">
+                            <i class="fa-solid fa-envelope text-blue-400 text-sm"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-zinc-500 font-medium">Email</div>
+                            <div class="text-sm font-semibold">hello@vigyaan.ai</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 rounded-2xl"
+                         style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.07);">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                             style="background:rgba(139,92,246,0.12); border:1px solid rgba(139,92,246,0.2);">
+                            <i class="fa-solid fa-calendar text-purple-400 text-sm"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-zinc-500 font-medium">Book a Call</div>
+                            <div class="text-sm font-semibold">calendly.com/vigyaan-ai</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 rounded-2xl"
+                         style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.07);">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                             style="background:rgba(6,182,212,0.12); border:1px solid rgba(6,182,212,0.2);">
+                            <i class="fa-brands fa-linkedin text-cyan-400 text-sm"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-zinc-500 font-medium">LinkedIn</div>
+                            <div class="text-sm font-semibold">linkedin.com/company/vigyaan-ai</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="lg:col-span-3">
+                <div class="p-8 rounded-3xl relative overflow-hidden"
+                     style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08);">
+                    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-blue-500/50 via-purple-500/50 to-transparent"></div>
+
+                    <form id="contact-form" onsubmit="handleSubmit(event)" class="space-y-5">
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-semibold text-zinc-500 mb-2 uppercase tracking-wider">First Name</label>
+                                <input type="text" placeholder="Jane" required
+                                       class="w-full px-4 py-3.5 rounded-xl text-white placeholder-zinc-600 text-sm transition-colors duration-200"
+                                       style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1);">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-zinc-500 mb-2 uppercase tracking-wider">Last Name</label>
+                                <input type="text" placeholder="Doe" required
+                                       class="w-full px-4 py-3.5 rounded-xl text-white placeholder-zinc-600 text-sm transition-colors duration-200"
+                                       style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1);">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-zinc-500 mb-2 uppercase tracking-wider">Work Email</label>
+                            <input type="email" placeholder="jane@company.com" required
+                                   class="w-full px-4 py-3.5 rounded-xl text-white placeholder-zinc-600 text-sm transition-colors duration-200"
+                                   style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1);">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-zinc-500 mb-2 uppercase tracking-wider">Service Interest</label>
+                            <select class="w-full px-4 py-3.5 rounded-xl text-sm text-zinc-400 transition-colors duration-200"
+                                    style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1);">
+                                <option value="">Select a service…</option>
+                                <option value="consulting">AI Consulting</option>
+                                <option value="development">Custom AI Development</option>
+                                <option value="strategy">Tech Strategy</option>
+                                <option value="automation">Automation Solutions</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-zinc-500 mb-2 uppercase tracking-wider">Tell Us About Your Challenge</label>
+                            <textarea rows="4" placeholder="Describe your project, goals, and specific requirements…" required
+                                      class="w-full px-4 py-3.5 rounded-xl text-white placeholder-zinc-600 text-sm resize-none transition-colors duration-200"
+                                      style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1);"></textarea>
+                        </div>
+                        <button type="submit"
+                                class="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 font-bold rounded-xl text-base transition-all duration-300 flex items-center justify-center gap-3 group"
+                                style="box-shadow:0 0 30px rgba(99,102,241,0.35);">
+                            Send Message
+                            <i class="fa-solid fa-paper-plane text-sm group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                    </form>
+
+                    <div id="form-success" class="hidden text-center py-14">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5"
+                             style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3);">
+                            <i class="fa-solid fa-check text-emerald-400 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Message Sent!</h3>
+                        <p class="text-zinc-400 text-sm">We'll be in touch within 24 hours.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer style="border-top:1px solid rgba(255,255,255,0.07);">
+    <div class="max-w-7xl mx-auto px-6 pt-16 pb-8">
+        <div class="grid md:grid-cols-4 gap-10 mb-12">
+
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center font-black text-sm">V</div>
+                    <span class="text-xl font-bold">Vigyaan<span class="text-blue-400">.ai</span></span>
+                </div>
+                <p class="text-zinc-500 text-sm leading-relaxed mb-5">Engineering intelligence for the businesses of tomorrow.</p>
+                <div class="flex gap-3">
+                    <a href="#" class="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-110 hover:border-blue-500/50"
+                       style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);">
+                        <i class="fa-brands fa-linkedin text-xs text-zinc-400"></i>
+                    </a>
+                    <a href="#" class="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-110"
+                       style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);">
+                        <i class="fa-brands fa-x-twitter text-xs text-zinc-400"></i>
+                    </a>
+                    <a href="#" class="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-110"
+                       style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);">
+                        <i class="fa-brands fa-github text-xs text-zinc-400"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-xs font-semibold text-zinc-400 uppercase tracking-widest mb-4">Services</h4>
+                <ul class="space-y-3 text-sm text-zinc-500">
+                    <li><a href="#services" class="hover:text-white transition-colors">AI Consulting</a></li>
+                    <li><a href="#services" class="hover:text-white transition-colors">Custom AI Development</a></li>
+                    <li><a href="#services" class="hover:text-white transition-colors">Tech Strategy</a></li>
+                    <li><a href="#services" class="hover:text-white transition-colors">Automation Solutions</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-xs font-semibold text-zinc-400 uppercase tracking-widest mb-4">Company</h4>
+                <ul class="space-y-3 text-sm text-zinc-500">
+                    <li><a href="#about"   class="hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="#"        class="hover:text-white transition-colors">Case Studies</a></li>
+                    <li><a href="#"        class="hover:text-white transition-colors">Blog</a></li>
+                    <li><a href="#contact" class="hover:text-white transition-colors">Careers</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-xs font-semibold text-zinc-400 uppercase tracking-widest mb-4">Legal</h4>
+                <ul class="space-y-3 text-sm text-zinc-500">
+                    <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-3"
+             style="border-top:1px solid rgba(255,255,255,0.06);">
+            <p class="text-zinc-600 text-sm">© 2025 Vigyaan.ai. All rights reserved.</p>
+            <p class="text-zinc-600 text-xs">Built with <span class="text-blue-400">intelligence</span> · Powered by purpose</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // ── Navbar scroll ──
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        navbar.style.background = window.scrollY > 20
+            ? 'rgba(6,6,12,0.97)'
+            : 'rgba(6,6,12,0.75)';
+    });
+
+    // ── Mobile menu ──
+    function toggleMenu() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    }
+
+    // ── Smooth scroll ──
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        });
+    });
+
+    // ── Scroll reveal ──
+    const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.section-reveal').forEach(el => revealObserver.observe(el));
+
+    // ── Testimonials carousel ──
+    const TOTAL = 5;
+    let idx = 0;
+    let timer;
+
+    function perView() {
+        if (window.innerWidth < 768)  return 1;
+        if (window.innerWidth < 1024) return 2;
+        return 3;
+    }
+
+    function buildDots() {
+        const pv  = perView();
+        const max = TOTAL - pv;
+        const dot = document.getElementById('carousel-dots');
+        dot.innerHTML = '';
+        for (let i = 0; i <= max; i++) {
+            const b = document.createElement('button');
+            b.dataset.i = i;
+            b.className = 'rounded-full transition-all duration-300 ' +
+                (i === idx ? 'w-6 h-2 bg-blue-500' : 'w-2 h-2 bg-zinc-600 hover:bg-zinc-400');
+            b.onclick = () => { goTo(i); };
+            dot.appendChild(b);
+        }
+    }
+
+    function render() {
+        const pv  = perView();
+        const max = TOTAL - pv;
+        if (idx > max) idx = max;
+        document.getElementById('testimonial-track').style.transform =
+            `translateX(-${idx * (100 / pv)}%)`;
+        buildDots();
+    }
+
+    function goTo(i) {
+        idx = i; render(); resetTimer();
+    }
+    function nextSlide() { idx = idx >= TOTAL - perView() ? 0 : idx + 1; render(); resetTimer(); }
+    function prevSlide() { idx = idx <= 0 ? TOTAL - perView() : idx - 1; render(); resetTimer(); }
+    function resetTimer() { clearInterval(timer); timer = setInterval(nextSlide, 5000); }
+
+    window.addEventListener('resize', render);
+    render();
+    timer = setInterval(nextSlide, 5000);
+
+    // ── Contact form ──
+    function handleSubmit(e) {
+        e.preventDefault();
+        const form = document.getElementById('contact-form');
+        form.style.transition = 'opacity 0.3s';
+        form.style.opacity = '0';
+        setTimeout(() => {
+            form.classList.add('hidden');
+            document.getElementById('form-success').classList.remove('hidden');
+        }, 300);
+    }
+</script>
+</body>
+</html>
