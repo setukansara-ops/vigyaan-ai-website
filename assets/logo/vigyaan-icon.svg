@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Vigyaan — Spark mark">
+  <!--
+    Vigyaan Spark — App icon variant
+    ────────────────────────────────
+    Four-pointed focus mark with central bindu.
+    Reads as: aperture · focus reticle · bindu of knowledge.
+
+    Semantic root: vigyaan = vi + gyan = "specific/discriminative knowing"
+    The four arms converge on a single point — the act of focusing
+    distinct attention. Vertical arms slightly longer than horizontal
+    so the mark reads as a "focused gaze" rather than a symmetric star.
+  -->
+  <defs>
+    <!-- Container gradient — matches existing Vigyaan brand palette -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#3b82f6"/>
+      <stop offset="55%"  stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+
+    <!-- Mark fill — subtle vertical luminance gradient on white -->
+    <linearGradient id="markGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.92"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded-square container (iOS app icon style) -->
+  <rect x="2" y="2" width="96" height="96" rx="22" ry="22" fill="url(#bgGrad)"/>
+
+  <!-- ═══════ THE SPARK ═══════ -->
+  <!-- Four converging arms. Each is a sharp lozenge pointing OUT from center.
+       Vertical arms are slightly elongated to give a "focused gaze" asymmetry. -->
+
+  <!-- Top arm -->
+  <path d="M 50 14 L 55 32 L 50 50 L 45 32 Z" fill="url(#markGrad)"/>
+
+  <!-- Bottom arm -->
+  <path d="M 50 86 L 55 68 L 50 50 L 45 68 Z" fill="url(#markGrad)"/>
+
+  <!-- Left arm (shorter — horizontal less elongated for the focused-gaze feel) -->
+  <path d="M 18 50 L 32 45 L 50 50 L 32 55 Z" fill="url(#markGrad)"/>
+
+  <!-- Right arm -->
+  <path d="M 82 50 L 68 45 L 50 50 L 68 55 Z" fill="url(#markGrad)"/>
+
+  <!-- Bindu — central point of focus. Source of knowledge in Sri Yantra.
+       Slightly larger than just a "dot" so it reads at 32×32. -->
+  <circle cx="50" cy="50" r="4.5" fill="#ffffff"/>
+</svg>

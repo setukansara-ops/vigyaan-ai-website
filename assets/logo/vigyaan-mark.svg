@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Vigyaan — Spark mark (standalone)">
+  <!--
+    Vigyaan Spark — Standalone mark (no container)
+    ────────────────────────────────────────────────
+    For website headers, business cards, anywhere the rounded-square
+    container would feel heavy. Mark itself carries the gradient.
+    Works on dark or light backgrounds without modification.
+  -->
+  <defs>
+    <linearGradient id="markGradFull" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%"   stop-color="#3b82f6"/>
+      <stop offset="55%"  stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Top arm -->
+  <path d="M 50 14 L 55 32 L 50 50 L 45 32 Z" fill="url(#markGradFull)"/>
+  <!-- Bottom arm -->
+  <path d="M 50 86 L 55 68 L 50 50 L 45 68 Z" fill="url(#markGradFull)"/>
+  <!-- Left arm -->
+  <path d="M 18 50 L 32 45 L 50 50 L 32 55 Z" fill="url(#markGradFull)"/>
+  <!-- Right arm -->
+  <path d="M 82 50 L 68 45 L 50 50 L 68 55 Z" fill="url(#markGradFull)"/>
+  <!-- Bindu -->
+  <circle cx="50" cy="50" r="4.5" fill="url(#markGradFull)"/>
+</svg>
