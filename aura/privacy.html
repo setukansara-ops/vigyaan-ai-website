@@ -102,7 +102,7 @@
         <h1 class="mt-6 text-4xl md:text-5xl font-extrabold tracking-tight">
             Privacy <span class="gradient-text">Policy</span>
         </h1>
-        <p class="mt-3 text-zinc-400 text-sm">Last updated: June 2, 2026</p>
+        <p class="mt-3 text-zinc-400 text-sm">Last updated: June 12, 2026</p>
 
         <div class="mt-8 rounded-2xl p-6 md:p-7"
              style="background:rgba(255,255,255,0.02); border:1px solid rgba(167,139,250,0.18); border-left:3px solid #a78bfa;">
@@ -143,10 +143,10 @@
 
         <h3>Wellness data you choose to share</h3>
         <ul>
-            <li>Mood entries you log</li>
-            <li>Conversations with Aura (your messages and Aura's replies)</li>
+            <li>Conversations with Aura (your messages and Aura's replies, including transcripts of voice calls)</li>
             <li>Life events you ask Aura to track — goals, reminders, habits, tasks, anniversaries</li>
             <li>Optional onboarding details: date of birth, gender, height, weight, occupation, hobbies, fitness goal, diet preference, communication style</li>
+            <li>If you connect with a friend using an invite code, we store the fact that your two accounts are linked. What each of you tells Aura about the other stays in your own private memories — neither of you can see the other's conversations or memories.</li>
         </ul>
 
         <h3>Memory across sessions</h3>
@@ -159,11 +159,22 @@
 
         <h3>Optional permissions you grant</h3>
         <ul>
-            <li><strong>Microphone</strong> — only when you actively use voice input. Audio is converted to text on your device or our servers and is not retained beyond the active session.</li>
+            <li><strong>Microphone</strong> — only when you actively use voice input. Audio is streamed to our voice-AI provider for live speech recognition (see section 4) and is not retained beyond the active session — only the text transcript is kept.</li>
             <li><strong>Health data</strong> (Apple Health / Google Fit) — only if you explicitly connect them. Aura reads metrics like sleep and steps to offer better check-ins; it never writes data back.</li>
             <li><strong>Location</strong> — only if a feature explicitly asks (e.g., finding nearby support resources). Aura does not track location in the background.</li>
             <li><strong>Notifications</strong> — only if you opt in. Used for daily check-ins or reminders you set up.</li>
         </ul>
+
+        <h3>Product usage events</h3>
+        <p>
+            To understand which parts of Aura people actually use, the app
+            records lightweight usage events — for example which screens you
+            visit and for how long, which features you tap, and technical
+            counters such as how many AI tokens a conversation used. These
+            events <strong>never contain the content</strong> of your messages
+            or memories, are stored only on our own infrastructure, and are
+            not shared with any third-party analytics service.
+        </p>
 
         <h3>What Aura does NOT collect</h3>
         <ul>
@@ -177,34 +188,60 @@
         <h2>3. Why we collect it</h2>
         <p>We collect data for three reasons only:</p>
         <ol>
-            <li><strong>To run the app for you</strong> — auth, conversation history, mood charts, your "My Life" view</li>
+            <li><strong>To run the app for you</strong> — auth, conversation history, reminders, your "My Life" view</li>
             <li><strong>To make Aura feel personal</strong> — memory of past sessions, mentor adaptation, personalized check-ins</li>
             <li><strong>To keep you safe</strong> — crisis detection looks at your message in real time for high-risk language and surfaces helpline information when appropriate</li>
         </ol>
 
         <h2>4. Where your data lives</h2>
         <p>
-            All your data is stored on infrastructure owned and operated by
-            Vigyaan LLC. We do not use third-party data warehouses,
-            advertising networks, or analytics services that share data with
-            other parties.
+            Your data is stored on infrastructure owned and operated by
+            Vigyaan LLC. We do not use advertising networks, third-party
+            analytics services, or data brokers — the only outside parties
+            that ever touch your data are the narrowly-scoped service
+            providers described on this page.
         </p>
         <p>
             Your <strong>text</strong> conversations are processed by a language
-            model that runs on hardware Vigyaan LLC controls. <strong>Your text
-            conversations are not sent to OpenAI, Anthropic, Google, or any other
-            third-party AI provider.</strong> The model that powers Aura's text
-            chat is hosted on our own servers.
+            model that runs on hardware Vigyaan LLC controls — the model that
+            powers Aura's text chat is hosted on our own servers, and your
+            conversations are never used to train anyone's AI models. There are
+            three narrow situations where part of a conversation is processed
+            by our AI partner, <strong>xAI</strong>, and we want you to know
+            exactly what they are:
+        </p>
+        <ul>
+            <li><strong>Voice conversations.</strong> When you start a voice
+            conversation, your microphone audio is streamed in real time to
+            xAI solely to power live speech recognition and the spoken
+            response. We store only the resulting text transcript so the
+            conversation appears in your history &mdash; we do
+            <strong>not</strong> store the raw audio recording. The app shows
+            you a clear disclosure before your first voice conversation.</li>
+            <li><strong>Live lookups.</strong> If you ask Aura something that
+            needs current information (news, weather, facts our own model
+            can't know), the question is sent to xAI's search-enabled API to
+            fetch an up-to-date answer. Only what's needed for that lookup is
+            sent.</li>
+            <li><strong>Busy moments and outages.</strong> During unusually
+            high load, or if our own servers are temporarily unreachable, an
+            individual chat reply may be generated by xAI using the same
+            conversation context our local model would see — so Aura keeps
+            responding instead of going silent. This is a per-reply fallback,
+            not a migration: replies return to our own hardware as soon as it
+            is available.</li>
+        </ul>
+        <p>
+            In every case above, xAI processes the data only to generate the
+            response; it is not used for advertising and not used to train
+            xAI's models.
         </p>
         <p>
-            <strong>Voice conversations</strong> work a little differently. When
-            you start a voice conversation, your microphone audio is streamed in
-            real time to our voice-AI provider, <strong>xAI</strong>, solely to
-            power live speech recognition and the spoken response. We store only
-            the resulting text transcript so the conversation appears in your
-            history &mdash; we do <strong>not</strong> store the raw audio
-            recording, and xAI processes it only to provide the live voice
-            feature.
+            <strong>Backups.</strong> We keep encrypted backups of our
+            database so your data survives hardware failure. Backup copies
+            are stored in encrypted form with a cloud storage provider and
+            are automatically aged out on a schedule, which is how the 30-day
+            backup-deletion window in section 6 is honored.
         </p>
         <p>
             For app stability we use industry-standard tools for error
@@ -286,7 +323,7 @@
             situations:
         </p>
         <ul>
-            <li>With service providers strictly necessary to operate Aura (e.g., cloud GPU hosting for our LLM, email delivery for password reset). These providers are contractually bound to use the data only on our behalf.</li>
+            <li>With service providers strictly necessary to operate Aura (xAI for the voice, live-lookup, and busy-moment features described in section 4; encrypted backup storage; email delivery for password reset). These providers are bound to use the data only to provide the service on our behalf.</li>
             <li>To comply with a valid legal request (subpoena, court order). When this happens, we will notify you unless legally prohibited.</li>
             <li>In the unlikely event of a merger or acquisition, only after you've been notified.</li>
         </ul>
