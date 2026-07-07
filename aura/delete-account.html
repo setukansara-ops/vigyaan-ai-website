@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura by Vigyaan | Delete Your Account &amp; Data</title>
+    <meta name="description" content="How to delete your Aura by Vigyaan account and data — the exact steps, what's removed, what's kept, and how long we retain it.">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="../assets/logo/vigyaan-icon.svg">
+    <link rel="apple-touch-icon" href="../assets/logo/vigyaan-icon.svg">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', system-ui, sans-serif; }
+
+        @keyframes gradient-shift {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa, #a78bfa, #34d399);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 5s ease infinite;
+        }
+        .grid-bg {
+            background-image:
+                linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+            background-size: 56px 56px;
+        }
+
+        .prose-aura h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f4f4f5;
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+        .prose-aura h3 {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a1a1aa;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .prose-aura p {
+            color: #d4d4d8;
+            line-height: 1.75;
+            margin: 0.75rem 0;
+        }
+        .prose-aura ul, .prose-aura ol {
+            color: #d4d4d8;
+            line-height: 1.75;
+            margin: 0.5rem 0 0.75rem 1.5rem;
+        }
+        .prose-aura li { margin: 0.25rem 0; }
+        .prose-aura a {
+            color: #a78bfa;
+            text-decoration: underline;
+            text-decoration-color: rgba(167, 139, 250, 0.35);
+            text-underline-offset: 2px;
+            transition: color 0.2s;
+        }
+        .prose-aura a:hover { color: #c4b5fd; }
+        .prose-aura strong { color: #fafafa; font-weight: 600; }
+
+        /* Numbered step cards */
+        .steps { list-style: none; counter-reset: step; margin: 1rem 0 1.25rem; padding: 0; }
+        .steps li {
+            position: relative;
+            padding: 1rem 1.1rem 1rem 3.4rem;
+            margin: 0 0 0.75rem;
+            border-radius: 1rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(167,139,250,0.18);
+            color: #d4d4d8;
+            line-height: 1.65;
+        }
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute; left: 0.9rem; top: 0.95rem;
+            width: 1.75rem; height: 1.75rem;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #a78bfa, #6d28d9);
+            color: #fff; font-weight: 700; font-size: 0.85rem;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .steps li strong { color: #fafafa; }
+    </style>
+</head>
+<body class="bg-[#06060c] text-white overflow-x-hidden">
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav class="fixed top-0 w-full z-50"
+     style="background:rgba(6,6,12,0.75); backdrop-filter:blur(20px); border-bottom:1px solid rgba(255,255,255,0.06);">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3">
+            <img src="../assets/logo/vigyaan-icon.svg" alt="Vigyaan logo" class="w-9 h-9" />
+            <span class="text-xl font-bold tracking-tight">Vigyaan<span class="text-blue-400">.ai</span></span>
+        </a>
+        <a href="/aura/privacy.html" class="text-sm font-medium text-zinc-400 hover:text-white transition-colors">
+            <i class="fa-solid fa-arrow-left mr-1"></i> Privacy Policy
+        </a>
+    </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="relative pt-32 pb-12 grid-bg">
+    <div class="max-w-3xl mx-auto px-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium tracking-wide"
+             style="background:rgba(167,139,250,0.1); border:1px solid rgba(167,139,250,0.25); color:#c4b5fd;">
+            <i class="fa-solid fa-trash-can text-[10px]"></i>
+            <span>AURA BY VIGYAAN</span>
+        </div>
+        <h1 class="mt-6 text-4xl md:text-5xl font-extrabold tracking-tight">
+            Delete Your <span class="gradient-text">Account &amp; Data</span>
+        </h1>
+        <p class="mt-3 text-zinc-400 text-sm">Last updated: July 6, 2026</p>
+
+        <div class="mt-8 rounded-2xl p-6 md:p-7"
+             style="background:rgba(255,255,255,0.02); border:1px solid rgba(167,139,250,0.18); border-left:3px solid #a78bfa;">
+            <p class="text-zinc-200 text-base md:text-lg leading-relaxed">
+                Aura is a private mental wellness companion built by Vigyaan LLC.
+                You are always in control of your data. This page explains exactly
+                how to delete your Aura account, or just specific data, and what
+                happens to your information when you do.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ BODY ═══════════ -->
+<section class="pb-32">
+    <div class="max-w-3xl mx-auto px-6 prose-aura">
+
+        <h2>Delete your entire account</h2>
+        <p>You can permanently delete your Aura account and all associated data in either of these ways:</p>
+        <ol class="steps">
+            <li><strong>In the app (fastest — takes effect immediately).</strong>
+                Open Aura, go to <strong>Profile → Settings → Delete Account</strong>,
+                and confirm. Your account and data are removed from our active
+                systems right away.</li>
+            <li><strong>By email.</strong> If you can no longer open the app, email
+                <a href="mailto:privacy@vigyaan.ai">privacy@vigyaan.ai</a> from the
+                email address on your account and ask us to delete it. We verify the
+                request and complete the deletion within <strong>30 days</strong>
+                (usually much sooner).</li>
+        </ol>
+
+        <h3>What gets deleted</h3>
+        <ul>
+            <li>Your profile — email, display name, date of birth, and preferences</li>
+            <li>All chat and voice conversation history, including transcripts</li>
+            <li>Everything Aura remembered about you — memories, reflections, and life events</li>
+            <li>Any photos you shared and any details derived from them</li>
+            <li>Your reminders, goals, chosen mentors, and app settings</li>
+        </ul>
+        <p><strong>This deletion is permanent and cannot be undone.</strong></p>
+
+        <h3>What may be kept, and for how long</h3>
+        <ul>
+            <li><strong>Encrypted backups:</strong> deleted data is removed from our
+                active databases immediately and aged out of encrypted backups
+                <strong>within 30 days</strong>.</li>
+            <li><strong>Legally required records:</strong> transaction and subscription
+                records may be retained by our payment processors and by the app
+                stores (Apple, Google) as required by tax and accounting law. These
+                records do <strong>not</strong> include your conversations, reflections,
+                or anything Aura remembered about you.</li>
+            <li><strong>Anonymized usage counts</strong> (e.g., total message counts,
+                never including content) may be retained for product improvement.</li>
+        </ul>
+
+        <h2>Delete specific data (without deleting your account)</h2>
+        <p>You don't have to delete your whole account to remove specific things. At any time you can:</p>
+        <ol class="steps">
+            <li><strong>Delete individual conversations.</strong> Open your
+                <strong>History</strong>, choose a conversation, and delete it. It's
+                removed from our active systems immediately and from backups within 30 days.</li>
+            <li><strong>Delete individual memories or life events.</strong> In your
+                memory / "My Life" view, remove any item. Deleted memories sit in a
+                30-day trash so you can restore one removed by mistake, then are
+                purged permanently.</li>
+            <li><strong>Prefer email?</strong> Write to
+                <a href="mailto:privacy@vigyaan.ai">privacy@vigyaan.ai</a> describing
+                what you'd like removed, and we'll take care of it within 30 days.</li>
+        </ol>
+
+        <h2>Questions</h2>
+        <p>
+            For anything about your data or these steps, email
+            <a href="mailto:privacy@vigyaan.ai">privacy@vigyaan.ai</a>. You can also
+            review our full <a href="/aura/privacy.html">Privacy Policy</a> and
+            <a href="/aura/terms.html">Terms of Service</a>.
+        </p>
+
+        <div class="mt-16 pt-8 border-t border-white/[0.06] text-sm text-zinc-500 leading-relaxed">
+            Aura by Vigyaan is operated by Vigyaan LLC. This page applies to the Aura
+            mobile app (iOS and Android) and any web-based version of Aura.
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
