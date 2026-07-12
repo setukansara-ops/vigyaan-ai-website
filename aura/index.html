@@ -1,199 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aura by Vigyaan | Help &amp; Support</title>
-    <meta name="description" content="Support for Aura by Vigyaan — how to get help, manage your subscription, delete your data, and reach our team.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aura — a private AI wellness companion</title>
+<meta name="description" content="Aura is a private AI wellness companion — a calm space to talk, reflect, and stay on top of what matters. She listens, remembers, and shows up.">
+<style>
+  :root{
+    --night:#0B0A1F;      /* deep base */
+    --night-2:#120E28;    /* section base */
+    --surface:#17122E;    /* cards */
+    --surface-2:#1E1740;  /* raised */
+    --line:rgba(196,181,253,0.14);
+    --violet:#7C3AED;
+    --violet-lift:#8B5CF6;
+    --lavender:#C4B5FD;
+    --rose:#F472B6;
+    --rose-soft:#FBCFE8;
+    --ink:#ECE9FB;        /* primary text */
+    --muted:#A79FCB;      /* secondary text */
+    --faint:#7C74A0;      /* tertiary */
+    --grad:linear-gradient(120deg,#4C1D95 0%,#7C3AED 38%,#C4B5FD 72%,#F472B6 100%);
+    --grad-soft:linear-gradient(120deg,#7C3AED,#F472B6);
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--night);color:var(--ink);
+    font:400 17px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  a{color:inherit}
+  img,svg{max-width:100%}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:12.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--lavender);margin:0 0 18px;
+  }
+  h1,h2,h3{margin:0;font-weight:650;letter-spacing:-.02em;text-wrap:balance;line-height:1.08}
+  .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;border:0;cursor:pointer;
+    font:inherit;font-weight:650;font-size:15.5px;border-radius:999px;
+    padding:14px 26px;text-decoration:none;transition:transform .16s ease,box-shadow .16s ease,background .16s;
+  }
+  .btn-primary{background:var(--grad-soft);color:#fff;box-shadow:0 12px 34px -10px rgba(124,58,237,.7)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 44px -10px rgba(244,114,182,.55)}
+  .btn-ghost{background:rgba(196,181,253,.08);color:var(--ink);border:1px solid var(--line)}
+  .btn-ghost:hover{background:rgba(196,181,253,.15);transform:translateY(-2px)}
 
-    <!-- Favicons -->
-    <link rel="icon" type="image/svg+xml" href="../assets/logo/vigyaan-icon.svg">
-    <link rel="apple-touch-icon" href="../assets/logo/vigyaan-icon.svg">
+  /* ---------- ambient sky ---------- */
+  .sky{position:fixed;inset:0;z-index:-2;background:
+     radial-gradient(1100px 700px at 78% -8%, rgba(124,58,237,.34), transparent 60%),
+     radial-gradient(900px 620px at 10% 8%, rgba(244,114,182,.18), transparent 55%),
+     radial-gradient(1200px 900px at 50% 108%, rgba(76,29,149,.4), transparent 60%),
+     var(--night);}
+  .stars{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5}
 
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        body { font-family: 'Inter', system-ui, sans-serif; }
+  /* ---------- nav ---------- */
+  nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);
+     background:linear-gradient(180deg,rgba(11,10,31,.82),rgba(11,10,31,.35));border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:650;letter-spacing:-.01em;font-size:18px}
+  .brand svg{width:30px;height:30px;display:block}
+  .nav-cta{font-size:14px;padding:10px 20px}
+  @media(max-width:560px){.nav-links{display:none}}
 
-        @keyframes gradient-shift {
-            0%   { background-position: 0% 50%; }
-            50%  { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #60a5fa, #a78bfa, #34d399);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradient-shift 5s ease infinite;
-        }
-        .grid-bg {
-            background-image:
-                linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
-            background-size: 56px 56px;
-        }
-        .prose-aura h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #f4f4f5;
-            margin-top: 2.5rem;
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.01em;
-        }
-        .prose-aura h3 {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #a1a1aa;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .prose-aura p {
-            color: #d4d4d8;
-            line-height: 1.75;
-            margin: 0.75rem 0;
-        }
-        .prose-aura ul {
-            color: #d4d4d8;
-            line-height: 1.75;
-            margin: 0.5rem 0 0.75rem 1.5rem;
-            list-style: disc;
-        }
-        .prose-aura li { margin: 0.25rem 0; }
-        .prose-aura a {
-            color: #a78bfa;
-            text-decoration: underline;
-            text-decoration-color: rgba(167, 139, 250, 0.35);
-            text-underline-offset: 2px;
-            transition: color 0.2s;
-        }
-        .prose-aura a:hover { color: #c4b5fd; }
-        .prose-aura strong { color: #fafafa; font-weight: 600; }
-    </style>
+  /* ---------- hero ---------- */
+  header.hero{position:relative;padding:96px 0 78px;text-align:center}
+  .resonance{width:150px;height:150px;margin:0 auto 34px;position:relative}
+  .resonance svg{width:100%;height:100%;display:block;position:relative;z-index:2}
+  .halo{position:absolute;inset:-40% ;border-radius:50%;z-index:1;
+     background:radial-gradient(circle,rgba(139,92,246,.45),transparent 62%);filter:blur(14px);
+     animation:breathe 6.5s ease-in-out infinite}
+  @keyframes breathe{0%,100%{transform:scale(.92);opacity:.7}50%{transform:scale(1.08);opacity:1}}
+  h1{font-size:clamp(40px,6.4vw,68px)}
+  .hero p.lead{max-width:620px;margin:24px auto 0;color:var(--muted);font-size:clamp(17px,2.2vw,20px);line-height:1.6}
+  .hero .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:38px}
+  .trust{margin-top:26px;color:var(--faint);font-size:13.5px;letter-spacing:.02em}
+
+  /* ---------- section shell ---------- */
+  section{position:relative;padding:88px 0}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 52px}
+  .sec-head h2{font-size:clamp(28px,4vw,40px)}
+  .sec-head p{color:var(--muted);margin:16px 0 0;font-size:17.5px}
+
+  /* ---------- demos ---------- */
+  .demo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  @media(max-width:760px){.demo-grid{grid-template-columns:1fr}}
+  .demo{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);
+     background:var(--surface);aspect-ratio:16/10;cursor:pointer;isolation:isolate}
+  .demo .poster{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;
+     padding:22px;z-index:2;transition:opacity .3s}
+  .demo .poster::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.92;
+     background:var(--pcol),linear-gradient(160deg,#1E1740,#0B0A1F)}
+  .demo .rings{position:absolute;top:-30px;right:-30px;width:190px;height:190px;opacity:.5;z-index:-1}
+  .demo .scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 30%,rgba(11,10,31,.8) 100%)}
+  .demo .num{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--lavender);opacity:.9}
+  .demo h3{font-size:21px;margin:8px 0 4px;color:#fff;letter-spacing:-.01em}
+  .demo .sub{color:var(--rose-soft);font-size:14px;line-height:1.45;opacity:.92;max-width:38ch}
+  .demo .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;
+     width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.16);backdrop-filter:blur(6px);
+     border:1.5px solid rgba(255,255,255,.5);display:grid;place-items:center;transition:transform .18s,background .18s}
+  .demo:hover .play{transform:translate(-50%,-50%) scale(1.08);background:rgba(255,255,255,.28)}
+  .demo .play svg{width:24px;height:24px;margin-left:3px;fill:#fff}
+  .demo .dur{position:absolute;top:16px;right:16px;z-index:3;font-size:12px;font-weight:600;
+     background:rgba(11,10,31,.7);color:#fff;padding:3px 9px;border-radius:7px;letter-spacing:.02em}
+  .demo .badge{position:absolute;top:16px;left:16px;z-index:3;font-size:11px;font-weight:700;letter-spacing:.06em;
+     text-transform:uppercase;background:rgba(255,255,255,.14);color:#fff;padding:4px 9px;border-radius:7px;border:1px solid rgba(255,255,255,.22)}
+  .demo iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:5;background:#000}
+  .demos-more{text-align:center;margin-top:34px}
+
+  /* ---------- pillars ---------- */
+  .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  @media(max-width:900px){.pillars{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.pillars{grid-template-columns:1fr}}
+  .pillar{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px 22px;transition:border-color .2s,transform .2s}
+  .pillar:hover{border-color:rgba(196,181,253,.4);transform:translateY(-3px)}
+  .pillar .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;margin-bottom:16px;
+     background:linear-gradient(140deg,rgba(124,58,237,.28),rgba(244,114,182,.22));border:1px solid var(--line)}
+  .pillar .ic svg{width:22px;height:22px;stroke:var(--lavender);fill:none;stroke-width:1.7}
+  .pillar h3{font-size:18px;margin-bottom:8px}
+  .pillar p{color:var(--muted);font-size:15px;line-height:1.55;margin:0}
+
+  /* ---------- quote / band ---------- */
+  .band{background:linear-gradient(180deg,var(--night-2),var(--night));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .band .wrap{text-align:center;max-width:760px}
+  .band blockquote{margin:0;font-size:clamp(24px,3.4vw,34px);font-weight:600;letter-spacing:-.02em;line-height:1.28}
+
+  /* ---------- safety note ---------- */
+  .safety{max-width:720px;margin:0 auto;text-align:center;color:var(--faint);font-size:14px;line-height:1.6;
+     border:1px solid var(--line);border-radius:16px;padding:22px 26px;background:rgba(23,18,46,.5)}
+  .safety strong{color:var(--muted);font-weight:650}
+
+  /* ---------- final CTA ---------- */
+  .final{text-align:center}
+  .final h2{font-size:clamp(30px,4.6vw,46px)}
+  .final .lead{color:var(--muted);max-width:520px;margin:18px auto 34px;font-size:18px}
+  .stores{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;align-items:center}
+  .store{display:inline-flex;align-items:center;gap:11px;background:#000;border:1px solid rgba(255,255,255,.16);
+     border-radius:13px;padding:11px 20px;text-decoration:none;transition:border-color .2s,transform .2s}
+  .store:hover{border-color:rgba(196,181,253,.55);transform:translateY(-2px)}
+  .store svg{width:26px;height:26px;fill:#fff;flex:none}
+  .store .st{display:flex;flex-direction:column;line-height:1.1;text-align:left}
+  .store .st small{font-size:10.5px;color:var(--muted);letter-spacing:.03em}
+  .store .st span{font-size:16px;font-weight:600;color:#fff}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);padding:44px 0 56px;color:var(--faint);font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  footer .flinks{display:flex;gap:22px;flex-wrap:wrap}
+  footer a{text-decoration:none;color:var(--muted)}
+  footer a:hover{color:var(--ink)}
+  .foot-brand{display:flex;align-items:center;gap:10px}
+  .foot-brand svg{width:24px;height:24px}
+
+  @media(prefers-reduced-motion:reduce){.halo{animation:none}*{scroll-behavior:auto}}
+</style>
 </head>
-<body class="bg-[#06060c] text-white overflow-x-hidden">
+<body>
+<div class="sky"></div>
+<canvas class="stars" id="stars"></canvas>
 
-<!-- ═══════════ NAVBAR ═══════════ -->
-<nav class="fixed top-0 w-full z-50"
-     style="background:rgba(6,6,12,0.75); backdrop-filter:blur(20px); border-bottom:1px solid rgba(255,255,255,0.06);">
-    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-3">
-            <img src="../assets/logo/vigyaan-icon.svg" alt="Vigyaan logo" class="w-9 h-9" />
-            <span class="text-xl font-bold tracking-tight">Vigyaan<span class="text-blue-400">.ai</span></span>
-        </a>
-        <a href="/" class="text-sm font-medium text-zinc-400 hover:text-white transition-colors">
-            <i class="fa-solid fa-arrow-left mr-1"></i> Back to home
-        </a>
+<!-- inline logo defs reused everywhere -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="auraGrad" x1="20%" y1="0%" x2="80%" y2="100%">
+    <stop offset="0%" stop-color="#4c1d95"/><stop offset="35%" stop-color="#7c3aed"/>
+    <stop offset="70%" stop-color="#c4b5fd"/><stop offset="100%" stop-color="#f472b6"/>
+  </linearGradient>
+</defs></svg>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 100 100" aria-label="Aura">
+        <path d="M 61.63 18.06 A 34 34 0 1 1 38.37 18.06" fill="none" stroke="url(#auraGrad)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M 56.21 26.82 A 24 24 0 1 1 43.79 26.82" fill="none" stroke="url(#auraGrad)" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M 52.43 36.21 A 14 14 0 1 1 47.57 36.21" fill="none" stroke="url(#auraGrad)" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="50" cy="50" r="5" fill="url(#auraGrad)"/>
+      </svg>
+      Aura
     </div>
+    <a class="btn btn-primary nav-cta" href="#get">Get Aura</a>
+  </div>
 </nav>
 
-<!-- ═══════════ HERO ═══════════ -->
-<section class="relative pt-32 pb-12 grid-bg">
-    <div class="max-w-3xl mx-auto px-6">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium tracking-wide"
-             style="background:rgba(167,139,250,0.1); border:1px solid rgba(167,139,250,0.25); color:#c4b5fd;">
-            <i class="fa-solid fa-life-ring text-[10px]"></i>
-            <span>AURA BY VIGYAAN</span>
-        </div>
-        <h1 class="mt-6 text-4xl md:text-5xl font-extrabold tracking-tight">
-            Help &amp; <span class="gradient-text">Support</span>
-        </h1>
-        <p class="mt-3 text-zinc-400 text-sm">We're a small team and we read every message.</p>
-
-        <div class="mt-8 rounded-2xl p-6 md:p-7"
-             style="background:rgba(255,255,255,0.02); border:1px solid rgba(167,139,250,0.18); border-left:3px solid #a78bfa;">
-            <p class="text-zinc-200 text-base md:text-lg leading-relaxed">
-                Aura is a private AI wellness companion built by Vigyaan LLC — a calm
-                space to talk, reflect, and stay on top of what matters. Need a hand,
-                have a question, or hit a bug? Here's how to reach us and sort out the
-                common things.
-            </p>
-        </div>
+<header class="hero">
+  <div class="wrap">
+    <div class="resonance">
+      <div class="halo"></div>
+      <svg viewBox="0 0 100 100" aria-label="Aura resonance mark">
+        <path d="M 61.63 18.06 A 34 34 0 1 1 38.37 18.06" fill="none" stroke="url(#auraGrad)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M 56.21 26.82 A 24 24 0 1 1 43.79 26.82" fill="none" stroke="url(#auraGrad)" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M 52.43 36.21 A 14 14 0 1 1 47.57 36.21" fill="none" stroke="url(#auraGrad)" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="50" cy="50" r="5" fill="url(#auraGrad)"/>
+      </svg>
     </div>
+    <p class="eyebrow">A private AI wellness companion</p>
+    <h1>The companion that <span class="grad-text">remembers what matters</span>.</h1>
+    <p class="lead">Aura is a calm space to talk, reflect, and stay on top of your day. She listens without rushing to fix, holds on to what you share, and shows up when it counts.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#get">Get Aura</a>
+      <a class="btn btn-ghost" href="#demos">▸ &nbsp;See her in action</a>
+    </div>
+    <p class="trust">Private by design · Voice &amp; chat · Built by Vigyaan LLC</p>
+  </div>
+</header>
+
+<section id="demos">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">See Aura in action</p>
+      <h2>Four everyday moments</h2>
+      <p>Real clips from the app — memory, planning, support, and reminders. Tap any one to play.</p>
+    </div>
+    <div class="demo-grid" id="demoGrid">
+      <!-- cards injected by JS from DEMOS -->
+    </div>
+    <div class="demos-more">
+      <a class="btn btn-ghost" href="https://www.youtube.com/playlist?list=PLL1tz94WGy_Q" target="_blank" rel="noopener">Watch the full playlist ↗</a>
+    </div>
+  </div>
 </section>
 
-<!-- ═══════════ BODY ═══════════ -->
-<section class="pb-32">
-    <div class="max-w-3xl mx-auto px-6 prose-aura">
-
-        <h2>Contact us</h2>
-        <p>
-            Email <a href="mailto:support@vigyaan.ai">support@vigyaan.ai</a> and we'll
-            get back to you, usually within two business days. To help us help you
-            faster, include your account email, your device and OS version, and a
-            short description of what happened.
-        </p>
-        <p>
-            For privacy- or data-specific requests, you can also reach us at
-            <a href="mailto:privacy@vigyaan.ai">privacy@vigyaan.ai</a>.
-        </p>
-
-        <h2>Common questions</h2>
-
-        <h3>Managing or cancelling a subscription</h3>
-        <p>
-            Aura's Plus and Pro plans are billed through the Apple App Store or Google
-            Play, so you manage or cancel them in your store account:
-        </p>
-        <ul>
-            <li><strong>iPhone / iPad:</strong> Settings &rarr; tap your name &rarr; Subscriptions &rarr; Aura &rarr; Cancel.</li>
-            <li><strong>Android:</strong> Google Play &rarr; profile &rarr; Payments &amp; subscriptions &rarr; Subscriptions &rarr; Aura &rarr; Cancel.</li>
-        </ul>
-        <p>
-            Cancelling stops the next renewal; you keep your plan until the end of the
-            period you've already paid for. We don't charge cancellation fees.
-        </p>
-
-        <h3>Deleting your account and data</h3>
-        <p>
-            You can remove your account and everything in it from inside the app, under
-            <strong>Settings &rarr; Account &rarr; Delete account</strong>. This
-            permanently deletes your conversations, journal entries, reminders, and
-            profile from our servers. Prefer we handle it? Email
-            <a href="mailto:support@vigyaan.ai">support@vigyaan.ai</a> from your account
-            address and we'll take care of it.
-        </p>
-
-        <h3>Resetting your password</h3>
-        <p>
-            On the sign-in screen, choose <strong>Forgot password</strong> to get a reset
-            link at your account email. If you signed in with Apple or Google, just use
-            that same button to sign back in &mdash; there's no separate Aura password.
-        </p>
-
-        <h3>Is my data private?</h3>
-        <p>
-            Your text conversations run on hardware Vigyaan LLC controls, and are never
-            sold or used to train anyone's AI models. A few narrow features &mdash; such
-            as voice calls &mdash; involve a vetted AI provider, always with your
-            consent. The full details are in our <a href="privacy.html">Privacy Policy</a>.
-        </p>
-
-        <h3>Who can use Aura?</h3>
-        <p>
-            Aura is for adults &mdash; you must be at least <strong>18 years old</strong>
-            to use it. Aura is a wellness and reflection companion, not a medical device
-            or a substitute for professional care. If you're in crisis, please contact
-            your local emergency services or a crisis line in your area.
-        </p>
-
-        <h2>Legal</h2>
-        <ul>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms of Service</a></li>
-        </ul>
-
-        <div class="mt-16 pt-8 border-t border-white/[0.06] text-sm text-zinc-500 leading-relaxed">
-            Aura by Vigyaan is operated by Vigyaan LLC. Support covers the Aura mobile
-            app (iOS and Android). For the fastest response, email
-            <a href="mailto:support@vigyaan.ai" class="text-zinc-400 hover:text-white">support@vigyaan.ai</a>.
-        </div>
-    </div>
+<section class="band">
+  <div class="wrap">
+    <blockquote class="grad-text">"You're not trying to be anyone else — you're just being you. Aura remembers that."</blockquote>
+  </div>
 </section>
 
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Why it feels different</p>
+      <h2>Presence, not a chatbot</h2>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3c4.5 0 8 3 8 6.5 0 2-1.2 3.7-3 4.8V21l-3.2-2.1a10 10 0 0 1-1.8.2c-4.5 0-8-3-8-6.4S7.5 3 12 3Z"/><circle cx="9" cy="10" r="1" fill="var(--lavender)" stroke="none"/><circle cx="12.5" cy="10" r="1" fill="var(--lavender)" stroke="none"/><circle cx="16" cy="10" r="1" fill="var(--lavender)" stroke="none"/></svg></div>
+        <h3>Memory that holds</h3>
+        <p>The people, moments, and details you share come back naturally — no repeating yourself.</p>
+      </div>
+      <div class="pillar">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M6 11a6 6 0 0 0 12 0M12 18v3"/></svg></div>
+        <h3>Talk it through</h3>
+        <p>Voice or chat, whichever fits the moment. She listens first and stays with you.</p>
+      </div>
+      <div class="pillar">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 8-3 8h18s-3-1-3-8Z"/><path d="M10.5 21a2 2 0 0 0 3 0"/></svg></div>
+        <h3>Gentle reminders</h3>
+        <p>Just say it in plain language. Aura sets it, tracks it, and nudges you when it's time.</p>
+      </div>
+      <div class="pillar">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6l-7-3Z"/><path d="m9.5 12 1.8 1.8L15 10"/></svg></div>
+        <h3>Private by design</h3>
+        <p>Your reflections stay yours. Sensitive moments are kept on your device, not sent to the cloud.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="safety">
+      <strong>A note on care.</strong> Aura is a wellness companion — a space to reflect and feel heard.
+      She is not a therapist, a doctor, or a crisis service, and she doesn't diagnose or treat.
+      If you're going through something serious, please reach out to a qualified professional or a local crisis line.
+    </p>
+  </div>
+</section>
+
+<section class="final band" id="get">
+  <div class="wrap">
+    <div class="resonance" style="width:88px;height:88px;margin-bottom:26px">
+      <div class="halo"></div>
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M 61.63 18.06 A 34 34 0 1 1 38.37 18.06" fill="none" stroke="url(#auraGrad)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M 56.21 26.82 A 24 24 0 1 1 43.79 26.82" fill="none" stroke="url(#auraGrad)" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M 52.43 36.21 A 14 14 0 1 1 47.57 36.21" fill="none" stroke="url(#auraGrad)" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="50" cy="50" r="5" fill="url(#auraGrad)"/>
+      </svg>
+    </div>
+    <h2>Meet Aura.</h2>
+    <p class="lead">A calmer, more grounded way to keep track of your life — and yourself.</p>
+    <div class="stores">
+      <!-- Live store listings. The App Store URL resolves once v1.0 is approved. -->
+      <a class="store" href="https://apps.apple.com/app/id6771584896" target="_blank" rel="noopener" data-store="ios" aria-label="Download on the App Store">
+        <svg viewBox="0 0 24 24"><path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8c-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.6 2.3 2.8 2.2 1.1 0 1.6-.7 2.9-.7s1.8.7 3 .7 2-1.1 2.7-2.1c.9-1.2 1.2-2.4 1.2-2.5-.1 0-2.4-1-2.4-3.6ZM14.2 5.9c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.6 1.4-.6.7-1.1 1.7-.9 2.7 1 .1 2-.5 2.6-1.2Z"/></svg>
+        <span class="st"><small>Download on the</small><span>App Store</span></span>
+      </a>
+      <a class="store" href="https://play.google.com/store/apps/details?id=ai.vigyaan.aura" target="_blank" rel="noopener" data-store="android" aria-label="Get it on Google Play">
+        <svg viewBox="0 0 24 24"><path d="M3.6 2.3c-.3.3-.5.7-.5 1.3v16.8c0 .6.2 1 .5 1.3l.1.1L13 12.1v-.2L3.7 2.2l-.1.1Z" opacity=".9"/><path d="m16.3 15.4-3-3v-.2l3-3 .1.1 3.6 2c1 .6 1 1.5 0 2.1l-3.7 2Z"/><path d="m16.4 15.3-3.1-3.1L3.6 21.8c.4.3 1 .4 1.6 0l11.2-6.5Z"/><path d="M16.4 8.9 5.2 2.4c-.6-.4-1.2-.3-1.6 0l9.7 9.8 3.1-3.3Z" opacity=".8"/></svg>
+        <span class="st"><small>Get it on</small><span>Google Play</span></span>
+      </a>
+    </div>
+    <p class="trust" style="margin-top:22px">Currently rolling out through invite &amp; store review. <a href="https://www.youtube.com/playlist?list=PLL1tz94WGy_Q" target="_blank" rel="noopener" style="color:var(--lavender);text-decoration:none">See the demos ↗</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-brand">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M 61.63 18.06 A 34 34 0 1 1 38.37 18.06" fill="none" stroke="url(#auraGrad)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M 56.21 26.82 A 24 24 0 1 1 43.79 26.82" fill="none" stroke="url(#auraGrad)" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M 52.43 36.21 A 14 14 0 1 1 47.57 36.21" fill="none" stroke="url(#auraGrad)" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="50" cy="50" r="5" fill="url(#auraGrad)"/>
+      </svg>
+      <span>Aura · by Vigyaan LLC</span>
+    </div>
+    <div class="flinks">
+      <a href="https://vigyaan.ai/aura/privacy.html">Privacy</a>
+      <a href="https://vigyaan.ai/aura/terms.html">Terms</a>
+      <a href="https://vigyaan.ai/aura/support.html">Support</a>
+      <a href="https://www.youtube.com/playlist?list=PLL1tz94WGy_Q" target="_blank" rel="noopener">Demos</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- demo cards (facade → click to load privacy-enhanced embed) ----
+  var DEMOS = [
+    {id:"v-4BbCy1Qw0", kind:"Short",  dur:"2:04", num:"01 · Memory",
+     title:"She remembers what matters", sub:"People, moments, details — brought back without you repeating yourself.",
+     pcol:"radial-gradient(120% 120% at 80% 0%, rgba(124,58,237,.55), transparent 60%)"},
+    {id:"UWouVqkgGHA", kind:"Short",  dur:"1:08", num:"02 · Planning",
+     title:"From a chat to a checklist", sub:"Talk through a trip and Aura pulls it into a packing list you can use.",
+     pcol:"radial-gradient(120% 120% at 80% 0%, rgba(244,114,182,.5), transparent 60%)"},
+    {id:"O4ffc7gPSjk", kind:"Video",  dur:"5:22", num:"03 · Support",
+     title:"The hard days", sub:"She listens, reflects back what she hears, and stays with you.",
+     pcol:"radial-gradient(120% 120% at 80% 0%, rgba(139,92,246,.5), transparent 60%)"},
+    {id:"BSbUWcF6Nlw", kind:"Video",  dur:"4:37", num:"04 · Reminders",
+     title:"Just say it out loud", sub:"“Remind me tomorrow at 7” — set, tracked, and nudged when it's time.",
+     pcol:"radial-gradient(120% 120% at 80% 0%, rgba(196,181,253,.45), transparent 60%)"}
+  ];
+  var RING = '<svg class="rings" viewBox="0 0 100 100" aria-hidden="true">'+
+    '<path d="M 61.63 18.06 A 34 34 0 1 1 38.37 18.06" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".55"/>'+
+    '<path d="M 56.21 26.82 A 24 24 0 1 1 43.79 26.82" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" opacity=".7"/>'+
+    '<path d="M 52.43 36.21 A 14 14 0 1 1 47.57 36.21" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".85"/>'+
+    '<circle cx="50" cy="50" r="5" fill="#fff"/></svg>';
+  var PLAY = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+
+  var grid = document.getElementById("demoGrid");
+  DEMOS.forEach(function(d){
+    var el = document.createElement("div");
+    el.className = "demo";
+    el.style.setProperty("--pcol", d.pcol);
+    el.setAttribute("role","button");
+    el.setAttribute("tabindex","0");
+    el.setAttribute("aria-label","Play: "+d.title);
+    el.innerHTML =
+      '<div class="poster">'+ RING +
+        '<span class="badge">'+d.kind+'</span>'+
+        '<span class="dur">'+d.dur+'</span>'+
+        '<span class="play">'+PLAY+'</span>'+
+        '<div class="scrim"></div>'+
+        '<span class="num">'+d.num+'</span>'+
+        '<h3>'+d.title+'</h3>'+
+        '<p class="sub">'+d.sub+'</p>'+
+      '</div>';
+    function playIt(){
+      var f = document.createElement("iframe");
+      f.src = "https://www.youtube-nocookie.com/embed/"+d.id+"?autoplay=1&rel=0&modestbranding=1";
+      f.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
+      f.allowFullscreen = true;
+      f.title = d.title;
+      el.appendChild(f);
+    }
+    el.addEventListener("click", playIt);
+    el.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){e.preventDefault();playIt();} });
+    grid.appendChild(el);
+  });
+
+  // ---- quiet starfield ----
+  (function(){
+    var c = document.getElementById("stars"), x = c.getContext("2d"), st=[];
+    function size(){ c.width=innerWidth; c.height=innerHeight; }
+    size(); addEventListener("resize", size);
+    for(var i=0;i<70;i++) st.push({x:Math.random(),y:Math.random(),r:Math.random()*1.2+.2,a:Math.random()*.5+.2});
+    (function draw(){
+      x.clearRect(0,0,c.width,c.height);
+      st.forEach(function(s){ x.beginPath();x.arc(s.x*c.width,s.y*c.height,s.r,0,7);x.fillStyle="rgba(210,200,255,"+s.a+")";x.fill(); });
+    })();
+  })();
+</script>
 </body>
 </html>
