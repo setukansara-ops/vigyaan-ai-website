@@ -161,7 +161,7 @@
         <ul>
             <li><strong>Microphone</strong> — only when you actively use voice input. Audio is streamed to our voice-AI provider for live speech recognition (see section 4) and is not retained beyond the active session — only the text transcript is kept.</li>
             <li><strong>Health data</strong> (Apple Health / Google Fit) — only if you explicitly connect them. Aura reads metrics like sleep and steps to offer better check-ins; it never writes data back.</li>
-            <li><strong>Location</strong> — only if a feature explicitly asks (e.g., finding nearby support resources). Aura does not track location in the background.</li>
+            <li><strong>Location</strong> — only with your permission, and never in the background. Used two ways: when you ask for nearby places, your coordinates are used just-in-time and never stored; and, if location is enabled, the app keeps <em>one</em> coarse, city-level &ldquo;current area&rdquo; (like &ldquo;Jersey City, New Jersey&rdquo;) so Aura can speak to where you are. It is refreshed when you open the app and replaced each time &mdash; precise coordinates never leave your phone, and we never keep a location history. This coarse area may be included as conversation context with our AI provider under the zero-data-retention terms described in section 4. Turning location off removes it.</li>
             <li><strong>Notifications</strong> — only if you opt in. Used for daily check-ins or reminders you set up.</li>
         </ul>
 
