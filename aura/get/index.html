@@ -37,17 +37,78 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         body { font-family: 'Inter', system-ui, sans-serif; }
+
         .gradient-text {
             background: linear-gradient(135deg, #60a5fa, #a78bfa, #34d399);
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            animation: gradient-shift 8s ease-in-out infinite;
+        }
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50%      { background-position: 100% 50%; }
+        }
+
+        /* ── Aura's breathing orb — her presence in the app, breathing the
+              app's 4-4-6 calm pattern: inhale, gentle hold, long exhale. ── */
+        .orb-stage { position: relative; width: 9.5rem; height: 9.5rem; }
+        .orb, .orb-glow, .orb-ring {
+            position: absolute; inset: 0; border-radius: 9999px;
+        }
+        .orb {
+            background:
+                radial-gradient(circle at 32% 30%, rgba(255,255,255,.55), transparent 42%),
+                radial-gradient(circle at 68% 72%, #34d399, transparent 58%),
+                radial-gradient(circle at 30% 70%, #60a5fa, transparent 60%),
+                radial-gradient(circle at 62% 28%, #a78bfa, transparent 55%),
+                #6d5bd0;
+            animation: breathe 14s ease-in-out infinite;
+        }
+        .orb-glow {
+            background: radial-gradient(circle, rgba(167,139,250,.45), rgba(96,165,250,.18) 55%, transparent 72%);
+            filter: blur(18px);
+            animation: breathe 14s ease-in-out infinite;
+        }
+        .orb-ring {
+            border: 1px solid rgba(167, 139, 250, .35);
+            animation: ring 14s ease-in-out infinite;
+        }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            28%      { transform: scale(1.16); }   /* inhale */
+            56%      { transform: scale(1.16); }   /* hold   */
+        }
+        @keyframes ring {
+            0%, 100% { transform: scale(1);    opacity: .55; }
+            28%      { transform: scale(1.32); opacity: 0; }
+            56%      { transform: scale(1.32); opacity: 0; }
+            57%      { transform: scale(1);    opacity: 0; }
+        }
+        .breath-word { animation: breath-word 14s ease-in-out infinite; }
+        @keyframes breath-word {
+            0%, 100% { opacity: .45; }
+            28%, 56% { opacity: .9; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .orb, .orb-glow, .orb-ring, .gradient-text, .breath-word {
+                animation: none;
+            }
         }
     </style>
 </head>
-<body class="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center px-6">
-    <main class="max-w-md w-full text-center py-16">
-        <img src="../../assets/logo/vigyaan-icon.svg" alt="" class="w-14 h-14 mx-auto mb-6">
+<body class="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center px-6 overflow-x-hidden">
+    <main class="max-w-md w-full text-center py-14">
+
+        <div class="orb-stage mx-auto mb-8">
+            <div class="orb-glow"></div>
+            <div class="orb-ring"></div>
+            <div class="orb"></div>
+        </div>
+        <p class="breath-word text-slate-400 text-xs tracking-[.25em] uppercase mb-8">breathe with her</p>
+
         <h1 class="text-4xl font-extrabold mb-3">Meet <span class="gradient-text">Aura</span></h1>
         <p class="text-slate-300 mb-10">A private AI companion who actually remembers you.
            Free on iPhone and Android.</p>
@@ -61,11 +122,17 @@
                class="rounded-2xl bg-emerald-500 text-slate-950 font-semibold py-4 px-6 hover:bg-emerald-400 transition">
                 ▶ Get it on Google&nbsp;Play
             </a>
+            <a href="https://www.youtube.com/playlist?list=PLL1tz94WGy_Q"
+               class="rounded-2xl border border-slate-700 text-slate-200 font-medium py-3.5 px-6 hover:border-slate-500 hover:text-white transition">
+                ▶️ Watch how people use Aura
+            </a>
         </div>
 
         <p class="text-slate-500 text-sm mt-10">
             On your phone? You'll be taken straight to your store.<br>
             <a href="https://vigyaan.ai/aura/" class="underline hover:text-slate-300">About Aura &amp; support</a>
+            <span class="mx-1">·</span>
+            <span class="text-slate-600">by <a href="https://vigyaan.ai" class="underline hover:text-slate-300">Vigyaan</a></span>
         </p>
     </main>
 </body>
