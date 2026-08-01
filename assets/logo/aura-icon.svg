@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Aura — Resonance mark">
+  <!--
+    Aura Mark — App icon variant
+    ────────────────────────────
+    Concentric arcs radiating outward from a center point.
+
+    Reads simultaneously as:
+      · Aura (literal) — invisible field around a person
+      · Voice waves — sound radiating outward (Aura is voice-first)
+      · Breath — Latin "aura" means breeze, exhalation
+      · Meditative ripples — wellness, presence, calm
+
+    The opening at the top suggests flow — not contained, breathing outward.
+    Subtly asymmetric arc gaps (smaller inner, larger outer) imply expansion.
+  -->
+  <defs>
+    <!-- Warm purple → lavender → soft rose. Anchored on Aura's existing
+         signature purple (#7C3AED) but adding warmth at the edges so
+         it reads as wellness, not tech. -->
+    <linearGradient id="bgGradAura" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#4c1d95"/>
+      <stop offset="35%"  stop-color="#7c3aed"/>
+      <stop offset="70%"  stop-color="#c4b5fd"/>
+      <stop offset="100%" stop-color="#fbcfe8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded-square container (iOS app icon shape) -->
+  <rect x="2" y="2" width="96" height="96" rx="22" ry="22" fill="url(#bgGradAura)"/>
+
+  <!-- ═══════ THE RESONANCE ═══════ -->
+  <!-- All three arcs are open at the top with progressively larger gaps as
+       we move outward — implies expansion / breath rising. -->
+
+  <!-- Outer ring — radius 34, gap ~40° at top, stroke 3 -->
+  <path d="M 61.63 18.06 A 34 34 0 1 1 38.37 18.06"
+        fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"
+        opacity="0.85"/>
+
+  <!-- Middle ring — radius 24, gap ~30° at top, stroke 3.5 -->
+  <path d="M 56.21 26.82 A 24 24 0 1 1 43.79 26.82"
+        fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"
+        opacity="0.93"/>
+
+  <!-- Inner ring — radius 14, gap ~20° at top, stroke 4 -->
+  <path d="M 52.43 36.21 A 14 14 0 1 1 47.57 36.21"
+        fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Bindu — the self at the center. Solid, anchoring. -->
+  <circle cx="50" cy="50" r="5" fill="#ffffff"/>
+</svg>
