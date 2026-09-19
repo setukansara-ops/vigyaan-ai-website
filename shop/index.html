@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop attars — Vigyaan</title>
+<meta name="description" content="Alcohol-free perfume oils in 6 ml roll-ons. First Rain, Night Bloom, Jasmine, and a mix-and-match trio.">
+<link rel="icon" type="image/svg+xml" href="../assets/logo/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/logo/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/logo/apple-touch-180.png">
+<meta property="og:title" content="Shop attars — Vigyaan">
+<meta property="og:description" content="Alcohol-free perfume oils in 6 ml roll-ons. First Rain, Night Bloom, Jasmine, and a mix-and-match trio.">
+<meta property="og:image" content="https://vigyaan.ai/assets/logo/dp-warm-oil-stars-1024.png">
+<meta name="theme-color" content="#120c0b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/house.css">
+</head>
+<body>
+<header class="site">
+  <div class="wrap navrow">
+    <a class="brand" href="../"><img src="../assets/logo/dp-warm-oil-stars-1024.png" alt="">Vigyaan</a>
+    <nav class="desk">
+      <a href="../shop/">Shop</a>
+      <a href="../aura/">Aura</a>
+      <a href="../studio/">Studio</a>
+      <a href="../wholesale/">Wholesale</a>
+    </nav>
+    <a class="bag" href="../cart/" aria-label="Request list"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h12l-1.2 8H7.2L6 6zm0 0L5 3H2"/><circle cx="8" cy="17" r="1"/><circle cx="15" cy="17" r="1"/></svg><span class="badge" id="bagcount" hidden>0</span></a>
+  </div>
+</header>
+<main>
+
+<div class="wrap" style="padding:4rem 1.25rem">
+  <p class="kicker">Attars</p>
+  <h1 style="margin-top:.75rem">The first drop</h1>
+  <p class="lede">Alcohol-free perfume oils in 6 ml glass roll-ons. Sourced in India, labeled for the US. This is a request list, not a live warehouse — we email you before any payment.</p>
+  <div class="grid-4" style="margin-top:3rem">
+    <a class="pcard" href="first-rain/"><img src="../assets/products/first-rain.jpg" alt=""><div class="meta"><div class="scent">Mitti · 6 ml</div><h3>First Rain</h3><p class="muted" style="margin-top:.5rem">The smell of earth after rain.</p><div class="price">$8</div></div></a>
+    <a class="pcard" href="night-bloom/"><img src="../assets/products/night-bloom.jpg" alt=""><div class="meta"><div class="scent">Raat Rani · 6 ml</div><h3>Night Bloom</h3><p class="muted" style="margin-top:.5rem">Night-only flower, all-day oil.</p><div class="price">$8</div></div></a>
+    <a class="pcard" href="jasmine/"><img src="../assets/products/jasmine.jpg" alt=""><div class="meta"><div class="scent">Mogra · 6 ml</div><h3>Jasmine</h3><p class="muted" style="margin-top:.5rem">Mogra as a concentrated oil, not a diluted spray.</p><div class="price">$8</div></div></a>
+    <a class="pcard" href="discovery-trio/"><img src="../assets/products/trio.jpg" alt=""><div class="meta"><div class="scent">Mix or match · 18 ml</div><h3>Discovery trio</h3><p class="muted" style="margin-top:.5rem">Three 6 ml roll-ons. You choose.</p><div class="price">$18</div></div></a>
+  </div>
+</div>
+</main>
+<footer class="site">
+  <div class="wrap fgrid">
+    <div>
+      <div class="brand"><img src="../assets/logo/dp-warm-oil-stars-1024.png" alt="" style="width:2rem;height:2rem;border-radius:.5rem">Vigyaan</div>
+      <p class="muted" style="margin-top:12px;max-width:20rem">A New Jersey studio. Aura is live. Attars are the next line. We name the third when it is real.</p>
+    </div>
+    <div class="muted">
+      <p style="color:var(--fg);font-weight:500;margin-bottom:12px">House</p>
+      <p><a href="../shop/">Shop attars</a></p>
+      <p><a href="../aura/">Aura support</a></p>
+      <p><a href="../aura/privacy.html">Privacy</a></p>
+      <p><a href="../aura/terms.html">Terms</a></p>
+      <p><a href="../aura/delete-account.html">Delete account</a></p>
+      <p><a href="../aura/campus/">For campuses</a></p>
+    </div>
+    <div class="muted">
+      <p style="color:var(--fg);font-weight:500;margin-bottom:12px">Contact</p>
+      <p><a class="gold" href="mailto:setu@vigyaan.ai">setu@vigyaan.ai</a></p>
+      <p style="margin-top:12px">Vigyaan LLC · New Jersey</p>
+      <p class="tiny">Alcohol-free perfume oils. Cosmetics, not medicine. Aura is a wellness companion for adults 18+, not therapy.</p>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  try {
+    var n = (JSON.parse(localStorage.getItem('vigyaan-request')||'{}').state||{}).lines||[];
+    var c = n.reduce(function(a,l){return a+(l.qty||0)},0);
+    var el = document.getElementById('bagcount');
+    if (el && c) { el.hidden=false; el.textContent=c; }
+  } catch(e) {}
+})();
+</script>
+</body></html>

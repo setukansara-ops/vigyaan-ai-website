@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request list — Vigyaan</title>
+<meta name="description" content="Send an attar request. We confirm stock before any payment.">
+<link rel="icon" type="image/svg+xml" href="../assets/logo/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/logo/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/logo/apple-touch-180.png">
+<meta property="og:title" content="Request list — Vigyaan">
+<meta property="og:description" content="Send an attar request. We confirm stock before any payment.">
+<meta property="og:image" content="https://vigyaan.ai/assets/logo/dp-warm-oil-stars-1024.png">
+<meta name="theme-color" content="#120c0b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/house.css">
+</head>
+<body>
+<header class="site">
+  <div class="wrap navrow">
+    <a class="brand" href="../"><img src="../assets/logo/dp-warm-oil-stars-1024.png" alt="">Vigyaan</a>
+    <nav class="desk">
+      <a href="../shop/">Shop</a>
+      <a href="../aura/">Aura</a>
+      <a href="../studio/">Studio</a>
+      <a href="../wholesale/">Wholesale</a>
+    </nav>
+    <a class="bag" href="../cart/" aria-label="Request list"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h12l-1.2 8H7.2L6 6zm0 0L5 3H2"/><circle cx="8" cy="17" r="1"/><circle cx="15" cy="17" r="1"/></svg><span class="badge" id="bagcount" hidden>0</span></a>
+  </div>
+</header>
+<main>
+
+<div class="wrap" style="padding:4rem 1.25rem;max-width:56rem">
+  <h1>Request list</h1>
+  <div id="empty" hidden>
+    <p class="lede">Add a single or a trio, then send it to us by email.</p>
+    <div class="row"><a class="btn btn-gold" href="../shop/">Shop attars</a></div>
+  </div>
+  <div id="full" hidden>
+    <ul id="lines" class="muted" style="margin-top:2rem;list-style:none"></ul>
+    <p id="total" class="price" style="text-align:right;font-size:1.25rem"></p>
+    <form id="form" style="margin-top:2rem;background:var(--surface);border-radius:1rem;padding:1.5rem;box-shadow:var(--shadow)">
+      <h2>Send the request</h2>
+      <p class="muted" style="margin-top:.5rem">Opens your mail app to setu@vigyaan.ai. We reply with stock, NJ pickup or ship, then payment.</p>
+      <label>Name <input required id="name"></label>
+      <label>Email <input required type="email" id="email"></label>
+      <label>City / ZIP (optional) <input id="place"></label>
+      <button class="btn btn-gold" type="submit" style="margin-top:1.5rem">Email this request</button>
+    </form>
+  </div>
+</div>
+<script>
+(function(){
+  var key='vigyaan-request';
+  function load(){ try { return JSON.parse(localStorage.getItem(key))||{state:{lines:[]}}; } catch(e){ return {state:{lines:[]}}; } }
+  function save(d){ localStorage.setItem(key, JSON.stringify(d)); }
+  function render(){
+    var d=load(); var lines=(d.state&&d.state.lines)||[];
+    document.getElementById('empty').hidden = lines.length>0;
+    document.getElementById('full').hidden = lines.length===0;
+    var ul=document.getElementById('lines'); ul.innerHTML='';
+    var total=0;
+    lines.forEach(function(l){
+      total += l.price*l.qty;
+      var li=document.createElement('li');
+      li.style.cssText='display:flex;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line)';
+      li.innerHTML='<div><strong style="color:var(--fg)">'+l.name+'</strong><div>$'+l.price+' each</div></div>';
+      ul.appendChild(li);
+    });
+    document.getElementById('total').textContent='$'+total;
+  }
+  document.getElementById('form').onsubmit=function(e){
+    e.preventDefault();
+    var d=load(); var lines=(d.state&&d.state.lines)||[];
+    var total=lines.reduce(function(n,l){return n+l.price*l.qty},0);
+    var body=['Name: '+document.getElementById('name').value,'Email: '+document.getElementById('email').value,'Place: '+document.getElementById('place').value,'','Request:'].concat(
+      lines.map(function(l){return '• '+l.qty+' × '+l.name+' — $'+(l.price*l.qty)})
+    ).concat(['','Total (if in stock): $'+total,'','Please confirm availability before payment.']).join('\n');
+    location.href='mailto:setu@vigyaan.ai?subject='+encodeURIComponent('Vigyaan attar request')+'&body='+encodeURIComponent(body);
+  };
+  render();
+})();
+</script>
+</main>
+<footer class="site">
+  <div class="wrap fgrid">
+    <div>
+      <div class="brand"><img src="../assets/logo/dp-warm-oil-stars-1024.png" alt="" style="width:2rem;height:2rem;border-radius:.5rem">Vigyaan</div>
+      <p class="muted" style="margin-top:12px;max-width:20rem">A New Jersey studio. Aura is live. Attars are the next line. We name the third when it is real.</p>
+    </div>
+    <div class="muted">
+      <p style="color:var(--fg);font-weight:500;margin-bottom:12px">House</p>
+      <p><a href="../shop/">Shop attars</a></p>
+      <p><a href="../aura/">Aura support</a></p>
+      <p><a href="../aura/privacy.html">Privacy</a></p>
+      <p><a href="../aura/terms.html">Terms</a></p>
+      <p><a href="../aura/delete-account.html">Delete account</a></p>
+      <p><a href="../aura/campus/">For campuses</a></p>
+    </div>
+    <div class="muted">
+      <p style="color:var(--fg);font-weight:500;margin-bottom:12px">Contact</p>
+      <p><a class="gold" href="mailto:setu@vigyaan.ai">setu@vigyaan.ai</a></p>
+      <p style="margin-top:12px">Vigyaan LLC · New Jersey</p>
+      <p class="tiny">Alcohol-free perfume oils. Cosmetics, not medicine. Aura is a wellness companion for adults 18+, not therapy.</p>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  try {
+    var n = (JSON.parse(localStorage.getItem('vigyaan-request')||'{}').state||{}).lines||[];
+    var c = n.reduce(function(a,l){return a+(l.qty||0)},0);
+    var el = document.getElementById('bagcount');
+    if (el && c) { el.hidden=false; el.textContent=c; }
+  } catch(e) {}
+})();
+</script>
+</body></html>

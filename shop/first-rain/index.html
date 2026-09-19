@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>First Rain — Vigyaan</title>
+<meta name="description" content="The smell of earth after rain — mitti, in a 6 ml roll-on.">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/logo/favicon-32.png">
+<link rel="apple-touch-icon" href="../../assets/logo/apple-touch-180.png">
+<meta property="og:title" content="First Rain — Vigyaan">
+<meta property="og:description" content="The smell of earth after rain — mitti, in a 6 ml roll-on.">
+<meta property="og:image" content="https://vigyaan.ai/assets/logo/dp-warm-oil-stars-1024.png">
+<meta name="theme-color" content="#120c0b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/house.css">
+</head>
+<body>
+<header class="site">
+  <div class="wrap navrow">
+    <a class="brand" href="../../"><img src="../../assets/logo/dp-warm-oil-stars-1024.png" alt="">Vigyaan</a>
+    <nav class="desk">
+      <a href="../../shop/">Shop</a>
+      <a href="../../aura/">Aura</a>
+      <a href="../../studio/">Studio</a>
+      <a href="../../wholesale/">Wholesale</a>
+    </nav>
+    <a class="bag" href="../../cart/" aria-label="Request list"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h12l-1.2 8H7.2L6 6zm0 0L5 3H2"/><circle cx="8" cy="17" r="1"/><circle cx="15" cy="17" r="1"/></svg><span class="badge" id="bagcount" hidden>0</span></a>
+  </div>
+</header>
+<main>
+
+    <div class="wrap prod">
+      <img src="../../assets/products/first-rain.jpg" alt="First Rain">
+      <div>
+        <p class="kicker">Mitti · 6 ml · alcohol-free</p>
+        <h1 style="margin-top:.75rem">First Rain</h1>
+        <p class="price" style="font-family:Fraunces,serif;font-size:1.5rem;margin-top:.5rem">$8</p>
+        <p>The smell of earth after rain — mitti, in a 6 ml roll-on.</p>
+        <p>Wet earth after rain. Clay, mineral, quiet heat.</p>
+        
+        <div class="row">
+          <button class="btn btn-gold" type="button" id="add">Add to request list</button>
+          <a class="btn btn-line" href="../../cart/" id="review" hidden>Review request</a>
+        </div>
+        <p class="tiny">No card charge. We email you from setu@vigyaan.ai to confirm stock, shipping, and payment.</p>
+      </div>
+    </div>
+    <script>
+    document.getElementById('add').onclick = function(){
+      var key='vigyaan-request';
+      var data={state:{lines:[]}};
+      try { data = JSON.parse(localStorage.getItem(key)) || data; } catch(e) {}
+      data.state = data.state || {};
+      data.state.lines = data.state.lines || [];
+      var names={'first-rain':'First Rain','night-bloom':'Night Bloom','jasmine':'Jasmine'};
+      var scents=null, label='First Rain';
+      if(false) {
+        scents=[document.getElementById('s0').value, document.getElementById('s1').value, document.getElementById('s2').value];
+        label = 'First Rain ('+scents.map(function(s){return names[s]}).join(', ')+')';
+      }
+      var id='first-rain'+(scents?':'+scents.join('+'):'');
+      var found=data.state.lines.find(function(l){return l.id===id});
+      if(found) found.qty += 1;
+      else data.state.lines.push({id:id, slug:'first-rain', name:label, price:8, qty:1, scents:scents});
+      localStorage.setItem(key, JSON.stringify(data));
+      document.getElementById('add').textContent='Added to request list';
+      document.getElementById('review').hidden=false;
+    };
+    </script>
+    </main>
+<footer class="site">
+  <div class="wrap fgrid">
+    <div>
+      <div class="brand"><img src="../../assets/logo/dp-warm-oil-stars-1024.png" alt="" style="width:2rem;height:2rem;border-radius:.5rem">Vigyaan</div>
+      <p class="muted" style="margin-top:12px;max-width:20rem">A New Jersey studio. Aura is live. Attars are the next line. We name the third when it is real.</p>
+    </div>
+    <div class="muted">
+      <p style="color:var(--fg);font-weight:500;margin-bottom:12px">House</p>
+      <p><a href="../../shop/">Shop attars</a></p>
+      <p><a href="../../aura/">Aura support</a></p>
+      <p><a href="../../aura/privacy.html">Privacy</a></p>
+      <p><a href="../../aura/terms.html">Terms</a></p>
+      <p><a href="../../aura/delete-account.html">Delete account</a></p>
+      <p><a href="../../aura/campus/">For campuses</a></p>
+    </div>
+    <div class="muted">
+      <p style="color:var(--fg);font-weight:500;margin-bottom:12px">Contact</p>
+      <p><a class="gold" href="mailto:setu@vigyaan.ai">setu@vigyaan.ai</a></p>
+      <p style="margin-top:12px">Vigyaan LLC · New Jersey</p>
+      <p class="tiny">Alcohol-free perfume oils. Cosmetics, not medicine. Aura is a wellness companion for adults 18+, not therapy.</p>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  try {
+    var n = (JSON.parse(localStorage.getItem('vigyaan-request')||'{}').state||{}).lines||[];
+    var c = n.reduce(function(a,l){return a+(l.qty||0)},0);
+    var el = document.getElementById('bagcount');
+    if (el && c) { el.hidden=false; el.textContent=c; }
+  } catch(e) {}
+})();
+</script>
+</body></html>

@@ -2,327 +2,110 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vigyaan — makers of Aura, the AI companion who remembers you</title>
-<meta name="description" content="Vigyaan is a small independent studio. Our flagship is Aura: a private AI wellness companion who remembers you — and is designed to be needed less.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vigyaan — Aura, attars, and what comes next</title>
+<meta name="description" content="Vigyaan is a New Jersey studio. Aura is live on iOS and Android. Alcohol-free attars are the next line.">
+<link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32.png">
-<link rel="icon" type="image/svg+xml" href="assets/logo/vigyaan-icon.svg">
 <link rel="apple-touch-icon" href="assets/logo/apple-touch-180.png">
-<meta property="og:title" content="Vigyaan — makers of Aura">
-<meta property="og:description" content="A small independent studio. Our flagship is Aura: a private AI companion who remembers you.">
+<meta property="og:title" content="Vigyaan — Aura, attars, and what comes next">
+<meta property="og:description" content="Vigyaan is a New Jersey studio. Aura is live on iOS and Android. Alcohol-free attars are the next line.">
 <meta property="og:image" content="https://vigyaan.ai/assets/logo/dp-warm-oil-stars-1024.png">
-<meta property="og:image:width" content="1024">
-<meta property="og:image:height" content="1024">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://vigyaan.ai/assets/logo/dp-warm-oil-stars-1024.png">
-<style>
-  :root{
-    --bg:#080711; --bg2:#0e0c1e; --bg3:#151230;
-    --card:rgba(36,32,62,.55); --border:rgba(150,134,255,.14);
-    --accent:#8b5cf6; --accent2:#a78bfa; --accent-soft:rgba(139,92,246,.16);
-    --teal:#3ddbb4;
-    --txt:#f3f1ff; --txt2:#aca5cf; --txt3:#726c98;
-    --star:#c7bfff;
-    --max:1120px;
-    font-size:16px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
-  body{
-    font-family:-apple-system,"SF Pro Display",BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
-    background:var(--bg);color:var(--txt);-webkit-font-smoothing:antialiased;line-height:1.6;
-  }
-  a{color:inherit;text-decoration:none}
-  img{max-width:100%}
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-
-  /* ---------- nav ---------- */
-  nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);background:rgba(8,7,17,.7);border-bottom:1px solid rgba(150,134,255,.08)}
-  .navrow{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.01em}
-  .logomark{width:34px;height:34px;display:block;border-radius:9px;object-fit:cover}
-  .auramark{width:64px;height:64px;border-radius:18px;display:block;box-shadow:0 10px 30px rgba(0,0,0,.45)}
-  .aurarow{display:flex;align-items:center;gap:18px;margin-bottom:26px}
-  .auraname{font-size:26px;font-weight:800;letter-spacing:-.01em}
-  .auraname span{display:block;font-size:13px;font-weight:600;color:var(--txt3);letter-spacing:.14em;text-transform:uppercase;margin-top:4px}
-  .navlinks{display:flex;gap:28px;font-size:14.5px;font-weight:600;color:var(--txt2)}
-  .navlinks a:hover{color:var(--txt)}
-  .navcta{background:var(--accent);color:#fff;font-size:13.5px;font-weight:750;padding:10px 18px;border-radius:12px;transition:transform .15s}
-  .navcta:hover{transform:translateY(-1px)}
-  @media(max-width:760px){.navlinks{display:none}}
-
-  /* ---------- hero ---------- */
-  .hero{position:relative;padding:170px 0 110px;overflow:hidden;background:
-    radial-gradient(90% 60% at 80% -10%, rgba(124,92,246,.22), transparent 60%),
-    radial-gradient(70% 50% at 5% 100%, rgba(45,150,140,.10), transparent 60%),
-    linear-gradient(180deg,#131126 0%, var(--bg) 85%)}
-  .stars{position:absolute;inset:0;pointer-events:none}
-  .stars i{position:absolute;border-radius:50%;background:var(--star);display:block}
-  @media (prefers-reduced-motion: no-preference){
-    .stars i{animation:tw 3.4s ease-in-out infinite alternate}
-    @keyframes tw{from{opacity:.25}to{opacity:.85}}
-  }
-  .constline{position:absolute;inset:0;pointer-events:none;opacity:.5}
-  .eyebrow{letter-spacing:.28em;font-size:12px;font-weight:700;color:#8d84c0;text-transform:uppercase;margin-bottom:18px}
-  h1{font-size:clamp(38px,5.6vw,64px);line-height:1.07;font-weight:800;letter-spacing:-.02em;max-width:15ch}
-  .hero p.lede{font-size:clamp(17px,2vw,21px);color:var(--txt2);max-width:56ch;margin:22px 0 34px}
-  .hero .accentword{background:linear-gradient(90deg,#c3b2ff,#8b5cf6);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .ctarow{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-  .storebtn{display:inline-flex;flex-direction:column;justify-content:center;background:#171430;border:1px solid var(--border);border-radius:14px;padding:10px 20px;min-width:170px;transition:border-color .15s, transform .15s}
-  .storebtn:hover{border-color:rgba(150,134,255,.4);transform:translateY(-1px)}
-  .storebtn .s1{font-size:11px;color:var(--txt3);font-weight:600}
-  .storebtn .s2{font-size:16.5px;font-weight:750}
-  .ghost{font-size:14.5px;font-weight:700;color:var(--accent2);padding:12px 6px}
-  .livebadge{display:inline-flex;align-items:center;gap:8px;background:rgba(61,219,180,.1);border:1px solid rgba(61,219,180,.3);color:#7fe9c9;font-size:12.5px;font-weight:700;padding:7px 14px;border-radius:999px;margin-bottom:22px}
-  .livebadge .dotp{width:7px;height:7px;border-radius:50%;background:var(--teal)}
-
-  /* ---------- sections ---------- */
-  section{padding:96px 0;position:relative}
-  .kicker{letter-spacing:.24em;font-size:11.5px;font-weight:800;color:#8d84c0;text-transform:uppercase;margin-bottom:14px}
-  h2{font-size:clamp(28px,3.6vw,42px);font-weight:800;letter-spacing:-.015em;line-height:1.15;max-width:24ch}
-  .sub{color:var(--txt2);font-size:17px;max-width:62ch;margin-top:16px}
-
-  /* Aura pillars */
-  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px}
-  @media(max-width:860px){.pillars{grid-template-columns:1fr}}
-  .pillar{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:30px 28px;backdrop-filter:blur(8px)}
-  .pillar .pic{width:46px;height:46px;border-radius:14px;background:var(--accent-soft);display:grid;place-items:center;font-size:20px;margin-bottom:18px}
-  .pillar h3{font-size:20px;font-weight:800;margin-bottom:10px}
-  .pillar p{font-size:15px;color:var(--txt2)}
-  .pillar ul{margin-top:14px;list-style:none}
-  .pillar li{font-size:14px;color:var(--txt2);padding:6px 0 6px 22px;position:relative}
-  .pillar li::before{content:"✦";position:absolute;left:0;color:var(--accent2);font-size:11px;top:9px}
-
-  /* honest strip */
-  .strip{background:linear-gradient(90deg, rgba(139,92,246,.10), rgba(61,219,180,.07));border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:34px 0}
-  .strip .wrap{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap}
-  .strip .biglabel{font-size:19px;font-weight:800;min-width:220px}
-  .strip p{color:var(--txt2);font-size:14.5px;max-width:70ch}
-
-  /* studio */
-  .studio .cols{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start;margin-top:48px}
-  @media(max-width:860px){.studio .cols{grid-template-columns:1fr}}
-  .svc{border-top:1px solid var(--border);padding:22px 4px}
-  .svc h4{font-size:17.5px;font-weight:750;margin-bottom:6px}
-  .svc p{font-size:14.5px;color:var(--txt2)}
-  .founder{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:30px}
-  .founder .fq{font-size:16.5px;line-height:1.65;color:var(--txt)}
-  .founder .fa{display:flex;align-items:center;gap:14px;margin-top:22px}
-  .founder .fav{width:44px;height:44px;border-radius:50%;background:var(--accent-soft);color:var(--accent2);display:grid;place-items:center;font-weight:800}
-  .founder .fname{font-weight:750;font-size:15px}
-  .founder .frole{font-size:12.5px;color:var(--txt3)}
-
-  /* privacy */
-  .privacy .cardrow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
-  @media(max-width:960px){.privacy .cardrow{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:560px){.privacy .cardrow{grid-template-columns:1fr}}
-  .pcard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px}
-  .pcard h5{font-size:15.5px;font-weight:750;margin-bottom:8px}
-  .pcard p{font-size:13.5px;color:var(--txt2)}
-  .plink{display:inline-block;margin-top:34px;font-weight:750;color:var(--accent2);font-size:15px}
-
-  /* contact */
-  .contact .box{background:linear-gradient(135deg, rgba(139,92,246,.14), rgba(61,219,180,.06));border:1px solid var(--border);border-radius:26px;padding:52px 44px;display:flex;justify-content:space-between;gap:32px;align-items:center;flex-wrap:wrap}
-  .contact h2{max-width:none}
-  .contact .mail{font-size:17px;font-weight:750;color:var(--accent2)}
-
-  footer{border-top:1px solid rgba(150,134,255,.08);padding:44px 0;color:var(--txt3);font-size:13.5px}
-  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-  footer a{color:var(--txt2)}
-  footer a:hover{color:var(--txt)}
-
-  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
-  .reveal.in{opacity:1;transform:none}
-  @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none}}
-  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
-</style>
+<meta name="theme-color" content="#120c0b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/house.css">
 </head>
 <body>
-
-<nav>
+<header class="site">
   <div class="wrap navrow">
-    <a class="logo" href="#top" aria-label="Vigyaan home"><img class="logomark" src="assets/logo/dp-warm-oil-stars-1024.png" alt="Vigyaan">Vigyaan</a>
-    <div class="navlinks">
-      <a href="#aura">Aura</a>
-      <a href="#promises">Our promises</a>
-      <a href="#studio">Studio</a>
-      <a href="/aura/campus">For campuses</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <a class="navcta" href="#aura">Meet Aura</a>
-  </div>
-</nav>
-
-<header class="hero" id="top">
-  <div class="stars" aria-hidden="true">
-    <i style="left:8%;top:22%;width:2px;height:2px"></i>
-    <i style="left:16%;top:58%;width:3px;height:3px;animation-delay:.7s"></i>
-    <i style="left:30%;top:18%;width:2px;height:2px;animation-delay:1.3s"></i>
-    <i style="left:46%;top:70%;width:2px;height:2px;animation-delay:.3s"></i>
-    <i style="left:58%;top:26%;width:3px;height:3px;animation-delay:1.7s"></i>
-    <i style="left:72%;top:52%;width:2px;height:2px;animation-delay:.9s"></i>
-    <i style="left:84%;top:20%;width:3px;height:3px;animation-delay:.5s"></i>
-    <i style="left:92%;top:64%;width:2px;height:2px;animation-delay:1.1s"></i>
-  </div>
-  <svg class="constline" viewBox="0 0 1200 500" preserveAspectRatio="none" aria-hidden="true">
-    <polyline points="700,120 810,90 930,140 1020,110 1120,180" fill="none" stroke="rgba(180,170,255,.25)" stroke-width="1"/>
-    <circle cx="700" cy="120" r="3" fill="#c7bfff"/><circle cx="810" cy="90" r="3" fill="#c7bfff"/>
-    <circle cx="930" cy="140" r="3" fill="#c7bfff"/><circle cx="1020" cy="110" r="3" fill="#c7bfff"/>
-    <circle cx="1120" cy="180" r="3" fill="#c7bfff"/>
-  </svg>
-  <div class="wrap">
-    <div class="livebadge"><span class="dotp"></span> Aura is live on iOS &amp; Android</div>
-    <div class="eyebrow">Vigyaan LLC · An independent studio</div>
-    <h1>Software that remembers <span class="accentword">you're human.</span></h1>
-    <p class="lede">Vigyaan is a small studio with one flagship: <strong>Aura</strong> — a private AI wellness companion who remembers what you tell her, keeps it yours, and is deliberately designed to be needed <em>less</em>, not more.</p>
-    <div class="ctarow">
-      <a class="storebtn" href="https://apps.apple.com/app/id6771584896" aria-label="Download Aura on the App Store"><span class="s1">Download on the</span><span class="s2">App Store</span></a>
-      <a class="storebtn" href="https://play.google.com/store/apps/details?id=ai.vigyaan.aura" aria-label="Get Aura on Google Play"><span class="s1">Get it on</span><span class="s2">Google Play</span></a>
-      <a class="ghost" href="#promises">Read our promises ↓</a>
-    </div>
+    <a class="brand" href=""><img src="assets/logo/dp-warm-oil-stars-1024.png" alt="">Vigyaan</a>
+    <nav class="desk">
+      <a href="shop/">Shop</a>
+      <a href="aura/">Aura</a>
+      <a href="studio/">Studio</a>
+      <a href="wholesale/">Wholesale</a>
+    </nav>
+    <a class="bag" href="cart/" aria-label="Request list"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h12l-1.2 8H7.2L6 6zm0 0L5 3H2"/><circle cx="8" cy="17" r="1"/><circle cx="15" cy="17" r="1"/></svg><span class="badge" id="bagcount" hidden>0</span></a>
   </div>
 </header>
+<main>
 
-<section id="aura">
-  <div class="wrap">
-    <div class="kicker reveal">The flagship</div>
-    <div class="aurarow reveal">
-      <img class="auramark" src="assets/logo/aura-icon.svg" alt="Aura app icon">
-      <div class="auraname">Aura<span>by Vigyaan</span></div>
-    </div>
-    <h2 class="reveal">A companion, not a feed.</h2>
-    <p class="sub reveal">Talk by text or voice. Aura quietly remembers the things that matter — the people you mention, what you're working toward, the moments worth keeping — and brings them back like a friend would: a callback, a morning check-in, an occasional short letter. No feed, no follower counts, no ads. Just a warm presence that knows your story because you told it.</p>
-
-    <div class="pillars">
-      <div class="pillar reveal">
-        <div class="pic">✦</div>
-        <h3>She remembers</h3>
-        <p>Memory that carries across every conversation — visible to you, editable by you, deletable by you.</p>
-        <ul>
-          <li>Morning check-ins &amp; evening wind-downs</li>
-          <li>Guided breathing when you need a minute</li>
-          <li>Your sky: memories light a constellation</li>
-        </ul>
-      </div>
-      <div class="pillar reveal">
-        <div class="pic">🔒</div>
-        <h3>She respects</h3>
-        <p>Your data stays on infrastructure we control, and is never sold, never shown to advertisers, never used to train anyone's AI.</p>
-        <ul>
-          <li>Sensitive memories never leave our servers</li>
-          <li>What Aura learns about you is worked out on our own hardware</li>
-          <li>Zero-data-retention terms with our AI provider</li>
-        </ul>
-      </div>
-      <div class="pillar reveal">
-        <div class="pic">🌙</div>
-        <h3>She restrains</h3>
-        <p>Aura is built against dependence — the opposite of engagement-at-all-costs.</p>
-        <ul>
-          <li>Her own nudges: at most one a day, four a week</li>
-          <li>Backs off when you don't respond</li>
-          <li>No push notifications — she never pings you</li>
-        </ul>
-      </div>
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="wrap" style="position:relative">
+    <p class="kicker">Vigyaan LLC · New Jersey</p>
+    <h1 style="margin-top:1.1rem">A house for things that stay with you.</h1>
+    <p class="lede">Aura is live on iOS and Android. Alcohol-free attars are the next line — oils you can request from New Jersey. A third thing is in the studio. We will name it when it is real.</p>
+    <div class="row">
+      <a class="btn btn-gold" href="shop/">Shop attars</a>
+      <a class="btn btn-line" href="aura/">Meet Aura</a>
     </div>
   </div>
 </section>
-
-<div class="strip" id="promises">
-  <div class="wrap">
-    <div class="biglabel reveal">Honest lane, always.</div>
-    <p class="reveal">Aura is a wellness companion for adults 18 and over. She is <strong>not therapy</strong>, not diagnosis, not treatment, and not crisis care — and she says so plainly, in the app. If a conversation shows signs of crisis, Aura's response includes professional 24/7 helplines (988 in the US, and international lines elsewhere). If you're in immediate danger, contact local emergency services.</p>
-  </div>
-</div>
-
-<section class="studio" id="studio">
-  <div class="wrap">
-    <div class="kicker reveal">The studio</div>
-    <h2 class="reveal">Small on purpose.</h2>
-    <p class="sub reveal">Vigyaan is a founder-operated studio. One person designed, built, and shipped Aura end to end — Flutter on both app stores, a FastAPI backend, and a privacy-first AI architecture where the sensitive parts never leave hardware we control. That shipped product is our credentials; we don't have a wall of logos, and we won't invent one.</p>
-
-    <div class="cols">
-      <div>
-        <div class="svc reveal">
-          <h4>AI product development</h4>
-          <p>From idea to both app stores: LLM-powered products with memory, voice, and the safety rails they need.</p>
-        </div>
-        <div class="svc reveal">
-          <h4>Privacy-first AI architecture</h4>
-          <p>Designs where sensitive data stays local, cloud models see only what they must, and every claim on the tin is true.</p>
-        </div>
-        <div class="svc reveal">
-          <h4>Practical automation</h4>
-          <p>Agents and workflow automation for small teams — scoped tightly, shipped quickly.</p>
-        </div>
-        <div class="svc reveal" style="border-bottom:1px solid var(--border)">
-          <h4>Select consulting</h4>
-          <p>Limited availability while Aura is the priority. If the fit is right, we'll say so fast — and if it isn't, we'll say that faster.</p>
-        </div>
-      </div>
-      <aside class="founder reveal">
-        <p class="fq">"I built Aura because I wanted software that treats being remembered as care, not as data. Vigyaan exists to make more software like that — small, honest, and worth trusting with something personal."</p>
-        <div class="fa">
-          <span class="fav">S</span>
-          <div>
-            <div class="fname">Setu</div>
-            <div class="frole">Founder &amp; engineer, Vigyaan LLC</div>
-          </div>
-        </div>
-      </aside>
-    </div>
+<section class="wrap lanes">
+  <a class="card" href="aura/">
+    <div class="k">Live</div>
+    <h2>Aura</h2>
+    <p>A private AI wellness companion who remembers what you tell her — and is built to be needed less, not more. Support, privacy, and the stores stay at the same links.</p>
+    <span class="cta">Open Aura →</span>
+  </a>
+  <a class="card" href="shop/">
+    <div class="k">First drop</div>
+    <h2>Attars</h2>
+    <p>6 ml alcohol-free roll-ons. First Rain, Night Bloom, Jasmine — mix a trio for $18. Request now; we confirm before any payment.</p>
+    <span class="cta">See the oils →</span>
+  </a>
+  <a class="card" href="studio/">
+    <div class="k">Coming</div>
+    <h2>Next</h2>
+    <p>Same house, different form. We will not invent a name to fill this card. When it ships, it will sit here.</p>
+    <span class="cta">The studio →</span>
+  </a>
+</section>
+<section class="section wrap">
+  <p class="kicker">Shop</p>
+  <h2 style="font-size:1.85rem;margin:0.5rem 0 1.5rem">Three oils. One trio.</h2>
+  <div class="grid-4">
+    <a class="pcard" href="shop/first-rain/"><img src="assets/products/first-rain.jpg" alt="First Rain"><div class="meta"><div class="scent">Mitti</div><h3>First Rain</h3><div class="price">$8</div></div></a>
+    <a class="pcard" href="shop/night-bloom/"><img src="assets/products/night-bloom.jpg" alt="Night Bloom"><div class="meta"><div class="scent">Raat Rani</div><h3>Night Bloom</h3><div class="price">$8</div></div></a>
+    <a class="pcard" href="shop/jasmine/"><img src="assets/products/jasmine.jpg" alt="Jasmine"><div class="meta"><div class="scent">Mogra</div><h3>Jasmine</h3><div class="price">$8</div></div></a>
+    <a class="pcard" href="shop/discovery-trio/"><img src="assets/products/trio.jpg" alt="Discovery trio"><div class="meta"><div class="scent">Mix or match</div><h3>Discovery trio</h3><div class="price">$18</div></div></a>
   </div>
 </section>
-
-<section class="privacy" id="privacy">
-  <div class="wrap">
-    <div class="kicker reveal">Privacy</div>
-    <h2 class="reveal">What we don't do is the feature.</h2>
-    <div class="cardrow">
-      <div class="pcard reveal"><h5>No ads, ever</h5><p>No advertising identifiers, no cross-app tracking, no ad networks anywhere near your words.</p></div>
-      <div class="pcard reveal"><h5>No data selling</h5><p>We don't sell, rent, or trade personal data. There is no data-broker anywhere in this story.</p></div>
-      <div class="pcard reveal"><h5>No imports</h5><p>No contact scraping, no social-media hookups. Aura knows only what you choose to tell her.</p></div>
-      <div class="pcard reveal"><h5>Your exit, guaranteed</h5><p>Delete your account from inside the app — conversations, memories, profile. Encrypted backups roll off within 14 days.</p></div>
+</main>
+<footer class="site">
+  <div class="wrap fgrid">
+    <div>
+      <div class="brand"><img src="assets/logo/dp-warm-oil-stars-1024.png" alt="" style="width:2rem;height:2rem;border-radius:.5rem">Vigyaan</div>
+      <p class="muted" style="margin-top:12px;max-width:20rem">A New Jersey studio. Aura is live. Attars are the next line. We name the third when it is real.</p>
     </div>
-    <a class="plink reveal" href="/aura/privacy.html">Read the full privacy policy →</a>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <div class="wrap">
-    <div class="box reveal">
-      <div>
-        <h2>Say hello.</h2>
-        <p class="sub" style="margin-top:10px">Questions about Aura, press, university wellness programs, or a project you think we should build.</p>
-      </div>
-      <a class="mail" href="mailto:privacy@vigyaan.ai">privacy@vigyaan.ai</a>
+    <div class="muted">
+      <p style="color:var(--fg);font-weight:500;margin-bottom:12px">House</p>
+      <p><a href="shop/">Shop attars</a></p>
+      <p><a href="aura/">Aura support</a></p>
+      <p><a href="aura/privacy.html">Privacy</a></p>
+      <p><a href="aura/terms.html">Terms</a></p>
+      <p><a href="aura/delete-account.html">Delete account</a></p>
+      <p><a href="aura/campus/">For campuses</a></p>
     </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div>© 2026 Vigyaan LLC · Made with care in New Jersey</div>
-    <div style="display:flex;gap:22px;flex-wrap:wrap">
-      <a href="#aura">Aura</a>
-      <a href="/aura/campus">For campuses</a>
-      <a href="/aura/">Support</a>
-      <a href="/aura/privacy.html">Privacy Policy</a>
-      <a href="/aura/terms.html">Terms</a>
-      <a href="#contact">Contact</a>
+    <div class="muted">
+      <p style="color:var(--fg);font-weight:500;margin-bottom:12px">Contact</p>
+      <p><a class="gold" href="mailto:setu@vigyaan.ai">setu@vigyaan.ai</a></p>
+      <p style="margin-top:12px">Vigyaan LLC · New Jersey</p>
+      <p class="tiny">Alcohol-free perfume oils. Cosmetics, not medicine. Aura is a wellness companion for adults 18+, not therapy.</p>
     </div>
   </div>
 </footer>
-
 <script>
-  var obs=new IntersectionObserver(function(es){
-    for(var i=0;i<es.length;i++)if(es[i].isIntersecting){es[i].target.classList.add('in');obs.unobserve(es[i].target)}
-  },{threshold:.12});
-  var rs=document.querySelectorAll('.reveal');
-  for(var i=0;i<rs.length;i++)obs.observe(rs[i]);
+(function(){
+  try {
+    var n = (JSON.parse(localStorage.getItem('vigyaan-request')||'{}').state||{}).lines||[];
+    var c = n.reduce(function(a,l){return a+(l.qty||0)},0);
+    var el = document.getElementById('bagcount');
+    if (el && c) { el.hidden=false; el.textContent=c; }
+  } catch(e) {}
+})();
 </script>
-<script defer src="/_vercel/insights/script.js"></script>
-</body>
-</html>
+</body></html>
