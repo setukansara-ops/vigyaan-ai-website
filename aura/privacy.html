@@ -168,12 +168,17 @@
         </ul>
 
         <h3>Voice calls and voice notes</h3>
-        <p>When you talk with Aura on a voice call, we keep:</p>
+        <p>Every voice call with Aura is recorded, whatever language you speak. We keep:</p>
         <ul>
-            <li><strong>A recording of your side of the call</strong> &mdash; the audio from your microphone that the app sends to our servers during the call. Aura&rsquo;s own voice is not recorded. Your microphone can also pick up other sounds and voices around you, and whatever it sends is part of the recording. The recording is stored on our own servers, together with the call&rsquo;s transcript, a second, word-by-word transcript of your side that we make after the call (see section 4), and technical details of the call, such as how long it lasted and, where the app reports it, whether it played through the phone&rsquo;s earpiece or speaker, headphones, a Bluetooth device or a car.</li>
-            <li><strong>Measurements of how you spoke</strong> &mdash; after the call, we measure your pace (words per minute), your pauses, filler words such as &ldquo;um&rdquo; and &ldquo;uh&rdquo;, softening words such as &ldquo;kind of&rdquo;, restarts and repeated words, words and phrases you use often, how long your sentences run, your pitch and how much it varies, whether your sentences end on a rising or falling note, how loud you are (including at the ends of sentences), how steady and clear your voice sounds (including any creakiness), how much background noise there was, and how the conversation flowed, such as how long each of you spoke and how quickly you answered.</li>
-            <li><strong>Voice notes</strong> &mdash; after a call, Aura writes notes on it and puts them in that call&rsquo;s conversation in your History: for example, what went well, what to work on (quoting your own sentences), and how the call compares with your earlier calls. The notes include an AI-generated read of how you came across &mdash; for example, whether you sounded confident, rushed, unsure or tense, and in which sentences. That read is an inference drawn from your voice and your words. It is an automated impression, not a medical or psychological assessment.</li>
+            <li><strong>A recording of your side of the call</strong> &mdash; the audio from your microphone that the app sends to our servers during the call. Aura&rsquo;s own voice is not recorded. Your microphone can also pick up other sounds and voices around you, and whatever it sends is part of the recording. The recording is stored on our own servers, together with the call&rsquo;s transcript, technical details of the call, such as how long it lasted and, where the app reports it, whether it played through the phone&rsquo;s earpiece or speaker, headphones, a Bluetooth device or a car, and, for a call Aura can analyse (below), a second, word-by-word transcript of your side that we make after the call (see section 4).</li>
+            <li><strong>Measurements of how you spoke</strong> &mdash; after a call Aura can analyse, we measure your pace (words per minute), your pauses, filler words such as &ldquo;um&rdquo; and &ldquo;uh&rdquo;, softening words such as &ldquo;kind of&rdquo;, restarts and repeated words, words and phrases you use often, how long your sentences run, your pitch and how much it varies, whether your sentences end on a rising or falling note, how loud you are (including at the ends of sentences), how steady and clear your voice sounds (including any creakiness), how much background noise there was, and how the conversation flowed, such as how long each of you spoke and how quickly you answered.</li>
+            <li><strong>Voice notes</strong> &mdash; after a call she can analyse, Aura writes notes on it and puts them in that call&rsquo;s conversation in your History: for example, what went well, what to work on (quoting your own sentences), and how the call compares with your earlier calls. The notes include an AI-generated read of how you came across &mdash; for example, whether you sounded confident, rushed, unsure or tense, and in which sentences. That read is an inference drawn from your voice and your words. It is an automated impression, not a medical or psychological assessment.</li>
         </ul>
+        <p>
+            Aura cannot analyse every call yet. She does not make voice notes
+            in every language, so some calls are recorded but get no
+            measurements or notes.
+        </p>
         <p>
             Your voice notes, the read of how you came across, and the
             measurements are shown only to you, in the app: in your notes and
@@ -252,8 +257,9 @@
             appears in your history, and we also record your side of the
             call on our own servers (see &ldquo;Voice calls and voice
             notes&rdquo; in section 2).</li>
-            <li><strong>Voice notes.</strong> After a call, the recording of
-            your side is sent to xAI once more, to be transcribed word by word
+            <li><strong>Voice notes.</strong> After a call Aura can analyse
+            (see section 2), the recording of your side is sent to xAI once
+            more, to be transcribed word by word
             with timings. The measurements of how you spoke are made on our
             own servers. To write your notes and the read of how you came
             across, your words from the call and those measurements are sent
@@ -347,8 +353,7 @@
         <ul>
             <li><strong>Active account data</strong>: retained for as long as your account is open</li>
             <li><strong>Push notification tokens and the install ID</strong>: kept with your account while it is open. When you sign out, the app asks our server to delete that device's notification token and withdraws the token from Apple's or Google's push service, so the device stops receiving Aura's notifications; a token that Apple or Google reports as no longer valid is deleted automatically. Both are deleted along with your account when you delete it</li>
-            <li><strong>Voice call recordings</strong>: deleted automatically 30 days after the call. (Recordings from a few accounts that belong to our own team and family, who have agreed to it, are kept longer so we can test changes.)</li>
-            <li><strong>Voice notes, the measurements of how you spoke, and the word-by-word transcript of your side they were made from</strong>: kept until you delete them or your account. Deleting a call&rsquo;s conversation deletes its voice notes, measurements and word-by-word transcript along with it, on the same schedule as other deleted conversations (below). Deleting your account deletes your call recordings, voice notes, measurements and transcripts</li>
+            <li><strong>Voice calls</strong>: the recording of your side, the call&rsquo;s transcripts (including the word-by-word transcript), the measurements of how you spoke and the voice notes are kept until you delete the call&rsquo;s conversation or your account. Deleting a call&rsquo;s conversation deletes all of them for that call, on the same schedule as other deleted conversations (below): when the conversation is permanently removed, not while it can still be restored. Notes already written for your other calls stay as they are, even where they compare those calls with the deleted one. Deleting your account deletes all of them, for every call</li>
             <li><strong>Deleted conversations and memories</strong>: hidden immediately and held in a restorable folder for 30 days, then permanently removed from active databases and from backups within 30 days of that purge</li>
             <li><strong>Deleted accounts</strong>: all personal data permanently removed within 30 days of your deletion request</li>
             <li><strong>Anonymized usage statistics</strong> (e.g., total message counts, never including content): may be retained indefinitely for product improvement</li>
