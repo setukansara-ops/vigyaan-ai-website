@@ -104,7 +104,7 @@
         <h1 class="mt-6 text-4xl md:text-5xl font-extrabold tracking-tight">
             Privacy <span class="gradient-text">Policy</span>
         </h1>
-        <p class="mt-3 text-zinc-400 text-sm">Last updated: August 2, 2026</p>
+        <p class="mt-3 text-zinc-400 text-sm">Last updated: October 7, 2026</p>
 
         <div class="mt-8 rounded-2xl p-6 md:p-7"
              style="background:rgba(255,255,255,0.02); border:1px solid rgba(167,139,250,0.18); border-left:3px solid #a78bfa;">
@@ -177,6 +177,12 @@
             or memories, are stored only on our own infrastructure, and are
             not shared with any third-party analytics service.
         </p>
+
+        <h3>Device identifiers</h3>
+        <ul>
+            <li><strong>Install ID</strong> — a random identifier the app creates the first time it runs on your device. It is made by Aura itself: it is not your phone's hardware ID or an advertising identifier, and it says nothing about who you are. The app sends it with its requests to our servers, and we record it with your account when the account is created, and alongside your device's notification token (below). We keep it so we can recognise abuse, such as many free accounts being created from one device. It is not used for advertising or to track you across other apps or websites, and we do not share it with xAI, Apple, Google, or any advertiser. On Android, uninstalling the app removes it; on iPhone it is kept in the device's secure keychain, which can preserve it if the app is deleted and reinstalled.</li>
+            <li><strong>Push notification token</strong> — once you are signed in, the app gets a token from Apple (on iPhone) or Google (on Android): an address that lets notifications reach Aura on this device. The app sends the token to our server, which stores it with your account so we can send you notifications &mdash; where those features are turned on for your account, that your voice notes are ready, that Aura has replied, or that a reminder is due. Notifications are delivered through Apple Push Notification service on iPhone and Google's Firebase Cloud Messaging on Android; section 4 explains what they receive. Whether a notification is shown on your screen is controlled by the notification permission in your device settings.</li>
+        </ul>
 
         <h3>What Aura does NOT collect</h3>
         <ul>
@@ -260,6 +266,27 @@
             backup-deletion window in section 6 is honored.
         </p>
         <p>
+            <strong>Notifications.</strong> To deliver a notification, our
+            server sends it, with your device's push notification token, to
+            Apple Push Notification service (on iPhone) or Google's Firebase
+            Cloud Messaging (on Android), which carries it to your device.
+            They receive the notification's text &mdash; for a reminder, its
+            title and any note; the &ldquo;your voice notes are ready&rdquo;
+            and &ldquo;Aura has replied&rdquo; notifications contain no
+            conversation content &mdash; plus internal reference numbers so
+            that tapping it opens the right place in the app. On Android,
+            Google's messaging software also creates its own identifier for
+            the app installation (a Firebase installation ID), which Google
+            uses to deliver messages, and sends Google basic technical
+            details about the device and app, such as the app version, the
+            operating-system version, and the versions of Google's software
+            in the app. Notifications give neither Apple nor Google your
+            conversations, memories, or account details beyond the
+            notification's own text, and neither receives your install ID.
+            The Android app includes no other Firebase product (no Firebase
+            Analytics), and the iPhone app does not use Firebase at all.
+        </p>
+        <p>
             For app stability we use industry-standard tools for error
             monitoring (so we can fix crashes you encounter). Where those tools
             receive any data, that data is limited to technical context (device
@@ -286,6 +313,7 @@
         <h2>6. How long we keep your data</h2>
         <ul>
             <li><strong>Active account data</strong>: retained for as long as your account is open</li>
+            <li><strong>Push notification tokens and the install ID</strong>: kept with your account while it is open. When you sign out, the app asks our server to delete that device's notification token and withdraws the token from Apple's or Google's push service, so the device stops receiving Aura's notifications; a token that Apple or Google reports as no longer valid is deleted automatically. Both are deleted along with your account when you delete it</li>
             <li><strong>Deleted conversations and memories</strong>: hidden immediately and held in a restorable folder for 30 days, then permanently removed from active databases and from backups within 30 days of that purge</li>
             <li><strong>Deleted accounts</strong>: all personal data permanently removed within 30 days of your deletion request</li>
             <li><strong>Anonymized usage statistics</strong> (e.g., total message counts, never including content): may be retained indefinitely for product improvement</li>
@@ -340,7 +368,7 @@
             situations:
         </p>
         <ul>
-            <li>With service providers strictly necessary to operate Aura (xAI for generating chat and voice replies and for live lookups, as described in section 4; encrypted backup storage; email delivery for password reset). These providers are bound to use the data only to provide the service on our behalf.</li>
+            <li>With service providers strictly necessary to operate Aura (xAI for generating chat and voice replies and for live lookups, as described in section 4; Apple and Google for delivering push notifications, also described in section 4; encrypted backup storage; email delivery for password reset). These providers are bound to use the data only to provide the service on our behalf.</li>
             <li>To comply with a valid legal request (subpoena, court order). When this happens, we will notify you unless legally prohibited.</li>
             <li>In the unlikely event of a merger or acquisition, only after you've been notified.</li>
         </ul>
