@@ -39,23 +39,28 @@ for (const f of pages) {
     [/release app, on a made-up demo account\.</, 'T6 caption without the test-server note'],
   ];
   for (const [re, why] of stale) if (re.test(vis)) say(f, 'stale: ' + why);
-  // 6 ml must not break: check visible text nodes only (attributes and the legal pages are exempt)
-  if (!/aura\/(privacy|terms|delete-account)\.html/.test(rel)) {
-    for (const m of vis.matchAll(/>([^<]*)</g)) if (/\d ml\b/.test(m[1])) { say(f, 'C11 "6 ml" without nbsp: ' + m[1].trim().slice(0, 60)); break; }
-  }
-  if (/class="dot-(aura|attar)"|door-aura|door-attar/.test(s)) say(f, 'C7 line-keyed class still used');
   // Attars are coming soon (founder D36/D45, Oct 2026): no single price, no old trio price, no
   // request/order flow, no JSON-LD offers, Vigyaan(TM) never (R), net contents only as 0.20 fl oz (6 ml).
-  // Checked on the whole file, head (meta, OG, JSON-LD) included.
+  // Checked on the whole file, head (meta, OG, JSON-LD) included. (This block sits here, not at the end
+  // of the loop, so a gate appended at the end on another branch, e.g. feat/brand-kit, merges cleanly.)
   const d45 = [
     [/\$8\b|\$18\b|trio of any three/i, 'D36 single or old trio price'],
     [/data-add|data-bagcount|Add to request list|Your request list|Request now|confirm before any payment/i, 'D45 request/order flow'],
-    [/®|&reg;/, 'brand is Vigyaan&trade;, never &reg;'],
   ];
+  // The (R) check skips brand/: a brand-usage page may quote the rule itself ("Vigyaan(TM), never (R)").
+  if (!rel.startsWith('brand/')) d45.push([/®|&reg;/, 'brand is Vigyaan&trade;, never &reg;']);
   for (const [re, why] of d45) if (re.test(s)) say(f, 'D45: ' + why);
   // (attar pages only: Aura's MobileApplication JSON-LD carries its real free-app offer)
   if (/<body data-world="attar"/.test(s) && /"offers"\s*:/.test(s)) say(f, 'D45: JSON-LD offer while nothing is on sale');
   for (const m of s.matchAll(/([\d.]+)(?:&nbsp;| )fl(?:&nbsp;| )oz((?:&nbsp;| )\(6(?:&nbsp;| )ml\))?/g)) if (m[1] !== '0.20' || !m[2]) say(f, 'D45: net contents not "0.20 fl oz (6 ml)": ' + m[0]);
+  // In visible text the figure never breaks across lines (no plain space anywhere inside it), and any
+  // page whose visible text describes a roll-on shows the full figure at least once.
+  { const NC = '0.20&nbsp;fl&nbsp;oz&nbsp;(6&nbsp;ml)'; let shown = false;
+    for (const m of vis.matchAll(/>([^<]*)</g)) {
+      for (const n of m[1].matchAll(/0\.20(?:&nbsp;| )fl(?:&nbsp;| )oz(?:&nbsp;| )\(6(?:&nbsp;| )ml\)/g)) { if (n[0] === NC) shown = true; else say(f, 'D45: net contents can break across lines (write ' + NC + '): ' + n[0]); }
+    }
+    if (/>[^<]*roll-on/i.test(vis) && !shown) say(f, 'D45: describes a roll-on but never shows "0.20 fl oz (6 ml)"');
+  }
   // Pinned: the alcohol-free wording stays exactly as it is until the founder rules otherwise
   // ("keep the alcohol free tag as is", 2026-10-21). Changing these lines is a declared decision.
   if (rel === 'attars/index.html') {
@@ -63,6 +68,11 @@ for (const f of pages) {
     if (!s.includes('Scent you wear <em>close</em>, not a cloud of alcohol.')) say(f, 'pin: hero line changed');
   }
   if (s.includes('<!-- shell:footer') && !s.includes('<p class="note">Alcohol-free perfume oils. Cosmetics, not medicine.</p>')) say(f, 'pin: footer note changed');
+  // 6 ml must not break: check visible text nodes only (attributes and the legal pages are exempt)
+  if (!/aura\/(privacy|terms|delete-account)\.html/.test(rel)) {
+    for (const m of vis.matchAll(/>([^<]*)</g)) if (/\d ml\b/.test(m[1])) { say(f, 'C11 "6 ml" without nbsp: ' + m[1].trim().slice(0, 60)); break; }
+  }
+  if (/class="dot-(aura|attar)"|door-aura|door-attar/.test(s)) say(f, 'C7 line-keyed class still used');
 }
 console.log(pages.length, 'pages,', issues, 'issues');
 process.exit(issues ? 1 : 0);

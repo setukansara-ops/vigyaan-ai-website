@@ -33,6 +33,11 @@ import { fileURLToPath } from 'node:url';
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const APPSTORE = 'https://apps.apple.com/app/id6771584896';
 const PLAY = 'https://play.google.com/store/apps/details?id=ai.vigyaan.aura';
+// Cache-busting for the shared stylesheet and script. vigyaan.ai sits behind Cloudflare, which
+// sends /css/house.css and /js/site.js with max-age=14400 (4 hours) while pages revalidate on
+// every visit, so a returning visitor would get new HTML on the old CSS/JS. Bump ASSET_V whenever
+// a change to house.css or site.js must land together with the pages, then run this script.
+const ASSET_V = '2026-10-21';
 
 // The lines, in the order they appear in the nav, the menu and the footer.
 const LINES = [
@@ -55,7 +60,7 @@ const LINES = [
     brand: 'Attars by Vigyaan&trade;', dot: '#d9b26a', dotGlow: 'rgba(217,170,96,.8)',
     footer: [
       ['The oils', '/attars/#oils'],
-      ['The 3-pack &middot; coming soon', '/attars/discovery-trio/'],
+      ['The 3-pack <span class="fsoon">coming soon</span>', '/attars/discovery-trio/'],
       ['Wholesale', '/wholesale/'],
     ],
     note: 'Alcohol-free perfume oils. Cosmetics, not medicine.',
@@ -78,7 +83,7 @@ ${icon}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&amp;family=Outfit:wght@300..600&amp;display=swap">
-<link rel="stylesheet" href="/css/house.css">
+<link rel="stylesheet" href="/css/house.css?v=${ASSET_V}">
 `;
 }
 
@@ -170,7 +175,7 @@ ${cols}
 
 function scripts() {
   return `
-<script src="/js/site.js" defer></script>
+<script src="/js/site.js?v=${ASSET_V}" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 `;
 }
