@@ -3,118 +3,214 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Request list — Vigyaan</title>
+<title>Your request list — Vigyaan</title>
 <meta name="description" content="Send an attar request. We confirm stock before any payment.">
-<link rel="icon" type="image/svg+xml" href="../assets/logo/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="../assets/logo/favicon-32.png">
-<link rel="apple-touch-icon" href="../assets/logo/apple-touch-180.png">
-<meta property="og:title" content="Request list — Vigyaan">
+<link rel="canonical" href="https://vigyaan.ai/cart/">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vigyaan.ai/cart/">
+<meta property="og:site_name" content="Vigyaan">
+<meta property="og:title" content="Your request list — Vigyaan">
 <meta property="og:description" content="Send an attar request. We confirm stock before any payment.">
-<meta property="og:image" content="https://vigyaan.ai/assets/logo/dp-warm-oil-stars-1024.png">
-<meta name="theme-color" content="#120c0b">
+<meta property="og:image" content="https://vigyaan.ai/assets/og/attars.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1a100a">
+<!-- shell:head {"world":"attar"} -->
+<link rel="icon" type="image/svg+xml" href="/assets/logo/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/logo/apple-touch-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/house.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&amp;family=Outfit:wght@300..600&amp;display=swap">
+<link rel="stylesheet" href="/css/house.css">
+<!-- /shell:head -->
 </head>
-<body>
+<body data-world="attar">
+<!--email_off-->
+<a class="skip" href="#main">Skip to content</a>
+<!-- shell:header {"world":"attar","current":"cart"} -->
 <header class="site">
   <div class="wrap navrow">
-    <a class="brand" href="../"><img src="../assets/logo/dp-warm-oil-stars-1024.png" alt="">Vigyaan</a>
-    <nav class="desk">
-      <a href="../shop/">Shop</a>
-      <a href="../aura/">Aura</a>
-      <a href="../studio/">Studio</a>
-      <a href="../wholesale/">Wholesale</a>
+    <a class="brand" href="/" aria-label="Vigyaan, home"><img src="/assets/logo/spark.svg" alt="" width="30" height="30">Vigyaan</a>
+    <a class="crumb" href="/attars/">Attars</a>
+    <nav class="desk" aria-label="Main">
+      <a href="/aura/"><span class="dot-aura" aria-hidden="true"></span>Aura</a>
+      <a href="/attars/"><span class="dot-attar" aria-hidden="true"></span>Attars</a>
+      <a href="/studio/">Studio</a>
+      <a href="/wholesale/">Wholesale</a>
     </nav>
-    <a class="bag" href="../cart/" aria-label="Request list"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h12l-1.2 8H7.2L6 6zm0 0L5 3H2"/><circle cx="8" cy="17" r="1"/><circle cx="15" cy="17" r="1"/></svg><span class="badge" id="bagcount" hidden>0</span></a>
+    <div class="nav-end">
+      <a class="bag" href="/cart/" aria-label="Request list"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 10V6.5a3 3 0 0 1 6 0V10" stroke-linecap="round"/></svg><span class="count" data-bagcount hidden>0</span></a>
+      <details class="menu">
+        <summary aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></summary>
+        <nav class="panel" aria-label="Menu">
+          <a href="/"><span>Vigyaan</span><small>home</small></a>
+          <a href="/aura/"><span><span class="dot-aura" aria-hidden="true"></span>Aura</span><small>the app</small></a>
+          <a href="/attars/"><span><span class="dot-attar" aria-hidden="true"></span>Attars</span><small>the oils</small></a>
+          <a href="/studio/"><span>Studio</span><small>about us</small></a>
+          <a href="/cart/" aria-current="page"><span>Request list</span><small>your picks</small></a>
+          <a href="/wholesale/"><span>Wholesale</span><small>for shops</small></a>
+          <a href="/aura/#support"><span>Aura help</span><small>support</small></a>
+          <div class="get">
+            <p>Get Aura</p>
+            <div class="row">
+              <a href="https://apps.apple.com/app/id6771584896" aria-label="Get Aura on the App Store"><svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>App Store</a>
+              <a href="https://play.google.com/store/apps/details?id=ai.vigyaan.aura" aria-label="Get Aura on Google Play"><svg viewBox="0 0 512 512" aria-hidden="true"><path fill="#00d7fe" d="M47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0z"/><path fill="#00f076" d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1z"/><path fill="#ffce00" d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z"/><path fill="#ff3a44" d="M104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>Google Play</a>
+            </div>
+          </div>
+        </nav>
+      </details>
+    </div>
   </div>
 </header>
-<main>
+<!-- /shell:header -->
 
-<div class="wrap" style="padding:4rem 1.25rem;max-width:56rem">
-  <h1>Request list</h1>
-  <div id="empty" hidden>
-    <p class="lede">Add a single or a trio, then send it to us by email.</p>
-    <div class="row"><a class="btn btn-gold" href="../shop/">Shop attars</a></div>
-  </div>
-  <div id="full" hidden>
-    <ul id="lines" class="muted" style="margin-top:2rem;list-style:none"></ul>
-    <p id="total" class="price" style="text-align:right;font-size:1.25rem"></p>
-    <form id="form" style="margin-top:2rem;background:var(--surface);border-radius:1rem;padding:1.5rem;box-shadow:var(--shadow)">
-      <h2>Send the request</h2>
-      <p class="muted" style="margin-top:.5rem">Opens your mail app to setu@vigyaan.ai. We reply with stock, NJ pickup or ship, then payment.</p>
-      <label>Name <input required id="name"></label>
-      <label>Email <input required type="email" id="email"></label>
-      <label>City / ZIP (optional) <input id="place"></label>
-      <button class="btn btn-gold" type="submit" style="margin-top:1.5rem">Email this request</button>
-    </form>
-  </div>
-</div>
-<script>
-(function(){
-  var key='vigyaan-request';
-  function load(){ try { return JSON.parse(localStorage.getItem(key))||{state:{lines:[]}}; } catch(e){ return {state:{lines:[]}}; } }
-  function save(d){ localStorage.setItem(key, JSON.stringify(d)); }
-  function render(){
-    var d=load(); var lines=(d.state&&d.state.lines)||[];
-    document.getElementById('empty').hidden = lines.length>0;
-    document.getElementById('full').hidden = lines.length===0;
-    var ul=document.getElementById('lines'); ul.innerHTML='';
-    var total=0;
-    lines.forEach(function(l){
-      total += l.price*l.qty;
-      var li=document.createElement('li');
-      li.style.cssText='display:flex;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line)';
-      li.innerHTML='<div><strong style="color:var(--fg)">'+l.name+'</strong><div>$'+l.price+' each</div></div>';
-      ul.appendChild(li);
-    });
-    document.getElementById('total').textContent='$'+total;
-  }
-  document.getElementById('form').onsubmit=function(e){
-    e.preventDefault();
-    var d=load(); var lines=(d.state&&d.state.lines)||[];
-    var total=lines.reduce(function(n,l){return n+l.price*l.qty},0);
-    var body=['Name: '+document.getElementById('name').value,'Email: '+document.getElementById('email').value,'Place: '+document.getElementById('place').value,'','Request:'].concat(
-      lines.map(function(l){return '• '+l.qty+' × '+l.name+' — $'+(l.price*l.qty)})
-    ).concat(['','Total (if in stock): $'+total,'','Please confirm availability before payment.']).join('\n');
-    location.href='mailto:setu@vigyaan.ai?subject='+encodeURIComponent('Vigyaan attar request')+'&body='+encodeURIComponent(body);
-  };
-  render();
-})();
-</script>
+<main id="main">
+  <section class="cart">
+    <div class="wrap narrow">
+      <p class="eyebrow">Attars &middot; request list</p>
+      <h1>Your request list</h1>
+
+      <div id="empty" hidden>
+        <p class="lede">Nothing here yet. Add a single oil or a trio, then send it to us by email.</p>
+        <div class="row" style="margin-top:2rem"><a class="btn btn-accent" href="/attars/#oils">See the oils</a></div>
+      </div>
+
+      <div id="full" hidden>
+        <p class="lede">We confirm stock, New Jersey pickup or shipping, and only then payment. Nothing is charged here.</p>
+        <ul id="lines" class="lines-list" aria-label="Items on your list"></ul>
+        <p class="total"><span>Total, if in stock</span><strong id="total">$0</strong></p>
+
+        <form id="form" class="sendform">
+          <h2>Send the request</h2>
+          <p>Opens your mail app with an email to setu@vigyaan.ai. We reply with stock, NJ pickup or shipping, then payment.</p>
+          <div class="two">
+            <label>Name <input type="text" required id="name" autocomplete="name"></label>
+            <label>Email <input type="email" required id="email" autocomplete="email"></label>
+          </div>
+          <label>City / ZIP (optional) <input type="text" id="place" autocomplete="postal-code"></label>
+          <button class="btn btn-accent" type="submit">Email this request</button>
+          <p class="tiny" style="margin-top:1rem">Your list stays in this browser until you send it. Sending opens an email from your own mail app; nothing is sent from this page.</p>
+        </form>
+      </div>
+
+      <p id="blocked" class="tiny" hidden style="margin-top:1.5rem">This browser is blocking saved lists (private mode, or site data turned off). You can still email <a class="link" href="mailto:setu@vigyaan.ai">setu@vigyaan.ai</a> with what you&rsquo;d like.</p>
+    </div>
+  </section>
 </main>
+
+<!-- shell:footer -->
 <footer class="site">
-  <div class="wrap fgrid">
-    <div>
-      <div class="brand"><img src="../assets/logo/dp-warm-oil-stars-1024.png" alt="" style="width:2rem;height:2rem;border-radius:.5rem">Vigyaan</div>
-      <p class="muted" style="margin-top:12px;max-width:20rem">A New Jersey studio. Aura is live. Attars are the next line. We name the third when it is real.</p>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="about">
+        <a class="fbrand" href="/"><img src="/assets/logo/spark.svg" alt="" width="30" height="30">Vigyaan</a>
+        <p class="muted small" style="margin-top:.9rem;max-width:20rem">A small house in New Jersey. We make a few things, slowly, and name the next one when it&rsquo;s real.</p>
+      </div>
+      <div>
+        <h2><span class="dot-aura" aria-hidden="true"></span>Aura</h2>
+        <ul>
+          <li><a href="/aura/get/">Get the app</a></li>
+          <li><a href="/aura/">Meet Aura</a></li>
+          <li><a href="/aura/#support">Help &amp; support</a></li>
+          <li><a href="/aura/privacy.html">Privacy Policy</a></li>
+          <li><a href="/aura/terms.html">Terms of Use</a></li>
+          <li><a href="/aura/delete-account.html">Delete your account</a></li>
+          <li><a href="/aura/campus/">For campuses</a></li>
+        </ul>
+        <p class="note">A wellness companion for adults 18+. Not therapy, and not a crisis service.</p>
+      </div>
+      <div>
+        <h2><span class="dot-attar" aria-hidden="true"></span>Attars</h2>
+        <ul>
+          <li><a href="/attars/#oils">The oils</a></li>
+          <li><a href="/attars/#ordering">How ordering works</a></li>
+          <li><a href="/cart/">Your request list</a></li>
+          <li><a href="/wholesale/">Wholesale</a></li>
+        </ul>
+        <p class="note">Alcohol-free perfume oils. Cosmetics, not medicine.</p>
+      </div>
+      <div>
+        <h2>Write to us</h2>
+        <ul>
+          <li><span class="mail-k">Aura help</span><a class="mail" href="mailto:support@vigyaan.ai">support@vigyaan.ai</a></li>
+          <li><span class="mail-k">Privacy &amp; your data</span><a class="mail" href="mailto:privacy@vigyaan.ai">privacy@vigyaan.ai</a></li>
+          <li><span class="mail-k">Attars &amp; the studio</span><a class="mail" href="mailto:setu@vigyaan.ai">setu@vigyaan.ai</a></li>
+          <li><a href="/studio/">About the studio</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="muted">
-      <p style="color:var(--fg);font-weight:500;margin-bottom:12px">House</p>
-      <p><a href="../shop/">Shop attars</a></p>
-      <p><a href="../aura/">Aura support</a></p>
-      <p><a href="../aura/privacy.html">Privacy</a></p>
-      <p><a href="../aura/terms.html">Terms</a></p>
-      <p><a href="../aura/delete-account.html">Delete account</a></p>
-      <p><a href="../aura/campus/">For campuses</a></p>
-    </div>
-    <div class="muted">
-      <p style="color:var(--fg);font-weight:500;margin-bottom:12px">Contact</p>
-      <p><a class="gold" href="mailto:setu@vigyaan.ai">setu@vigyaan.ai</a></p>
-      <p style="margin-top:12px">Vigyaan LLC · New Jersey</p>
-      <p class="tiny">Alcohol-free perfume oils. Cosmetics, not medicine. Aura is a wellness companion for adults 18+, not therapy.</p>
+    <div class="fbottom">
+      <span>&copy; 2026 Vigyaan LLC &middot; New Jersey</span>
+      <span>Aura by Vigyaan &middot; Attars by Vigyaan</span>
     </div>
   </div>
 </footer>
+<!-- /shell:footer -->
+<!-- shell:scripts -->
+<script src="/js/site.js" defer></script>
+<script defer src="/_vercel/insights/script.js"></script>
+<!-- /shell:scripts -->
 <script>
-(function(){
-  try {
-    var n = (JSON.parse(localStorage.getItem('vigyaan-request')||'{}').state||{}).lines||[];
-    var c = n.reduce(function(a,l){return a+(l.qty||0)},0);
-    var el = document.getElementById('bagcount');
-    if (el && c) { el.hidden=false; el.textContent=c; }
-  } catch(e) {}
-})();
+/* /cart/ — reads and edits the shared request list (contract in js/site.js).
+   Built with textContent only: names come from storage and are never parsed as HTML. */
+document.addEventListener('DOMContentLoaded', function () {
+  var R = window.VigyaanRequest;
+  if (!R) return;
+  var probe = R.save(R.load());
+  document.getElementById('blocked').hidden = probe;
+
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function btn(label, aria, fn, cls) { var b = el('button', cls || '', label); b.type = 'button'; b.setAttribute('aria-label', aria); b.addEventListener('click', fn); return b; }
+
+  function change(id, delta) {
+    var d = R.load();
+    d.state.lines = d.state.lines.map(function (l) {
+      if (l.id === id) l.qty = Math.max(0, (+l.qty || 0) + delta);
+      return l;
+    }).filter(function (l) { return l.qty > 0; });
+    R.save(d); R.paint(); render();
+  }
+
+  function render() {
+    var lines = R.load().state.lines;
+    document.getElementById('empty').hidden = lines.length > 0;
+    document.getElementById('full').hidden = lines.length === 0;
+    var ul = document.getElementById('lines'); ul.textContent = '';
+    var total = 0;
+    lines.forEach(function (l) {
+      var qty = +l.qty || 0, price = +l.price || 0;
+      total += price * qty;
+      var li = el('li');
+      var left = el('div');
+      left.appendChild(el('div', 'nm', String(l.name)));
+      left.appendChild(el('div', 'each', '$' + price + ' each'));
+      var ctl = el('div', 'ctl');
+      ctl.appendChild(btn('−', 'One fewer ' + l.name, function () { change(l.id, -1); }));
+      ctl.appendChild(el('span', 'q', String(qty)));
+      ctl.appendChild(btn('+', 'One more ' + l.name, function () { change(l.id, +1); }));
+      ctl.appendChild(btn('Remove', 'Remove ' + l.name, function () { change(l.id, -qty); }, 'rm'));
+      li.appendChild(left);
+      li.appendChild(ctl);
+      li.appendChild(el('div', 'lt', '$' + price * qty));
+      ul.appendChild(li);
+    });
+    document.getElementById('total').textContent = '$' + total;
+  }
+
+  document.getElementById('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var lines = R.load().state.lines;
+    var total = lines.reduce(function (n, l) { return n + l.price * l.qty; }, 0);
+    var body = ['Name: ' + document.getElementById('name').value, 'Email: ' + document.getElementById('email').value, 'Place: ' + document.getElementById('place').value, '', 'Request:'].concat(
+      lines.map(function (l) { return '• ' + l.qty + ' × ' + l.name + ' — $' + (l.price * l.qty); })
+    ).concat(['', 'Total (if in stock): $' + total, '', 'Please confirm availability before payment.']).join('\n');
+    location.href = 'mailto:setu@vigyaan.ai?subject=' + encodeURIComponent('Vigyaan attar request') + '&body=' + encodeURIComponent(body);
+  });
+
+  render();
+});
 </script>
-</body></html>
+<!--/email_off-->
+</body>
+</html>

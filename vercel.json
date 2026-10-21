@@ -1,9 +1,25 @@
 {
   "trailingSlash": true,
+  "redirects": [
+    { "source": "/shop", "destination": "/attars/", "permanent": true },
+    { "source": "/shop/", "destination": "/attars/", "permanent": true },
+    { "source": "/shop/:slug", "destination": "/attars/:slug/", "permanent": true },
+    { "source": "/shop/:slug/", "destination": "/attars/:slug/", "permanent": true },
+    { "source": "/aura/privacy", "destination": "/aura/privacy.html", "permanent": true },
+    { "source": "/aura/privacy/", "destination": "/aura/privacy.html", "permanent": true },
+    { "source": "/aura/terms", "destination": "/aura/terms.html", "permanent": true },
+    { "source": "/aura/terms/", "destination": "/aura/terms.html", "permanent": true },
+    { "source": "/aura/delete-account", "destination": "/aura/delete-account.html", "permanent": true },
+    { "source": "/aura/delete-account/", "destination": "/aura/delete-account.html", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/aura/(.*)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=300" }]
+    },
+    {
+      "source": "/wip/(.*)",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
     }
   ]
 }
