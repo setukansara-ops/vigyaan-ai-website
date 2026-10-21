@@ -1,6 +1,7 @@
 {
   "trailingSlash": true,
   "redirects": [
+    { "source": "/assets/og.jpg", "destination": "/assets/og/vigyaan.jpg", "permanent": true },
     { "source": "/shop", "destination": "/attars/", "permanent": true },
     { "source": "/shop/", "destination": "/attars/", "permanent": true },
     { "source": "/shop/:slug", "destination": "/attars/:slug/", "permanent": true },

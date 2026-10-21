@@ -71,10 +71,17 @@ const BAG_SVG = '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" str
 const dot = key => { const l = LINES.find(x => x.key === key); return `<span class="dot" style="--dot:${l.dot};--dot-glow:${l.dotGlow}" aria-hidden="true"></span>`; };
 const cur = on => (on ? ' aria-current="page"' : '');
 
+// Cache-busting for the house icons. Their files are byte copies of the brand kit
+// (brand/v1.0/BRAND.md section 9) at the same paths, so every old link keeps working. The query
+// makes a browser that cached the old icons fetch the new ones (vigyaan.ai sits behind Cloudflare,
+// which sends them with max-age=14400). Bump ICON_V whenever an icon's bytes change. Aura's icons
+// (the aura branch below) are Aura's own and do not use it.
+const ICON_V = '2';
+
 function head({ world = 'house' } = {}) {
   const icon = world === 'aura'
     ? '<link rel="icon" type="image/png" sizes="192x192" href="/assets/aura/icon-192.png">\n<link rel="apple-touch-icon" href="/assets/aura/icon-192.png">'
-    : '<link rel="icon" type="image/svg+xml" href="/assets/logo/favicon.svg">\n<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo/favicon-32.png">\n<link rel="apple-touch-icon" href="/assets/logo/apple-touch-180.png">';
+    : `<link rel="icon" type="image/svg+xml" href="/assets/logo/favicon.svg?v=${ICON_V}">\n<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo/favicon-32.png?v=${ICON_V}">\n<link rel="apple-touch-icon" href="/assets/logo/apple-touch-180.png?v=${ICON_V}">`;
   return `
 ${icon}
 <link rel="preconnect" href="https://fonts.googleapis.com">
