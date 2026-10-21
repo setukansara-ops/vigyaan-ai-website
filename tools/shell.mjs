@@ -33,12 +33,17 @@ import { fileURLToPath } from 'node:url';
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const APPSTORE = 'https://apps.apple.com/app/id6771584896';
 const PLAY = 'https://play.google.com/store/apps/details?id=ai.vigyaan.aura';
+// Cache-busting for the shared stylesheet and script. vigyaan.ai sits behind Cloudflare, which
+// sends /css/house.css and /js/site.js with max-age=14400 (4 hours) while pages revalidate on
+// every visit, so a returning visitor would get new HTML on the old CSS/JS. Bump ASSET_V whenever
+// a change to house.css or site.js must land together with the pages, then run this script.
+const ASSET_V = '2026-10-21b';
 
 // The lines, in the order they appear in the nav, the menu and the footer.
 const LINES = [
   {
     key: 'aura', name: 'Aura', href: '/aura/', menuNote: 'the app',
-    brand: 'Aura by Vigyaan', dot: '#a78bfa', dotGlow: '#7c3aed',
+    brand: 'Aura by Vigyaan&trade;', dot: '#a78bfa', dotGlow: '#7c3aed',
     footer: [
       ['Get the app', '/aura/get/'],
       ['Meet Aura', '/aura/'],
@@ -52,11 +57,10 @@ const LINES = [
   },
   {
     key: 'attar', name: 'Attars', href: '/attars/', menuNote: 'the oils',
-    brand: 'Attars by Vigyaan', dot: '#d9b26a', dotGlow: 'rgba(217,170,96,.8)',
+    brand: 'Attars by Vigyaan&trade;', dot: '#d9b26a', dotGlow: 'rgba(217,170,96,.8)',
     footer: [
       ['The oils', '/attars/#oils'],
-      ['How ordering works', '/attars/#ordering'],
-      ['Your request list', '/cart/'],
+      ['The 3-pack <span class="fsoon">coming soon</span>', '/attars/discovery-trio/'],
       ['Wholesale', '/wholesale/'],
     ],
     note: 'Alcohol-free perfume oils. Cosmetics, not medicine.',
@@ -66,7 +70,6 @@ const LINES = [
 const APPLE_SVG = '<svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>';
 const PLAY_SVG = '<svg viewBox="0 0 512 512" aria-hidden="true"><path fill="#00d7fe" d="M47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0z"/><path fill="#00f076" d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1z"/><path fill="#ffce00" d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z"/><path fill="#ff3a44" d="M104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>';
 const MENU_SVG = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>';
-const BAG_SVG = '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 10V6.5a3 3 0 0 1 6 0V10" stroke-linecap="round"/></svg>';
 
 const dot = key => { const l = LINES.find(x => x.key === key); return `<span class="dot" style="--dot:${l.dot};--dot-glow:${l.dotGlow}" aria-hidden="true"></span>`; };
 const cur = on => (on ? ' aria-current="page"' : '');
@@ -91,7 +94,7 @@ ${icon}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&amp;family=Outfit:wght@300..600&amp;display=swap">
-<link rel="stylesheet" href="/css/house.css">
+<link rel="stylesheet" href="/css/house.css?v=${ASSET_V}">
 `;
 }
 
@@ -108,14 +111,13 @@ function header({ world = 'house', current = '' } = {}) {
     // On /aura/ itself the pill jumps to the store badges in the hero; on the
     // chooser it is not shown (that page IS the chooser); elsewhere it opens it.
     world === 'aura' && current !== 'get' ? `      <a class="pill-sm" href="${current === 'aura' ? '#get' : '/aura/get/'}">Get the app</a>` : '',
-    world === 'attar' ? `      <a class="bag" href="/cart/" aria-label="Request list">${BAG_SVG}<span class="count" data-bagcount hidden>0</span></a>` : '',
   ].filter(Boolean).join('\n');
   const here = '<small>you are here</small>';
   const panel = [
     `          <a href="/"${cur(current === 'home')}><span>Vigyaan</span>${current === 'home' ? here : '<small>home</small>'}</a>`,
     ...LINES.map(l => `          <a href="${l.href}"${cur(current === l.key)}><span>${dot(l.key)}${l.name}</span>${current === l.key ? here : `<small>${l.menuNote}</small>`}</a>`),
     `          <a href="/studio/"${cur(current === 'studio')}><span>Studio</span>${current === 'studio' ? here : '<small>about us</small>'}</a>`,
-    world === 'attar' ? `          <a href="/cart/"${cur(current === 'cart')}><span>Request list</span><small>your picks</small></a>` : '',
+    world === 'attar' ? `          <a href="/attars/discovery-trio/"><span>The 3-pack</span><small>coming soon</small></a>` : '',
     world === 'attar' ? `          <a href="/wholesale/"${cur(current === 'wholesale')}><span>Wholesale</span><small>for shops</small></a>` : '',
     `          <a href="/aura/#support"><span>Aura help</span><small>support</small></a>`,
   ].filter(Boolean).join('\n');
@@ -184,7 +186,7 @@ ${cols}
 
 function scripts() {
   return `
-<script src="/js/site.js" defer></script>
+<script src="/js/site.js?v=${ASSET_V}" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 `;
 }

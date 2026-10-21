@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Your request list — Vigyaan</title>
-<meta name="description" content="Send an attar request. We confirm stock before any payment.">
+<title>Coming soon — Attars by Vigyaan</title>
+<meta name="description" content="The attar 3-pack is coming soon. This site takes no orders and no payments yet.">
 <link rel="canonical" href="https://vigyaan.ai/cart/">
 <meta name="robots" content="noindex">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://vigyaan.ai/cart/">
 <meta property="og:site_name" content="Vigyaan">
-<meta property="og:title" content="Your request list — Vigyaan">
-<meta property="og:description" content="Send an attar request. We confirm stock before any payment.">
-<meta property="og:image" content="https://vigyaan.ai/assets/og/attars.jpg">
+<meta property="og:title" content="Coming soon — Attars by Vigyaan">
+<meta property="og:description" content="The attar 3-pack is coming soon. This site takes no orders and no payments yet.">
+<meta property="og:image" content="https://vigyaan.ai/assets/og/attars-3-pack.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#1a100a">
 <!-- shell:head {"world":"attar"} -->
@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&amp;family=Outfit:wght@300..600&amp;display=swap">
-<link rel="stylesheet" href="/css/house.css">
+<link rel="stylesheet" href="/css/house.css?v=2026-10-21b">
 <!-- /shell:head -->
 </head>
 <body data-world="attar">
@@ -41,7 +41,6 @@
       <a href="/wholesale/">Wholesale</a>
     </nav>
     <div class="nav-end">
-      <a class="bag" href="/cart/" aria-label="Request list"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 10V6.5a3 3 0 0 1 6 0V10" stroke-linecap="round"/></svg><span class="count" data-bagcount hidden>0</span></a>
       <details class="menu">
         <summary aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></summary>
         <nav class="panel" aria-label="Menu">
@@ -49,7 +48,7 @@
           <a href="/aura/"><span><span class="dot" style="--dot:#a78bfa;--dot-glow:#7c3aed" aria-hidden="true"></span>Aura</span><small>the app</small></a>
           <a href="/attars/"><span><span class="dot" style="--dot:#d9b26a;--dot-glow:rgba(217,170,96,.8)" aria-hidden="true"></span>Attars</span><small>the oils</small></a>
           <a href="/studio/"><span>Studio</span><small>about us</small></a>
-          <a href="/cart/" aria-current="page"><span>Request list</span><small>your picks</small></a>
+          <a href="/attars/discovery-trio/"><span>The 3-pack</span><small>coming soon</small></a>
           <a href="/wholesale/"><span>Wholesale</span><small>for shops</small></a>
           <a href="/aura/#support"><span>Aura help</span><small>support</small></a>
           <div class="get">
@@ -67,35 +66,23 @@
 <!-- /shell:header -->
 
 <main id="main">
+  <!-- /cart/ keeps working for old links and bookmarks. The request list that
+       lived here is retired: the attars are coming soon, with no orders and no
+       payments on this site (founder, D36/D45). One interest mailto, no form. -->
   <section class="cart">
     <div class="wrap narrow">
-      <p class="eyebrow">Attars &middot; request list</p>
-      <h1>Your request list</h1>
-
-      <div id="empty" hidden>
-        <p class="lede">Nothing here yet. Add a single oil or a trio, then send it to us by email.</p>
-        <div class="row" style="margin-top:2rem"><a class="btn btn-accent" href="/attars/#oils">See the oils</a></div>
+      <p class="soon">Coming soon</p>
+      <h1>Nothing to check out <em>yet</em>.</h1>
+      <p class="lede">The attars open as one 3-pack of 0.20&nbsp;fl&nbsp;oz&nbsp;(6&nbsp;ml) roll-ons when the first fill lands. Until then, this site takes no orders and no payments, and the request list that used to be here is retired.</p>
+      <div class="pack">
+        <div><p class="pk">Shipped in the US</p><p class="pv"><strong class="nw">3 roll-ons for $24.99</strong>&nbsp;&middot; any&nbsp;mix&nbsp;&middot; free&nbsp;US&nbsp;shipping</p></div>
+        <div><p class="pk">New Jersey pickup</p><p class="pv">Pick up in New Jersey: the same $24.99, and choose a 4th roll-on free. No pickup fee; we agree a meeting point by email.</p></div>
       </div>
-
-      <div id="full" hidden>
-        <p class="lede">We confirm stock, New Jersey pickup or shipping, and only then payment. Nothing is charged here.</p>
-        <ul id="lines" class="lines-list" aria-label="Items on your list"></ul>
-        <p class="total"><span>Total, if in stock</span><strong id="total">$0</strong></p>
-
-        <form id="form" class="sendform">
-          <h2>Send the request</h2>
-          <p>Opens your mail app with an email to setu@vigyaan.ai. We reply with stock, NJ pickup or shipping, then payment.</p>
-          <div class="two">
-            <label>Name <input type="text" required id="name" autocomplete="name"></label>
-            <label>Email <input type="email" required id="email" autocomplete="email"></label>
-          </div>
-          <label>City / ZIP (optional) <input type="text" id="place" autocomplete="postal-code"></label>
-          <button class="btn btn-accent" type="submit">Email this request</button>
-          <p class="tiny" style="margin-top:1rem">Your list stays in this browser until you send it. Sending opens an email from your own mail app; nothing is sent from this page.</p>
-        </form>
+      <div class="row">
+        <a class="btn btn-accent" href="mailto:setu@vigyaan.ai?subject=Email%20me%20when%20the%203-pack%20is%20ready&amp;body=Please%20email%20me%20when%20the%20Vigyaan%20attar%203-pack%20is%20ready.%0A%0AThis%20is%20an%20interest%20note%2C%20not%20an%20order.">Email me when it&rsquo;s ready</a>
+        <a class="btn btn-ghost" href="/attars/discovery-trio/">See the 3-pack</a>
       </div>
-
-      <p id="blocked" class="tiny" hidden style="margin-top:1.5rem">This browser is blocking saved lists (private mode, or site data turned off). You can still email <a class="link" href="mailto:setu@vigyaan.ai">setu@vigyaan.ai</a> with what you&rsquo;d like.</p>
+      <p class="tiny">&ldquo;Email me when it&rsquo;s ready&rdquo; opens an email to setu@vigyaan.ai from your own mail app. It&rsquo;s an interest note, not an order: nothing is reserved, nothing is charged, and nothing is sent from this page.</p>
     </div>
   </section>
 </main>
@@ -125,8 +112,7 @@
         <h2><span class="dot" style="--dot:#d9b26a;--dot-glow:rgba(217,170,96,.8)" aria-hidden="true"></span>Attars</h2>
         <ul>
           <li><a href="/attars/#oils">The oils</a></li>
-          <li><a href="/attars/#ordering">How ordering works</a></li>
-          <li><a href="/cart/">Your request list</a></li>
+          <li><a href="/attars/discovery-trio/">The 3-pack <span class="fsoon">coming soon</span></a></li>
           <li><a href="/wholesale/">Wholesale</a></li>
         </ul>
         <p class="note">Alcohol-free perfume oils. Cosmetics, not medicine.</p>
@@ -143,81 +129,15 @@
     </div>
     <div class="fbottom">
       <span>&copy; 2026 Vigyaan LLC &middot; New Jersey</span>
-      <span>Aura by Vigyaan &middot; Attars by Vigyaan</span>
+      <span>Aura by Vigyaan&trade; &middot; Attars by Vigyaan&trade;</span>
     </div>
   </div>
 </footer>
 <!-- /shell:footer -->
 <!-- shell:scripts -->
-<script src="/js/site.js" defer></script>
+<script src="/js/site.js?v=2026-10-21b" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <!-- /shell:scripts -->
-<script>
-/* /cart/ — reads and edits the shared request list (contract in js/site.js).
-   Built with textContent only: names come from storage and are never parsed as HTML. */
-document.addEventListener('DOMContentLoaded', function () {
-  var R = window.VigyaanRequest;
-  if (!R) return;
-  var probe = R.save(R.load());
-  document.getElementById('blocked').hidden = probe;
-
-  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
-  function btn(label, aria, fn, cls) { var b = el('button', cls || '', label); b.type = 'button'; b.setAttribute('aria-label', aria); b.addEventListener('click', fn); return b; }
-
-  function change(id, delta) {
-    var d = R.load();
-    d.state.lines = d.state.lines.map(function (l) {
-      if (l.id === id) l.qty = Math.max(0, (+l.qty || 0) + delta);
-      return l;
-    }).filter(function (l) { return l.qty > 0; });
-    R.save(d); R.paint(); render();
-  }
-
-  function render() {
-    var lines = R.load().state.lines;
-    document.getElementById('empty').hidden = lines.length > 0;
-    document.getElementById('full').hidden = lines.length === 0;
-    var ul = document.getElementById('lines'); ul.textContent = '';
-    var total = 0;
-    lines.forEach(function (l) {
-      var qty = +l.qty || 0, price = +l.price || 0;
-      total += price * qty;
-      var li = el('li');
-      var left = el('div', 'info');
-      // A trio's stored name is 'Discovery trio (A, B, C)' (the storage contract,
-      // unchanged); on screen the bottles go on their own smaller line.
-      var name = String(l.name), bottles = null;
-      var m = Array.isArray(l.scents) ? /^(.+?) \((.+)\)$/.exec(name) : null;
-      if (m) { name = m[1]; bottles = m[2]; }
-      left.appendChild(el('div', 'nm', name));
-      if (bottles) left.appendChild(el('div', 'each', bottles));
-      left.appendChild(el('div', 'each', '$' + price + ' each'));
-      var ctl = el('div', 'ctl');
-      ctl.appendChild(btn('−', 'One fewer ' + l.name, function () { change(l.id, -1); }));
-      ctl.appendChild(el('span', 'q', String(qty)));
-      ctl.appendChild(btn('+', 'One more ' + l.name, function () { change(l.id, +1); }));
-      ctl.appendChild(btn('Remove', 'Remove ' + l.name, function () { change(l.id, -qty); }, 'rm'));
-      li.appendChild(left);
-      li.appendChild(ctl);
-      li.appendChild(el('div', 'lt', '$' + price * qty));
-      ul.appendChild(li);
-    });
-    document.getElementById('total').textContent = '$' + total;
-  }
-
-  document.getElementById('form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var lines = R.load().state.lines;
-    var total = lines.reduce(function (n, l) { return n + l.price * l.qty; }, 0);
-    var body = ['Name: ' + document.getElementById('name').value, 'Email: ' + document.getElementById('email').value, 'Place: ' + document.getElementById('place').value, '', 'Request:'].concat(
-      lines.map(function (l) { return '• ' + l.qty + ' × ' + l.name + ' — $' + (l.price * l.qty); })
-    ).concat(['', 'Total (if in stock): $' + total, '', 'Please confirm availability before payment.']).join('\n');
-    location.href = 'mailto:setu@vigyaan.ai?subject=' + encodeURIComponent('Vigyaan attar request') + '&body=' + encodeURIComponent(body);
-  });
-
-  render();
-});
-</script>
 <!--/email_off-->
 </body>
 </html>
