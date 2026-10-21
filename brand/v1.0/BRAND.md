@@ -4,7 +4,10 @@
 `ecc9f99e` (PR #20, the redesign that went live on vigyaan.ai that day). The founder
 approved the whole kit the same day. His words are in `VERSION`. A review before
 release then changed text and tooling only: the ™ rule in his own words, and a
-stricter `verify.ps1`. `VERSION` lists both (the `changed:` line). No logo file changed.
+stricter `verify.ps1` (the first `changed:` line in `VERSION`). Later that day, still
+before release and on his word, the link-preview card was replaced by the one he
+picked: the tile centred above the ivory word (section 3; the second `changed:` line).
+No master changed.
 
 **This version is final.** Nothing in this folder is ever edited, re-exported,
 replaced or deleted. A change to the mark happens only on the founder's explicit
@@ -120,8 +123,28 @@ of the one before.
 | `mono/` | `mono-light-` / `mono-dark-{64,128,256,512,1024}.png` | Transparent |
 | `lockup/` | `lockup-horizontal[-light]-h{32,48,64,128,256,512,1024}.png`, `lockup-stacked[-light]-h{48,64,128,256,512,1024}.png` | Transparent. No 16 px horizontal lockup: the word would be 10 px, below the minimum. No stacked lockup under 48 px. |
 | `icons/` | `favicon-16/32/48.png`, `favicon.ico` (16+32+48, the same pixels), `apple-touch-180.png` (opaque, full-bleed), `android-maskable-192/512.png` (opaque, 85%), `logo-512.png` (the tile) | For the website and app stores. `logo-512.png` is also the company logo wherever a square logo is asked for (Google's JSON-LD, mail and store developer pages). |
-| `social/` | `social-avatar-1024.png` (opaque, circle-safe), `og-1200x630.png` (+ `.jpg`, q90) | Avatars everywhere. The link-preview card follows the style of `assets/og/aura.jpg`. |
+| `social/` | `social-avatar-1024.png` (opaque, circle-safe), `og-1200x630.png` (+ `.jpg`, q90) | Avatars everywhere. The link-preview card is described below. |
 | `email/` | `sig-lockup-light@2x.png` (384×112, opaque white, shown at **192×56**), `sig-lockup-dark@2x.png` (352×112, opaque `#0f0b0a`, shown at **176×56**) | PNG on purpose, because Gmail and Outlook do not show SVG in mail. The backgrounds are opaque so dark-mode mail apps cannot drop the ink word onto black. |
+
+**The link-preview card** (`social/og-1200x630`, 1200 × 630, made from `source/og.html`):
+- The ground is the house night `#0f0b0a` with a warm glow behind the mark. The glow
+  is part of the ground. No effect touches the mark.
+- The tile (`spark-tile.svg`, S = 180 px) is centred above the ivory word
+  (`wordmark.svg`), in the stacked lockup's geometry: the word's ink is 1.84 S wide and
+  starts 0.22 S below the tile.
+- The clear space is 0.5 S (90 px) on every side, and all of it sits inside the card's
+  centre square (x 285–915). An app that shows a square cut from the middle of the card
+  still shows the tile and the whole word.
+- Above the mark: "A NEW JERSEY STUDIO" (Outfit). Below it: "A house for things that
+  *stay* with you." (Outfit; *stay* in Fraunces italic). Left and right, outside the
+  centre square: the Aura and Attars chips.
+- **The tile with the ivory word is approved for this card.** Neither stacked lockup
+  pairs them: `lockup-stacked.svg` has the bare spark with the ivory word, and
+  `lockup-stacked-light.svg` has the tile with the ink word. The founder approved this
+  card as shown, the pairing included, when he picked it on 21 October 2026 (`VERSION`,
+  the second `changed:` line). It is not a third lockup. Anywhere else, use the lockups
+  in section 2.
+- The `.jpg` is written by Pillow from the `.png`: quality 90, progressive, 4:4:4.
 
 `contact-sheet.png` shows all of them on their grounds.
 
@@ -216,7 +239,8 @@ of the one before.
 - Add ™ or ® to the logo. ™ belongs in website and packaging text, and ® is never
   used (section 1).
 - Rearrange the lockup (word on the left, a different gap or size) or invent new
-  lockups. Horizontal and stacked are the only two.
+  lockups. Horizontal and stacked are the only two. (The link-preview card's tile
+  above the ivory word, section 3, is approved for that card, not as a third lockup.)
 - Mix it with the Aura icon. **Aura is a separate brand**, with its own icon, its own
   violet world and its own ads. Aura says "by Vigyaan" in text ("by Vigyaan™" in
   website and packaging text, section 1) and never shows the spark.

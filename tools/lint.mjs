@@ -96,7 +96,7 @@ for (const f of pages) {
 // /brand/ page links (BRAND.md 12.5). v1.0 stays in KITS: it never changes.
 {
   const KITS = [
-    { dir: 'v1.0', SUMS_SHA: 'ab69ca8e92b1fd3efc524da68463304184ce82a930e953f26d9650c553fddd96' },
+    { dir: 'v1.0', SUMS_SHA: '87aabf54647aeffb76faec76852a069ab885b5c1cab0490609c4b54a5e06df9e' },
   ];
   const SPARK_SHA = '3db121447238d2c78a3c809599c31ce85260a07133e4430686e0d3f0f686c824'; // spark.svg at ecc9f99e = brand/v1.0/masters/spark.svg
   const sha = buf => createHash('sha256').update(buf).digest('hex');
