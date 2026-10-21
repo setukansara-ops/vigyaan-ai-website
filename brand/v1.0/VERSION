@@ -1,8 +1,10 @@
 Vigyaan brand kit
 version:  1.0
 date:     2026-10-21
-status:   FINAL once the approved line below carries the founder's words. Then it changes only on his explicit word, as a new version folder (BRAND.md section 12). Never edit this folder after that.
-approved: PENDING. On 2026-10-21 the founder said of the live header mark (the spark and the word): "you also changed the Vigyaan logo, it looks good". The forms he had not yet seen are the stacked lockup, the tile (spark-tile.svg), the 85% avatar, the link-preview card and the email signature. His answer on the whole kit and its date replace this line before release. tools/lint.mjs fails while this line says PENDING.
+status:   FINAL. It changes only on the founder's explicit word, as a new version folder (BRAND.md section 12). Never edit this folder.
+approved: 2026-10-21, approved by the founder in chat, after he saw contact-sheet.png, signature/preview.png and a screenshot of the /brand/ page. Asked: "Can I lock the logo kit in the first picture as the final Vigyaan logo, never to change without your word? You've already seen the header logo. These versions are new: the stacked logo (star above the name), the dark square icon, the round profile picture, the link-preview card and the email signature." He answered: "Lock all of it"
+symbol:   2026-10-21, in the same chat. Asked: "Your ops notes say to write "Vigyaan™, never ®". Should the logo itself carry a small ™ too?" He answered: "Words only": Vigyaan™ is written in website and packaging text; the logo stays clean with no symbol. The rule is in BRAND.md section 1.
+old uses: 2026-10-21, in the same chat. Asked: "Some places still show an old logo: the iPhone home-screen icon, the small tab icon, the logo Google shows for the company, and the preview picture when vigyaan.ai is shared. After the kit goes live, should I make a small change that puts the new logo in all of them?" He answered: "Yes, prepare it": a separate draft shown to him before it goes live, using the same web addresses so nothing breaks. That change is to the website, not to this folder.
 source:   setukansara-ops/vigyaan-ai-website @ ecc9f99e1c6c07cb23a8eae53caeaccf212483d6 (merge of PR #20, live on vigyaan.ai 2026-10-21)
 mark:     assets/logo/spark.svg = masters/spark.svg, git blob fd2ce2f6434425a5de25c4f3eced68f04d44252b, sha256 3db121447238d2c78a3c809599c31ce85260a07133e4430686e0d3f0f686c824
 wordmark: "Vigyaan", Fraunces SemiBold 600 (Google Fonts v38), opsz 19.52, SOFT 0, WONK 0, tracking -0.01em, outlined to paths

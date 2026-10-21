@@ -1,7 +1,8 @@
 # Vigyaan brand kit, v1.0 (FINAL)
 
 **Version 1.0, set 21 October 2026.** Source: `setukansara-ops/vigyaan-ai-website` at
-`ecc9f99e` (PR #20, the redesign that went live on vigyaan.ai that day).
+`ecc9f99e` (PR #20, the redesign that went live on vigyaan.ai that day). The founder
+approved the whole kit the same day. His words are in `VERSION`.
 
 **This version is final.** Nothing in this folder is ever edited, re-exported,
 replaced or deleted. A change to the mark happens only on the founder's explicit
@@ -50,6 +51,11 @@ The geometry, in a 32-unit box with no background:
 - Optical size 19.52. That is what `font-optical-sizing: auto` gives at the live
   header's 1.22rem. SOFT 0, WONK 0.
 - Tracking −0.01em.
+
+**The ™ symbol.** In running text (website, packaging, documents), write Vigyaan™
+where the name is used as a brand. Never ®. The logo itself (wordmark, lockups, tile)
+carries no symbol. The founder set this on 21 October 2026 (`VERSION`, the `symbol:`
+line).
 
 The wordmark is **outlined**. It is not set in type. The paths come from Chrome's own
 render of the live header: printed to PDF, where Chrome embeds the exact
@@ -158,7 +164,8 @@ of the one before.
 - The site's CSS request is
   `https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Outfit:wght@300..600&display=swap`.
 - **Never typeset "Vigyaan" as the logo.** Use the outlined files. In running text the
-  name is just a word, in whatever font the text uses.
+  name is just a word, in whatever font the text uses, with ™ where it is used as a
+  brand (section 1).
 - Aura's marketing videos use Segoe UI. That is Aura's ad family, not Vigyaan's.
 
 ## 6. Grounds and contrast
@@ -202,6 +209,7 @@ of the one before.
   retired `assets/og.jpg` (section 10) is exactly this mistake.
 - Put the bare gold spark on white or ivory.
 - Set the name in capitals ("VIGYAAN") or in a sans-serif as a logo.
+- Add ™ or ® to the logo. ™ goes in running text only, and ® never (section 1).
 - Rearrange the lockup (word on the left, a different gap or size) or invent new
   lockups. Horizontal and stacked are the only two.
 - Mix it with the Aura icon. **Aura is a separate brand**, with its own icon, its own
