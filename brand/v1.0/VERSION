@@ -1,0 +1,9 @@
+Vigyaan brand kit
+version:  1.0
+date:     2026-10-21
+status:   FINAL. Change only on the founder's explicit word, as a new version folder (BRAND.md section 12). Never edit this folder.
+source:   setukansara-ops/vigyaan-ai-website @ ecc9f99e1c6c07cb23a8eae53caeaccf212483d6 (merge of PR #20, live on vigyaan.ai 2026-10-21)
+mark:     assets/logo/spark.svg = masters/spark.svg, git blob fd2ce2f6434425a5de25c4f3eced68f04d44252b, sha256 3db121447238d2c78a3c809599c31ce85260a07133e4430686e0d3f0f686c824
+wordmark: "Vigyaan", Fraunces SemiBold 600 (Google Fonts v38), opsz 19.52, SOFT 0, WONK 0, tracking -0.01em, outlined to paths
+web copy: https://vigyaan.ai/brand/v1.0/ (website repo brand/v1.0/, branch feat/brand-kit; live once merged)
+built:    headless Chrome 155.0.8059.80 (Skia), PyMuPDF 1.28.0, Pillow 12.2.0, node 24.16.0, Windows 11
