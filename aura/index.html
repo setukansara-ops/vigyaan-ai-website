@@ -1,202 +1,384 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--
+  /aura/ is Aura's own page AND the App Store "Support URL" and "Marketing URL"
+  (aura-app STORE_LISTING.md §1). Apple requires contact details on the support
+  page, so the #support block below (support@, privacy@, the delete steps) must
+  stay on THIS URL. Do not move support to another path.
+-->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aura by Vigyaan | Help &amp; Support</title>
-    <meta name="description" content="Support for Aura by Vigyaan — how to get help, manage your subscription, delete your data, and reach our team.">
-
-    <!-- Favicons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/logo/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/logo/favicon-32.png">
-    <link rel="icon" type="image/svg+xml" href="../assets/logo/vigyaan-icon.svg">
-    <link rel="apple-touch-icon" href="../assets/logo/apple-touch-180.png">
-
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        body { font-family: 'Inter', system-ui, sans-serif; }
-
-        @keyframes gradient-shift {
-            0%   { background-position: 0% 50%; }
-            50%  { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #60a5fa, #a78bfa, #34d399);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradient-shift 5s ease infinite;
-        }
-        .grid-bg {
-            background-image:
-                linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
-            background-size: 56px 56px;
-        }
-        .prose-aura h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #f4f4f5;
-            margin-top: 2.5rem;
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.01em;
-        }
-        .prose-aura h3 {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #a1a1aa;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .prose-aura p {
-            color: #d4d4d8;
-            line-height: 1.75;
-            margin: 0.75rem 0;
-        }
-        .prose-aura ul {
-            color: #d4d4d8;
-            line-height: 1.75;
-            margin: 0.5rem 0 0.75rem 1.5rem;
-            list-style: disc;
-        }
-        .prose-aura li { margin: 0.25rem 0; }
-        .prose-aura a {
-            color: #a78bfa;
-            text-decoration: underline;
-            text-decoration-color: rgba(167, 139, 250, 0.35);
-            text-underline-offset: 2px;
-            transition: color 0.2s;
-        }
-        .prose-aura a:hover { color: #c4b5fd; }
-        .prose-aura strong { color: #fafafa; font-weight: 600; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aura by Vigyaan — the companion who remembers you</title>
+<meta name="description" content="Aura is a private AI companion who actually remembers you. Tap once and just talk. On iPhone and Android — every new account gets a full year of Pro, free, no card needed. Help and support are on this page too.">
+<link rel="canonical" href="https://vigyaan.ai/aura/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vigyaan.ai/aura/">
+<meta property="og:site_name" content="Aura by Vigyaan">
+<meta property="og:title" content="Aura — the companion who remembers you">
+<meta property="og:description" content="Tap once and just talk. Every new account gets a full year of Pro, free — no card needed.">
+<meta property="og:image" content="https://vigyaan.ai/assets/og/aura.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#16123f">
+<meta name="apple-itunes-app" content="app-id=6771584896">
+<!-- shell:head {"world":"aura"} -->
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/aura/icon-192.png">
+<link rel="apple-touch-icon" href="/assets/aura/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&amp;family=Outfit:wght@300..600&amp;display=swap">
+<link rel="stylesheet" href="/css/house.css">
+<!-- /shell:head -->
+<!-- Only the Hindi and Gujarati words on this page, subset with text= (a few KB). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500&amp;family=Noto+Sans+Gujarati:wght@400;500&amp;display=swap&amp;text=%E0%A4%B9%E0%A4%BF%E0%A4%A8%E0%A5%8D%E0%A4%A6%E0%A5%80%E0%A4%AC%E0%A4%BE%E0%A4%A4%E0%A4%95%E0%A4%B0%E0%A5%87%E0%A4%B2%E0%A4%8F%E0%A4%9F%E0%A5%88%E0%A4%AA%E0%A4%82%E0%AA%97%E0%AB%81%E0%AA%9C%E0%AA%B0%E0%AA%BE%E0%AA%A4%E0%AB%80%E0%AA%B5%E0%AA%95%E0%AA%AE%E0%AA%9F%E0%AB%87%E0%AB%85%E0%AA%AA%E0%AB%8B">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MobileApplication","name":"Aura by Vigyaan","url":"https://vigyaan.ai/aura/","operatingSystem":"iOS, Android","applicationCategory":"HealthApplication","installUrl":"https://vigyaan.ai/aura/get/","sameAs":["https://apps.apple.com/app/id6771584896","https://play.google.com/store/apps/details?id=ai.vigyaan.aura"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Vigyaan LLC","url":"https://vigyaan.ai/","email":"support@vigyaan.ai"}}
+</script>
 </head>
-<body class="bg-[#06060c] text-white overflow-x-hidden">
-
-<!-- ═══════════ NAVBAR ═══════════ -->
-<nav class="fixed top-0 w-full z-50"
-     style="background:rgba(6,6,12,0.75); backdrop-filter:blur(20px); border-bottom:1px solid rgba(255,255,255,0.06);">
-    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-3">
-            <img src="../assets/logo/dp-warm-oil-stars-1024.png" alt="Vigyaan logo" class="w-9 h-9" />
-            <span class="text-xl font-bold tracking-tight">Vigyaan<span class="text-blue-400">.ai</span></span>
-        </a>
-        <a href="/" class="text-sm font-medium text-zinc-400 hover:text-white transition-colors">
-            <i class="fa-solid fa-arrow-left mr-1"></i> Back to home
-        </a>
+<body data-world="aura">
+<!--email_off-->
+<a class="skip" href="#main">Skip to content</a>
+<!-- shell:header {"world":"aura","current":"aura"} -->
+<header class="site">
+  <div class="wrap navrow">
+    <a class="brand" href="/" aria-label="Vigyaan, home"><img src="/assets/logo/spark.svg" alt="" width="30" height="30">Vigyaan</a>
+    <a class="crumb" href="/aura/">Aura</a>
+    <nav class="desk" aria-label="Main">
+      <a href="/aura/" aria-current="page"><span class="dot" style="--dot:#a78bfa;--dot-glow:#7c3aed" aria-hidden="true"></span>Aura</a>
+      <a href="/attars/"><span class="dot" style="--dot:#d9b26a;--dot-glow:rgba(217,170,96,.8)" aria-hidden="true"></span>Attars</a>
+      <a href="/studio/">Studio</a>
+      <a href="/aura/#support">Help</a>
+    </nav>
+    <div class="nav-end">
+      <a class="pill-sm" href="#get">Get the app</a>
+      <details class="menu">
+        <summary aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></summary>
+        <nav class="panel" aria-label="Menu">
+          <a href="/"><span>Vigyaan</span><small>home</small></a>
+          <a href="/aura/" aria-current="page"><span><span class="dot" style="--dot:#a78bfa;--dot-glow:#7c3aed" aria-hidden="true"></span>Aura</span><small>you are here</small></a>
+          <a href="/attars/"><span><span class="dot" style="--dot:#d9b26a;--dot-glow:rgba(217,170,96,.8)" aria-hidden="true"></span>Attars</span><small>the oils</small></a>
+          <a href="/studio/"><span>Studio</span><small>about us</small></a>
+          <a href="/aura/#support"><span>Aura help</span><small>support</small></a>
+          <div class="get">
+            <p>Get Aura</p>
+            <div class="row">
+              <a href="https://apps.apple.com/app/id6771584896" aria-label="Get Aura on the App Store"><svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>App Store</a>
+              <a href="https://play.google.com/store/apps/details?id=ai.vigyaan.aura" aria-label="Get Aura on Google Play"><svg viewBox="0 0 512 512" aria-hidden="true"><path fill="#00d7fe" d="M47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0z"/><path fill="#00f076" d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1z"/><path fill="#ffce00" d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z"/><path fill="#ff3a44" d="M104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>Google Play</a>
+            </div>
+          </div>
+        </nav>
+      </details>
     </div>
-</nav>
+  </div>
+</header>
+<!-- /shell:header -->
 
-<!-- ═══════════ HERO ═══════════ -->
-<section class="relative pt-32 pb-12 grid-bg">
-    <div class="max-w-3xl mx-auto px-6">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium tracking-wide"
-             style="background:rgba(167,139,250,0.1); border:1px solid rgba(167,139,250,0.25); color:#c4b5fd;">
-            <i class="fa-solid fa-life-ring text-[10px]"></i>
-            <span>AURA BY VIGYAAN</span>
+<main id="main">
+  <!-- =========== HERO =========== -->
+  <section class="a-hero" aria-labelledby="aura-title">
+    <div class="wrap grid">
+      <div>
+        <span class="chip"><img src="/assets/aura/icon-128.webp" alt="" width="24" height="24">Aura by Vigyaan</span>
+        <h1 class="display" id="aura-title">The companion who actually <em>remembers</em> you.</h1>
+        <p class="lede">Tap once and just talk. Aura answers in a warm, natural voice, hands-free, and carries what matters — your people, your plans, the small wins — into every conversation, spoken or typed.</p>
+
+        <div class="stores" id="get">
+          <a class="store" href="https://apps.apple.com/app/id6771584896" aria-label="Download Aura on the App Store">
+            <svg viewBox="0 0 384 512" fill="#fff" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+            <span><small>Download on the</small><strong>App Store</strong></span>
+          </a>
+          <a class="store" href="https://play.google.com/store/apps/details?id=ai.vigyaan.aura" aria-label="Get Aura on Google Play">
+            <svg viewBox="0 0 512 512" aria-hidden="true"><path fill="#00d7fe" d="M47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0z"/><path fill="#00f076" d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1z"/><path fill="#ffce00" d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z"/><path fill="#ff3a44" d="M104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+            <span><small>GET IT ON</small><strong>Google Play</strong></span>
+          </a>
         </div>
-        <h1 class="mt-6 text-4xl md:text-5xl font-extrabold tracking-tight">
-            Help &amp; <span class="gradient-text">Support</span>
-        </h1>
-        <p class="mt-3 text-zinc-400 text-sm">We're a small team and we read every message.</p>
-
-        <div class="mt-8 rounded-2xl p-6 md:p-7"
-             style="background:rgba(255,255,255,0.02); border:1px solid rgba(167,139,250,0.18); border-left:3px solid #a78bfa;">
-            <p class="text-zinc-200 text-base md:text-lg leading-relaxed">
-                Aura is a private AI wellness companion built by Vigyaan LLC — a calm
-                space to talk, reflect, and stay on top of what matters. Need a hand,
-                have a question, or hit a bug? Here's how to reach us and sort out the
-                common things.
-            </p>
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════ BODY ═══════════ -->
-<section class="pb-32">
-    <div class="max-w-3xl mx-auto px-6 prose-aura">
-
-        <h2>Contact us</h2>
-        <p>
-            Email <a href="mailto:support@vigyaan.ai">support@vigyaan.ai</a> and we'll
-            get back to you, usually within two business days. To help us help you
-            faster, include your account email, your device and OS version, and a
-            short description of what happened.
-        </p>
-        <p>
-            For privacy- or data-specific requests, you can also reach us at
-            <a href="mailto:privacy@vigyaan.ai">privacy@vigyaan.ai</a>.
-        </p>
-
-        <h2>Common questions</h2>
-
-        <h3>Managing or cancelling a subscription</h3>
-        <p>
-            Aura's Plus and Pro plans are billed through the Apple App Store or Google
-            Play, so you manage or cancel them in your store account:
-        </p>
-        <ul>
-            <li><strong>iPhone / iPad:</strong> Settings &rarr; tap your name &rarr; Subscriptions &rarr; Aura &rarr; Cancel.</li>
-            <li><strong>Android:</strong> Google Play &rarr; profile &rarr; Payments &amp; subscriptions &rarr; Subscriptions &rarr; Aura &rarr; Cancel.</li>
+        <p class="offer"><b><svg width="14" height="14" viewBox="0 0 24 24" fill="#c4b5fd" aria-hidden="true"><path d="M12 1.5l2.3 7.4 7.7.1-6.2 4.6 2.3 7.4L12 16.5l-6.1 4.5 2.3-7.4L2 9l7.7-.1z"/></svg>1 year of Pro free &middot; no card</b><span>for every new account</span></p>
+        <ul class="meta">
+          <li>iPhone &amp; Android</li>
+          <li class="langs" aria-label="English, Hindi, Gujarati"><span>English</span><span class="deva" lang="hi">हिन्दी</span><span class="gujr" lang="gu">ગુજરાતી</span></li>
+          <li>For adults 18+</li>
         </ul>
-        <p>
-            Cancelling stops the next renewal; you keep your plan until the end of the
-            period you've already paid for. We don't charge cancellation fees.
-        </p>
+      </div>
 
-        <h3>Deleting your account and data</h3>
-        <p>
-            You can remove your account and everything in it from inside the app, under
-            <strong>Settings &rarr; Account &rarr; Delete account</strong>. This
-            permanently deletes your conversations, memories, reminders, and
-            profile from our servers. Prefer we handle it? Email
-            <a href="mailto:support@vigyaan.ai">support@vigyaan.ai</a> from your account
-            address and we'll take care of it.
-        </p>
-
-        <h3>Resetting your password</h3>
-        <p>
-            On the sign-in screen, choose <strong>Forgot password</strong> to get a reset
-            link at your account email. If you signed in with Apple or Google, just use
-            that same button to sign back in &mdash; there's no separate Aura password.
-        </p>
-
-        <h3>Is my data private?</h3>
-        <p>
-            Your text conversations run on hardware Vigyaan LLC controls, and are never
-            sold or used to train anyone's AI models. A few narrow features &mdash; such
-            as voice calls &mdash; involve a vetted AI provider, always with your
-            consent. The full details are in our <a href="privacy.html">Privacy Policy</a>.
-        </p>
-
-        <h3>Who can use Aura?</h3>
-        <p>
-            Aura is for adults &mdash; you must be at least <strong>18 years old</strong>
-            to use it. Aura is a wellness and reflection companion, not a medical device
-            or a substitute for professional care. If you're in crisis, please contact
-            your local emergency services or a crisis line in your area.
-        </p>
-
-        <h2>Legal</h2>
-        <ul>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms of Service</a></li>
-        </ul>
-
-        <div class="mt-16 pt-8 border-t border-white/[0.06] text-sm text-zinc-500 leading-relaxed">
-            Aura by Vigyaan is operated by Vigyaan LLC. Support covers the Aura mobile
-            app (iOS and Android). For the fastest response, email
-            <a href="mailto:support@vigyaan.ai" class="text-zinc-400 hover:text-white">support@vigyaan.ai</a>.
-        </div>
+      <div class="sky" aria-hidden="true">
+        <div class="ring r2"></div><div class="ring r1"></div>
+        <div class="breath"></div>
+        <svg class="constellation" viewBox="0 0 600 640" preserveAspectRatio="xMidYMid meet">
+          <g stroke="#c4b5fd" stroke-opacity=".38" stroke-width="1" fill="none">
+            <path d="M470 92 L528 128 L516 186 L462 214 L478 276 L548 290 M528 128 L572 96 M462 214 L414 170"/>
+            <path d="M58 446 L112 488 L96 556 L160 584 M112 488 L168 470"/>
+          </g>
+          <g fill="#fff">
+            <circle cx="470" cy="92" r="2.6"/><circle cx="528" cy="128" r="3.2"/><circle cx="516" cy="186" r="2.4"/><circle cx="462" cy="214" r="2.8"/><circle cx="478" cy="276" r="2.2"/><circle cx="548" cy="290" r="2.8"/><circle cx="572" cy="96" r="2"/><circle cx="414" cy="170" r="2.2"/>
+            <circle cx="58" cy="446" r="2.4"/><circle cx="112" cy="488" r="3"/><circle cx="96" cy="556" r="2.2"/><circle cx="160" cy="584" r="2.6"/><circle cx="168" cy="470" r="2"/>
+          </g>
+          <g fill="#c4b5fd" opacity=".35"><circle cx="528" cy="128" r="9"/><circle cx="112" cy="488" r="8"/></g>
+        </svg>
+        <div class="phone"><img src="/assets/aura/screens/home-dark.webp" alt="" width="600" height="1223" fetchpriority="high"></div>
+      </div>
     </div>
-</section>
 
+    <!-- Voice first: three plain facts about talking to her -->
+    <div class="wrap">
+      <div class="talk">
+        <div class="t"><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg></span><div><h2>Tap once and just talk</h2><p>Hands-free, in a warm, natural voice. Tap to interrupt her anytime.</p></div></div>
+        <div class="t"><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span><div><h2>She looks things up</h2><p>A place nearby, something on the web, what people are saying on X.</p></div></div>
+        <div class="t"><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 12h2M7 8v8M11 5v14M15 9v6M19 11v2"/></svg></span><div><h2>Notes on how you spoke</h2><p>After a call in English, she can write you notes — what went well, what to work on — on the <em>Your voice</em> page.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========== FEATURES =========== -->
+  <section class="pad" style="padding-top:clamp(2.5rem,5vw,4rem);padding-bottom:clamp(2rem,4vw,3rem)" aria-labelledby="does">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">What she does</p>
+        <h2 class="h2" id="does">Tell her once. She <em>carries</em> it forward.</h2>
+        <p class="lede">Most apps forget you the moment you close them. Aura brings your world into every conversation.</p>
+      </div>
+
+      <!-- Daylight band: the two conversation screens are the app's LIGHT theme,
+           so they sit together here, on the app's own lavender ground, and the
+           dark screens stay in the night tiles below. Never alternate them. -->
+      <div class="daylight">
+        <article class="dtile">
+          <p class="k">She remembers</p>
+          <h3>Days later, she still&nbsp;knows.</h3>
+          <p>Mention the dish your friends loved. Next time you ask, she brings it back.</p>
+          <div class="shot"><div class="phone"><img src="/assets/aura/screens/chat-remembers.webp" alt="A chat: asked what she made last time that everyone loved, Aura answers that it was Mom&rsquo;s dal, and that people asked for seconds." width="900" height="1834" loading="lazy"></div></div>
+        </article>
+        <article class="dtile">
+          <p class="k">Reminders</p>
+          <h3>Say it once.</h3>
+          <p>&ldquo;Remind me Friday at 6.&rdquo; Say it in chat or on a call, and it lands on your phone.</p>
+          <div class="shot"><div class="phone"><img src="/assets/aura/screens/reminder-chat.webp" alt="A chat: asked to remind about lentils on Friday at 6 pm, Aura confirms and shows a reminder card for Friday at 6:00 PM." width="900" height="1834" loading="lazy"></div></div>
+        </article>
+        <p class="note">Screens from the release app, on a made-up demo account; the replies are examples from a test server.</p>
+      </div>
+
+      <!-- Night tiles: the dark screens, and the language tile in live text. -->
+      <div class="bento">
+        <article class="tile big">
+          <p class="k">Your sky</p>
+          <h3>See everything she remembers.</h3>
+          <p>Search it, pin what matters, delete anything, permanently. As her memories of you gather, they light stars, one constellation at a time.</p>
+          <div class="shot from-top"><span class="glow"></span><div class="phone"><img src="/assets/aura/screens/memory-sky.webp" alt="The Memory tab at night: a finished Leo constellation, nine of nine stars, above the list of memories." width="600" height="1223" loading="lazy"></div></div>
+        </article>
+        <article class="tile big">
+          <p class="k">Breathe</p>
+          <h3>A minute to come back.</h3>
+          <p>Guided breathing for sleep, calm and reset, whenever you need it.</p>
+          <div class="shot from-bottom"><span class="glow"></span><div class="phone"><img src="/assets/aura/screens/breathing.webp" alt="A guided breathing session: a violet circle counting, and the words Breathe in." width="600" height="1223" loading="lazy"></div></div>
+        </article>
+        <article class="tile wide lang">
+          <div>
+            <p class="k">Your language</p>
+            <h3>English, Hindi or Gujarati.</h3>
+            <p>Choose your language when you sign up, and chat with her in it.</p>
+          </div>
+          <figure class="specimen">
+            <ul>
+              <li><span class="lk">English</span><span class="say">Tap to talk</span></li>
+              <li lang="hi"><span class="lk deva">हिन्दी</span><span class="say deva">बात करने के लिए टैप करें</span></li>
+              <li lang="gu"><span class="lk gujr">ગુજરાતી</span><span class="say gujr">વાત કરવા માટે ટૅપ કરો</span></li>
+            </ul>
+            <figcaption>&ldquo;Tap to talk,&rdquo; as Aura&rsquo;s home screen says it in each language.</figcaption>
+          </figure>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========== PRIVACY — every line traces to privacy.html §2, §4, §6, §10 =========== -->
+  <section class="pad-sm" id="privacy" aria-labelledby="priv-title">
+    <div class="wrap">
+      <div class="privacy">
+        <div>
+          <div class="badge-ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg></div>
+          <p class="eyebrow">Private by design</p>
+          <h2 class="h2 sm" id="priv-title" style="margin-top:.8rem">Yours to see, and yours to delete.</h2>
+        </div>
+        <div class="body">
+          <p><strong>Your profile and memories live on servers we control.</strong> To write each reply, the recent conversation — and any photo you share, or your voice on a call — goes to our AI partner, xAI. For your voice notes, the recording of your side goes to xAI again after the call, to be transcribed. xAI processes it only for those jobs. It doesn&rsquo;t keep it, and it doesn&rsquo;t train on it.</p>
+          <p>We record your side of each call, never Aura&rsquo;s, and keep it on our own servers until you delete that conversation or your account. We never sell your data, and you can see everything Aura remembers and delete it, permanently, anytime.</p>
+          <a class="arrow" href="/aura/privacy.html">Read the Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========== CARE — what she is not (privacy.html §5, terms.html §5) =========== -->
+  <section class="pad-sm" style="padding-top:0" aria-labelledby="care-title">
+    <div class="wrap">
+      <div class="careband">
+        <div>
+          <div class="badge-ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></div>
+          <p class="eyebrow">Care, said plainly</p>
+          <h2 class="h2 sm" id="care-title" style="margin-top:.8rem">A companion, not a clinician.</h2>
+        </div>
+        <div class="body">
+          <p>Aura is for adults 18 and older. She&rsquo;s a wellness and self-reflection companion — <strong>not therapy, not a medical device, and not a crisis service.</strong></p>
+          <p>When a message sounds like a crisis, her reply puts helplines on the screen beside it. These answer around the clock:</p>
+          <ul class="lines" aria-label="Helplines that answer around the clock">
+            <li><span>In the US</span><span class="nums"><a href="tel:988">Call <b>988</b></a><a href="sms:988">Text <b>988</b></a></span></li>
+            <li><span>In India</span><span class="nums"><a href="tel:+919999666555">Vandrevala Foundation <b>+91 9999 666 555</b></a><a href="tel:18005990019">KIRAN <b>1800-599-0019</b></a></span></li>
+            <li><span>Anywhere else</span><span class="nums"><a href="https://findahelpline.com/" rel="noopener"><b>findahelpline.com</b></a></span></li>
+            <li><span>In danger right now?</span><strong>Call your local emergency number</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========== PRO — the 09-28 pricing line: a full year of Pro, free =========== -->
+  <section class="pad-sm" aria-labelledby="pro-title">
+    <div class="wrap">
+      <div class="pro">
+        <p class="eyebrow">Aura Pro</p>
+        <h2 class="h2" id="pro-title">A full year of Pro, <em>free.</em></h2>
+        <p>Every new account gets one, with no card needed.</p>
+        <ul class="includes" aria-label="What your year of Pro includes">
+          <li>Unlimited chat</li>
+          <li>300 voice minutes a month</li>
+          <li>Up to an hour of voice a day</li>
+          <li>What people are saying on X</li>
+        </ul>
+        <div class="stores" id="get">
+          <a class="store" href="https://apps.apple.com/app/id6771584896" aria-label="Download Aura on the App Store">
+            <svg viewBox="0 0 384 512" fill="#fff" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+            <span><small>Download on the</small><strong>App Store</strong></span>
+          </a>
+          <a class="store" href="https://play.google.com/store/apps/details?id=ai.vigyaan.aura" aria-label="Get Aura on Google Play">
+            <svg viewBox="0 0 512 512" aria-hidden="true"><path fill="#00d7fe" d="M47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0z"/><path fill="#00f076" d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1z"/><path fill="#ffce00" d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z"/><path fill="#ff3a44" d="M104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+            <span><small>GET IT ON</small><strong>Google Play</strong></span>
+          </a>
+        </div>
+        <p class="fine">After the year, you can stay on Free — 100 messages a day, ten voice minutes a month, and everything she remembers — or keep Pro through the App Store or Google Play.</p>
+        <p class="fine">On a phone? <a class="link" href="/aura/get/">vigyaan.ai/aura/get</a> opens the right store.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========== HELP & SUPPORT — must stay on /aura/ (App Store Support URL) =========== -->
+  <section class="pad" id="support" aria-labelledby="support-title">
+    <div class="wrap support">
+      <div>
+        <p class="eyebrow">Help &amp; support</p>
+        <h2 class="h2 sm" id="support-title" style="margin-top:.9rem">A small team that reads every message.</h2>
+        <p class="muted" style="margin-top:1rem;max-width:30rem">Email us and we&rsquo;ll get back to you, usually within two business days. Include your account email, your device and its OS version, and what happened, and we can help faster.</p>
+        <div class="contact">
+          <a class="crow" href="mailto:support@vigyaan.ai"><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg></span><span><b>support@vigyaan.ai</b><span class="what">Help with the app</span></span></a>
+          <a class="crow" href="mailto:privacy@vigyaan.ai"><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 3l7 3v5.5c0 4.4-3 8-7 9.5-4-1.5-7-5.1-7-9.5V6z"/></svg></span><span><b>privacy@vigyaan.ai</b><span class="what">Privacy and data requests</span></span></a>
+        </div>
+        <div class="links">
+          <a href="/aura/privacy.html">Privacy Policy</a>
+          <a href="/aura/terms.html">Terms of Service</a>
+          <a href="/aura/delete-account.html">Delete your account</a>
+          <a href="/aura/campus/">Aura for campuses</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sr">Common questions</h3>
+        <div class="faq">
+          <details open>
+            <summary>How do I delete my account?</summary>
+            <div class="a">
+              <p>In the app, tap your avatar at the top of Home to open your <strong>Profile</strong>. Near the bottom, open <strong>Privacy &amp; account</strong>, tap <strong>Delete Account</strong>, and confirm. It takes effect right away.</p>
+              <p>Can&rsquo;t open the app? Email <a href="mailto:privacy@vigyaan.ai">privacy@vigyaan.ai</a> from your account&rsquo;s email address, and we&rsquo;ll complete it within 30 days. <a href="/aura/delete-account.html">What gets deleted, and when</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>Managing or cancelling Pro</summary>
+            <div class="a">
+              <p>Your free first year of Pro needs no card, so there is nothing to cancel. If you buy Pro, it&rsquo;s billed through the App Store or Google Play, and you manage it in your store account:</p>
+              <ul>
+                <li><strong>iPhone:</strong> Settings &rarr; your name &rarr; Subscriptions &rarr; Aura.</li>
+                <li><strong>Android:</strong> Google Play &rarr; profile &rarr; Payments &amp; subscriptions &rarr; Subscriptions &rarr; Aura.</li>
+              </ul>
+              <p>Cancelling stops the next renewal; you keep Pro until the end of the period you&rsquo;ve paid for. We don&rsquo;t charge cancellation fees.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Signing in</summary>
+            <div class="a"><p>Aura signs you in with Apple or Google, so there&rsquo;s no separate Aura password. Use the same button you signed up with.</p></div>
+          </details>
+          <details>
+            <summary>Is my data private?</summary>
+            <div class="a"><p>Your account, history and memories are stored on infrastructure we control. To write a reply, the recent conversation — and any photo, or your voice on a call — goes to our AI partner xAI, which doesn&rsquo;t keep it and doesn&rsquo;t train on it. Memories marked sensitive are left out of everything we send to xAI, calls included. What you say on a call, xAI hears live, and your voice notes are made from those words. We never sell your data or use it for ads. <a href="/aura/privacy.html">The full Privacy Policy</a></p></div>
+          </details>
+          <details>
+            <summary>Who can use Aura?</summary>
+            <div class="a"><p>Aura is for adults 18 and older. She is a wellness and self-reflection companion — not a medical device, not a substitute for professional care, and not a crisis service.</p></div>
+          </details>
+          <details>
+            <summary>Something isn&rsquo;t working</summary>
+            <div class="a"><p>Email <a href="mailto:support@vigyaan.ai">support@vigyaan.ai</a> with your device, its OS version and what happened. A screenshot helps.</p></div>
+          </details>
+        </div>
+        <div class="crisis">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>
+          <p>If you&rsquo;re in crisis or thinking about harming yourself, please reach out now. In the US, call or text <a href="tel:988">988</a>. In India, call Vandrevala Foundation on <a href="tel:+919999666555">+91&nbsp;9999&nbsp;666&nbsp;555</a> or KIRAN on <a href="tel:18005990019">1800-599-0019</a>, at any hour. Anywhere else, find a line at <a href="https://findahelpline.com/" rel="noopener">findahelpline.com</a>, or call your local emergency number.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- shell:footer -->
+<footer class="site">
+  <div class="wrap">
+    <div class="fgrid" style="--lines:2">
+      <div class="about">
+        <a class="fbrand" href="/"><img src="/assets/logo/spark.svg" alt="" width="30" height="30">Vigyaan</a>
+        <p class="muted small" style="margin-top:.9rem;max-width:20rem">A small house in New Jersey. We make a few things, slowly, and name the next one when it&rsquo;s real.</p>
+      </div>
+      <div>
+        <h2><span class="dot" style="--dot:#a78bfa;--dot-glow:#7c3aed" aria-hidden="true"></span>Aura</h2>
+        <ul>
+          <li><a href="/aura/get/">Get the app</a></li>
+          <li><a href="/aura/">Meet Aura</a></li>
+          <li><a href="/aura/#support">Help &amp; support</a></li>
+          <li><a href="/aura/privacy.html">Privacy Policy</a></li>
+          <li><a href="/aura/terms.html">Terms of Service</a></li>
+          <li><a href="/aura/delete-account.html">Delete your account</a></li>
+          <li><a href="/aura/campus/">For campuses</a></li>
+        </ul>
+        <p class="note">A wellness companion for adults 18+. Not therapy, and not a crisis service.</p>
+      </div>
+      <div>
+        <h2><span class="dot" style="--dot:#d9b26a;--dot-glow:rgba(217,170,96,.8)" aria-hidden="true"></span>Attars</h2>
+        <ul>
+          <li><a href="/attars/#oils">The oils</a></li>
+          <li><a href="/attars/#ordering">How ordering works</a></li>
+          <li><a href="/cart/">Your request list</a></li>
+          <li><a href="/wholesale/">Wholesale</a></li>
+        </ul>
+        <p class="note">Alcohol-free perfume oils. Cosmetics, not medicine.</p>
+      </div>
+      <div>
+        <h2>Write to us</h2>
+        <ul>
+          <li><span class="mail-k">Aura help</span><a class="mail" href="mailto:support@vigyaan.ai">support@vigyaan.ai</a></li>
+          <li><span class="mail-k">Privacy &amp; your data</span><a class="mail" href="mailto:privacy@vigyaan.ai">privacy@vigyaan.ai</a></li>
+          <li><span class="mail-k">Attars &amp; the studio</span><a class="mail" href="mailto:setu@vigyaan.ai">setu@vigyaan.ai</a></li>
+          <li><a href="/studio/">About the studio</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbottom">
+      <span>&copy; 2026 Vigyaan LLC &middot; New Jersey</span>
+      <span>Aura by Vigyaan &middot; Attars by Vigyaan</span>
+    </div>
+  </div>
+</footer>
+<!-- /shell:footer -->
+<!-- shell:scripts -->
+<script src="/js/site.js" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
+<!-- /shell:scripts -->
+<!--/email_off-->
 </body>
 </html>

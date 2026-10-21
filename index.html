@@ -4,108 +4,183 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vigyaan — Aura, attars, and what comes next</title>
-<meta name="description" content="Vigyaan is a New Jersey studio. Aura is live on iOS and Android. Alcohol-free attars are the next line.">
-<link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32.png">
-<link rel="apple-touch-icon" href="assets/logo/apple-touch-180.png">
-<meta property="og:title" content="Vigyaan — Aura, attars, and what comes next">
-<meta property="og:description" content="Vigyaan is a New Jersey studio. Aura is live on iOS and Android. Alcohol-free attars are the next line.">
-<meta property="og:image" content="https://vigyaan.ai/assets/logo/dp-warm-oil-stars-1024.png">
-<meta name="theme-color" content="#120c0b">
+<meta name="description" content="Vigyaan is a small New Jersey studio. Aura, a private AI companion who remembers you, is live on iPhone and Android. Alcohol-free attars are the first drop.">
+<link rel="canonical" href="https://vigyaan.ai/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vigyaan.ai/">
+<meta property="og:site_name" content="Vigyaan">
+<meta property="og:title" content="Vigyaan — a small house in New Jersey">
+<meta property="og:description" content="Aura is live on iPhone and Android. Alcohol-free attars are the first drop.">
+<meta property="og:image" content="https://vigyaan.ai/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0f0b0a">
+<!-- shell:head -->
+<link rel="icon" type="image/svg+xml" href="/assets/logo/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/logo/apple-touch-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/house.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&amp;family=Outfit:wght@300..600&amp;display=swap">
+<link rel="stylesheet" href="/css/house.css">
+<!-- /shell:head -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Vigyaan LLC","url":"https://vigyaan.ai/","logo":"https://vigyaan.ai/assets/logo/vigyaan-mark-512.png","email":"setu@vigyaan.ai","address":{"@type":"PostalAddress","addressRegion":"NJ","addressCountry":"US"},"brand":[{"@type":"Brand","name":"Aura by Vigyaan"},{"@type":"Brand","name":"Attars by Vigyaan"}]}
+</script>
 </head>
-<body>
+<body data-world="house">
+<!--email_off-->
+<a class="skip" href="#main">Skip to content</a>
+<!-- shell:header {"world":"house","current":"home"} -->
 <header class="site">
   <div class="wrap navrow">
-    <a class="brand" href=""><img src="assets/logo/dp-warm-oil-stars-1024.png" alt="">Vigyaan</a>
-    <nav class="desk">
-      <a href="shop/">Shop</a>
-      <a href="aura/">Aura</a>
-      <a href="studio/">Studio</a>
-      <a href="wholesale/">Wholesale</a>
+    <a class="brand" href="/" aria-label="Vigyaan, home"><img src="/assets/logo/spark.svg" alt="" width="30" height="30">Vigyaan</a>
+    <nav class="desk" aria-label="Main">
+      <a href="/aura/"><span class="dot" style="--dot:#a78bfa;--dot-glow:#7c3aed" aria-hidden="true"></span>Aura</a>
+      <a href="/attars/"><span class="dot" style="--dot:#d9b26a;--dot-glow:rgba(217,170,96,.8)" aria-hidden="true"></span>Attars</a>
+      <a href="/studio/">Studio</a>
     </nav>
-    <a class="bag" href="cart/" aria-label="Request list"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h12l-1.2 8H7.2L6 6zm0 0L5 3H2"/><circle cx="8" cy="17" r="1"/><circle cx="15" cy="17" r="1"/></svg><span class="badge" id="bagcount" hidden>0</span></a>
+    <div class="nav-end">
+      <details class="menu">
+        <summary aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></summary>
+        <nav class="panel" aria-label="Menu">
+          <a href="/" aria-current="page"><span>Vigyaan</span><small>you are here</small></a>
+          <a href="/aura/"><span><span class="dot" style="--dot:#a78bfa;--dot-glow:#7c3aed" aria-hidden="true"></span>Aura</span><small>the app</small></a>
+          <a href="/attars/"><span><span class="dot" style="--dot:#d9b26a;--dot-glow:rgba(217,170,96,.8)" aria-hidden="true"></span>Attars</span><small>the oils</small></a>
+          <a href="/studio/"><span>Studio</span><small>about us</small></a>
+          <a href="/aura/#support"><span>Aura help</span><small>support</small></a>
+          <div class="get">
+            <p>Get Aura</p>
+            <div class="row">
+              <a href="https://apps.apple.com/app/id6771584896" aria-label="Get Aura on the App Store"><svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>App Store</a>
+              <a href="https://play.google.com/store/apps/details?id=ai.vigyaan.aura" aria-label="Get Aura on Google Play"><svg viewBox="0 0 512 512" aria-hidden="true"><path fill="#00d7fe" d="M47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0z"/><path fill="#00f076" d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1z"/><path fill="#ffce00" d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z"/><path fill="#ff3a44" d="M104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>Google Play</a>
+            </div>
+          </div>
+        </nav>
+      </details>
+    </div>
   </div>
 </header>
-<main>
+<!-- /shell:header -->
 
-<section class="hero">
-  <div class="hero-glow"></div>
-  <div class="wrap" style="position:relative">
-    <p class="kicker">Vigyaan LLC · New Jersey</p>
-    <h1 style="margin-top:1.1rem">A house for things that stay with you.</h1>
-    <p class="lede">Aura is live on iOS and Android. Alcohol-free attars are the next line — oils you can request from New Jersey. A third thing is in the studio. We will name it when it is real.</p>
-    <div class="row">
-      <a class="btn btn-gold" href="shop/">Shop attars</a>
-      <a class="btn btn-line" href="aura/">Meet Aura</a>
+<main id="main">
+  <!-- Hero: one sentence about the house, nothing to buy -->
+  <section class="home-hero">
+    <div class="wrap">
+      <p class="eyebrow">Vigyaan &middot; a New Jersey studio</p>
+      <h1 class="display">A house for things that <em>stay</em> with you.</h1>
+      <p class="lede">We make a few things, slowly, and keep them honest. Two are here today: a companion on your phone, and oils you wear close.</p>
     </div>
-  </div>
-</section>
-<section class="wrap lanes">
-  <a class="card" href="aura/">
-    <div class="k">Live</div>
-    <h2>Aura</h2>
-    <p>A private AI wellness companion who remembers what you tell her — and is built to be needed less, not more. Support, privacy, and the stores stay at the same links.</p>
-    <span class="cta">Open Aura →</span>
-  </a>
-  <a class="card" href="shop/">
-    <div class="k">First drop</div>
-    <h2>Attars</h2>
-    <p>6 ml alcohol-free roll-ons. First Rain, Night Bloom, Jasmine — mix a trio for $18. Request now; we confirm before any payment.</p>
-    <span class="cta">See the oils →</span>
-  </a>
-  <a class="card" href="studio/">
-    <div class="k">Coming</div>
-    <h2>Next</h2>
-    <p>Same house, different form. We will not invent a name to fill this card. When it ships, it will sit here.</p>
-    <span class="cta">The studio →</span>
-  </a>
-</section>
-<section class="section wrap">
-  <p class="kicker">Shop</p>
-  <h2 style="font-size:1.85rem;margin:0.5rem 0 1.5rem">Three oils. One trio.</h2>
-  <div class="grid-4">
-    <a class="pcard" href="shop/first-rain/"><img src="assets/products/first-rain.jpg" alt="First Rain"><div class="meta"><div class="scent">Mitti</div><h3>First Rain</h3><div class="price">$8</div></div></a>
-    <a class="pcard" href="shop/night-bloom/"><img src="assets/products/night-bloom.jpg" alt="Night Bloom"><div class="meta"><div class="scent">Raat Rani</div><h3>Night Bloom</h3><div class="price">$8</div></div></a>
-    <a class="pcard" href="shop/jasmine/"><img src="assets/products/jasmine.jpg" alt="Jasmine"><div class="meta"><div class="scent">Mogra</div><h3>Jasmine</h3><div class="price">$8</div></div></a>
-    <a class="pcard" href="shop/discovery-trio/"><img src="assets/products/trio.jpg" alt="Discovery trio"><div class="meta"><div class="scent">Mix or match</div><h3>Discovery trio</h3><div class="price">$18</div></div></a>
-  </div>
-</section>
+  </section>
+
+  <!-- One door per line, each opening onto its own world. A door takes all its
+       colours from its line's [data-world] token block in css/house.css. A new
+       line takes the next number; the grid re-flows (2-up, 3-up, then pairs). -->
+  <section class="wrap" aria-label="Our lines">
+    <div class="doors">
+      <article class="door" data-world="aura">
+        <div class="top">
+          <img class="icon" src="/assets/aura/icon-128.webp" alt="" width="52" height="52">
+          <p class="eyebrow"><span class="num">01</span>Live on iPhone &amp; Android</p>
+        </div>
+        <h2><a href="/aura/">Aura</a></h2>
+        <p class="desc">A private AI companion who actually remembers you. Tap once and just talk.</p>
+        <div class="go">
+          <span class="btn btn-accent" aria-hidden="true">Meet Aura</span>
+          <a class="alt" href="/aura/get/">Get the app</a>
+          <span class="tag">1 year of Pro free &middot; no card</span>
+        </div>
+        <div class="visual">
+          <div class="phone"><img src="/assets/aura/screens/home-dark.webp" alt="Aura&rsquo;s home screen at night: a greeting, the Tap to talk circle, Take a breath, and Your Guides" width="600" height="1223" loading="lazy"></div>
+        </div>
+      </article>
+
+      <article class="door" data-world="attar">
+        <div class="top">
+          <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12 2.8c-3.2 4.6-5.6 7.6-5.6 11a5.6 5.6 0 0 0 11.2 0c0-3.4-2.4-6.4-5.6-11z"/><path d="M9.4 15.2a2.8 2.8 0 0 0 2.6 2.4" stroke-linecap="round"/></svg></span>
+          <p class="eyebrow"><span class="num">02</span>First drop &middot; requests open</p>
+        </div>
+        <h2><a href="/attars/">Attars</a></h2>
+        <p class="desc">Alcohol-free perfume oils in 6&nbsp;ml glass roll-ons. First Rain, Night Bloom and Jasmine.</p>
+        <div class="go">
+          <span class="btn btn-accent" aria-hidden="true">See the oils</span>
+          <span class="tag">$8 each &middot; <a class="alt" href="/attars/discovery-trio/">a trio of any three, $18</a></span>
+        </div>
+        <div class="visual">
+          <div class="arches">
+            <div class="arch"><img src="/assets/attars/first-rain-480.webp" srcset="/assets/attars/first-rain-480.webp 480w, /assets/attars/first-rain-800.webp 800w" sizes="240px" alt="First Rain, a 6 ml roll-on" loading="lazy" width="480" height="480"></div>
+            <div class="arch"><img src="/assets/attars/jasmine-480.webp" srcset="/assets/attars/jasmine-480.webp 480w, /assets/attars/jasmine-800.webp 800w" sizes="290px" alt="Jasmine, a 6 ml roll-on" loading="lazy" width="480" height="480"></div>
+            <div class="arch"><img src="/assets/attars/night-bloom-480.webp" srcset="/assets/attars/night-bloom-480.webp 480w, /assets/attars/night-bloom-800.webp 800w" sizes="240px" alt="Night Bloom, a 6 ml roll-on" loading="lazy" width="480" height="480"></div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- The slot for the next line: honest about not existing yet -->
+    <div class="next">
+      <div class="k">
+        <p class="eyebrow"><span class="num">03</span>Next</p>
+        <h2>Same house, different form.</h2>
+        <p>We won&rsquo;t invent a name to fill this space. When it&rsquo;s real, it gets its own door.</p>
+      </div>
+      <a class="arrow" href="/studio/">The studio</a>
+    </div>
+  </section>
 </main>
+
+<!-- shell:footer -->
 <footer class="site">
-  <div class="wrap fgrid">
-    <div>
-      <div class="brand"><img src="assets/logo/dp-warm-oil-stars-1024.png" alt="" style="width:2rem;height:2rem;border-radius:.5rem">Vigyaan</div>
-      <p class="muted" style="margin-top:12px;max-width:20rem">A New Jersey studio. Aura is live. Attars are the next line. We name the third when it is real.</p>
+  <div class="wrap">
+    <div class="fgrid" style="--lines:2">
+      <div class="about">
+        <a class="fbrand" href="/"><img src="/assets/logo/spark.svg" alt="" width="30" height="30">Vigyaan</a>
+        <p class="muted small" style="margin-top:.9rem;max-width:20rem">A small house in New Jersey. We make a few things, slowly, and name the next one when it&rsquo;s real.</p>
+      </div>
+      <div>
+        <h2><span class="dot" style="--dot:#a78bfa;--dot-glow:#7c3aed" aria-hidden="true"></span>Aura</h2>
+        <ul>
+          <li><a href="/aura/get/">Get the app</a></li>
+          <li><a href="/aura/">Meet Aura</a></li>
+          <li><a href="/aura/#support">Help &amp; support</a></li>
+          <li><a href="/aura/privacy.html">Privacy Policy</a></li>
+          <li><a href="/aura/terms.html">Terms of Service</a></li>
+          <li><a href="/aura/delete-account.html">Delete your account</a></li>
+          <li><a href="/aura/campus/">For campuses</a></li>
+        </ul>
+        <p class="note">A wellness companion for adults 18+. Not therapy, and not a crisis service.</p>
+      </div>
+      <div>
+        <h2><span class="dot" style="--dot:#d9b26a;--dot-glow:rgba(217,170,96,.8)" aria-hidden="true"></span>Attars</h2>
+        <ul>
+          <li><a href="/attars/#oils">The oils</a></li>
+          <li><a href="/attars/#ordering">How ordering works</a></li>
+          <li><a href="/cart/">Your request list</a></li>
+          <li><a href="/wholesale/">Wholesale</a></li>
+        </ul>
+        <p class="note">Alcohol-free perfume oils. Cosmetics, not medicine.</p>
+      </div>
+      <div>
+        <h2>Write to us</h2>
+        <ul>
+          <li><span class="mail-k">Aura help</span><a class="mail" href="mailto:support@vigyaan.ai">support@vigyaan.ai</a></li>
+          <li><span class="mail-k">Privacy &amp; your data</span><a class="mail" href="mailto:privacy@vigyaan.ai">privacy@vigyaan.ai</a></li>
+          <li><span class="mail-k">Attars &amp; the studio</span><a class="mail" href="mailto:setu@vigyaan.ai">setu@vigyaan.ai</a></li>
+          <li><a href="/studio/">About the studio</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="muted">
-      <p style="color:var(--fg);font-weight:500;margin-bottom:12px">House</p>
-      <p><a href="shop/">Shop attars</a></p>
-      <p><a href="aura/">Aura support</a></p>
-      <p><a href="aura/privacy.html">Privacy</a></p>
-      <p><a href="aura/terms.html">Terms</a></p>
-      <p><a href="aura/delete-account.html">Delete account</a></p>
-      <p><a href="aura/campus/">For campuses</a></p>
-    </div>
-    <div class="muted">
-      <p style="color:var(--fg);font-weight:500;margin-bottom:12px">Contact</p>
-      <p><a class="gold" href="mailto:setu@vigyaan.ai">setu@vigyaan.ai</a></p>
-      <p style="margin-top:12px">Vigyaan LLC · New Jersey</p>
-      <p class="tiny">Alcohol-free perfume oils. Cosmetics, not medicine. Aura is a wellness companion for adults 18+, not therapy.</p>
+    <div class="fbottom">
+      <span>&copy; 2026 Vigyaan LLC &middot; New Jersey</span>
+      <span>Aura by Vigyaan &middot; Attars by Vigyaan</span>
     </div>
   </div>
 </footer>
-<script>
-(function(){
-  try {
-    var n = (JSON.parse(localStorage.getItem('vigyaan-request')||'{}').state||{}).lines||[];
-    var c = n.reduce(function(a,l){return a+(l.qty||0)},0);
-    var el = document.getElementById('bagcount');
-    if (el && c) { el.hidden=false; el.textContent=c; }
-  } catch(e) {}
-})();
-</script>
-</body></html>
+<!-- /shell:footer -->
+<!-- shell:scripts -->
+<script src="/js/site.js" defer></script>
+<script defer src="/_vercel/insights/script.js"></script>
+<!-- /shell:scripts -->
+<!--/email_off-->
+</body>
+</html>
