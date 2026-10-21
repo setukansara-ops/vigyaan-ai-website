@@ -5,6 +5,7 @@
     { "source": "/shop/", "destination": "/attars/", "permanent": true },
     { "source": "/shop/:slug", "destination": "/attars/:slug/", "permanent": true },
     { "source": "/shop/:slug/", "destination": "/attars/:slug/", "permanent": true },
+    { "source": "/assets/og/attars.jpg", "destination": "/assets/og/attars-3-pack.jpg", "permanent": true },
     { "source": "/aura/privacy", "destination": "/aura/privacy.html", "permanent": true },
     { "source": "/aura/privacy/", "destination": "/aura/privacy.html", "permanent": true },
     { "source": "/aura/terms", "destination": "/aura/terms.html", "permanent": true },

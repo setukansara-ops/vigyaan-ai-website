@@ -44,6 +44,25 @@ for (const f of pages) {
     for (const m of vis.matchAll(/>([^<]*)</g)) if (/\d ml\b/.test(m[1])) { say(f, 'C11 "6 ml" without nbsp: ' + m[1].trim().slice(0, 60)); break; }
   }
   if (/class="dot-(aura|attar)"|door-aura|door-attar/.test(s)) say(f, 'C7 line-keyed class still used');
+  // Attars are coming soon (founder D36/D45, Oct 2026): no single price, no old trio price, no
+  // request/order flow, no JSON-LD offers, Vigyaan(TM) never (R), net contents only as 0.20 fl oz (6 ml).
+  // Checked on the whole file, head (meta, OG, JSON-LD) included.
+  const d45 = [
+    [/\$8\b|\$18\b|trio of any three/i, 'D36 single or old trio price'],
+    [/data-add|data-bagcount|Add to request list|Your request list|Request now|confirm before any payment/i, 'D45 request/order flow'],
+    [/®|&reg;/, 'brand is Vigyaan&trade;, never &reg;'],
+  ];
+  for (const [re, why] of d45) if (re.test(s)) say(f, 'D45: ' + why);
+  // (attar pages only: Aura's MobileApplication JSON-LD carries its real free-app offer)
+  if (/<body data-world="attar"/.test(s) && /"offers"\s*:/.test(s)) say(f, 'D45: JSON-LD offer while nothing is on sale');
+  for (const m of s.matchAll(/([\d.]+)(?:&nbsp;| )fl(?:&nbsp;| )oz((?:&nbsp;| )\(6(?:&nbsp;| )ml\))?/g)) if (m[1] !== '0.20' || !m[2]) say(f, 'D45: net contents not "0.20 fl oz (6 ml)": ' + m[0]);
+  // Pinned: the alcohol-free wording stays exactly as it is until the founder rules otherwise
+  // ("keep the alcohol free tag as is", 2026-10-21). Changing these lines is a declared decision.
+  if (rel === 'attars/index.html') {
+    if (!s.includes('<textPath href="#sealpath">ALCOHOL-FREE · 6 ML ROLL-ON · OIL · </textPath>')) say(f, 'pin: alcohol-free seal changed');
+    if (!s.includes('Scent you wear <em>close</em>, not a cloud of alcohol.')) say(f, 'pin: hero line changed');
+  }
+  if (s.includes('<!-- shell:footer') && !s.includes('<p class="note">Alcohol-free perfume oils. Cosmetics, not medicine.</p>')) say(f, 'pin: footer note changed');
 }
 console.log(pages.length, 'pages,', issues, 'issues');
 process.exit(issues ? 1 : 0);
