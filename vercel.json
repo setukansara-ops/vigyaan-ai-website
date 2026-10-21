@@ -12,7 +12,18 @@
     { "source": "/aura/delete-account", "destination": "/aura/delete-account.html", "permanent": true },
     { "source": "/aura/delete-account/", "destination": "/aura/delete-account.html", "permanent": true }
   ],
+  "rewrites": [
+    { "source": "/brand/v1.0/:f(SHA256SUMS|VERSION)/", "destination": "/brand/v1.0/:f" }
+  ],
   "headers": [
+    {
+      "source": "/brand/v1.0/:f(SHA256SUMS|VERSION)/",
+      "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
+    },
+    {
+      "source": "/brand/v1.0/:f(SHA256SUMS|VERSION)",
+      "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
+    },
     {
       "source": "/aura/(.*)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=300" }]

@@ -1,3 +1,8 @@
 tools/
 docs/
 wip/
+# brand kit: versioned in the repo, never served (brand/v1.0/BRAND.md section 11)
+brand/v*/source/
+brand/v*/verification/
+brand/v*/signature/
+brand/v*/verify.ps1

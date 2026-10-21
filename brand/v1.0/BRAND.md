@@ -25,6 +25,12 @@ is `3db12144…c824`.
 - Three small dots around it are the "night" the spark sits in.
 - It is flat: two golds, an ivory centre, and no gradient, glow or bevel.
 
+The comment inside `spark.svg` ("from assets/logo/favicon.svg on main, without its dark
+tile") is historical and not exact. The website's `assets/logo/favicon.svg` at `ecc9f99e`
+is the older 09-19 geometry: shorter rays, all four rays `#c4a06a`, and other dot
+positions. The v1.0 tile is `masters/spark-tile.svg`. The comment stays because
+`spark.svg` is kept byte for byte.
+
 The geometry, in a 32-unit box with no background:
 
 | Part | Geometry | Fill |
@@ -49,8 +55,8 @@ The wordmark is **outlined**. It is not set in type. The paths come from Chrome'
 render of the live header: printed to PDF, where Chrome embeds the exact
 variable-font instance as glyph outlines, then turned into paths with PyMuPDF.
 So the wordmark never depends on a font file, a font update or a fallback font.
-`source/` has the method and the inputs. `verification/` has the proof that it
-matches the live header.
+`source/` has the method and the inputs. `verification/` has the comparison with the
+live header.
 
 ## 2. The files (masters/)
 
@@ -67,7 +73,7 @@ ground. **A file without `-light` is for dark grounds.**
 | `mono-dark.svg` | The spark in one colour, ivory `#f4ece1` | Dark grounds, single-ink |
 | `spark-mono.svg` | The spark in one colour, `currentColor` | Foil, emboss, CSS-coloured use |
 | `wordmark.svg` / `wordmark-light.svg` / `wordmark-mono.svg` | The outlined word alone, in ivory / ink / `currentColor`. The viewBox is the ink box. | Only where the spark is already present nearby |
-| `lockup-horizontal.svg` | **The primary logo**: bare spark and ivory word. This is exactly the live header `.brand`. | Dark grounds |
+| `lockup-horizontal.svg` | **The primary logo**: bare spark and ivory word, drawn from the live desktop header `.brand`, with the baseline fixed at 0.7 S (below, and section 14, item 2). | Dark grounds |
 | `lockup-horizontal-light.svg` | The tile and the ink `#120c0b` word | **Light and white grounds** (documents, email, letterhead) |
 | `lockup-horizontal-mono.svg` | The horizontal lockup in `currentColor` | One-ink print, foil |
 | `lockup-stacked.svg` / `-light.svg` / `-mono.svg` | The spark centred above the word | Square-ish spaces: carton fronts, slides, stickers |
@@ -76,11 +82,15 @@ ground. **A file without `-light` is for dark grounds.**
 - The spark box is S × S at the left.
 - The word starts 0.32 S after the box (the header's `.6rem` gap). It is set at 0.65 S
   (the header's 1.22rem).
-- The baseline is **0.7 S** below the top of the box.
+- The baseline is **0.7 S** below the top of the box (21.0 at S = 30). This is a fixed
+  decision. It is where headless Chrome 155 at 4× pixel density paints the live
+  header's text. Another renderer can paint the live text lower: in one measured case,
+  a second Chromium at 1.5× density, about 1 CSS px lower. The master does not follow
+  any renderer. It is the truth.
 - The whole lockup is **3.8 S × S** (114 × 30 at header size). The viewBox is
   `0 0 114 30`, so an `<img>` at S = 30 lands on whole pixels.
 
-**The stacked lockup is new in v1.0.** It is not on the website.
+**The stacked lockup is new in v1.0.** The website did not use it on v1.0's date.
 - The spark box S is centred above the word.
 - The word is at 0.75× the header scale (em 0.4875 S), so its ink is 1.84 S wide.
 - The gap from the bottom of the spark box to the top of the word's ink is 0.22 S.
@@ -99,7 +109,7 @@ of the one before.
 | `tile/` | `spark-tile-{16,…,1024}.png` | Transparent corners |
 | `mono/` | `mono-light-` / `mono-dark-{64,128,256,512,1024}.png` | Transparent |
 | `lockup/` | `lockup-horizontal[-light]-h{32,48,64,128,256,512,1024}.png`, `lockup-stacked[-light]-h{48,64,128,256,512,1024}.png` | Transparent. No 16 px horizontal lockup: the word would be 10 px, below the minimum. No stacked lockup under 48 px. |
-| `icons/` | `favicon-16/32/48.png`, `favicon.ico` (16+32+48, the same pixels), `apple-touch-180.png` (opaque, full-bleed), `android-maskable-192/512.png` (opaque, 85%), `logo-512.png` (the tile) | For the website and app stores. `logo-512.png` is also the Google (JSON-LD), Zoho org and Play developer-page logo. |
+| `icons/` | `favicon-16/32/48.png`, `favicon.ico` (16+32+48, the same pixels), `apple-touch-180.png` (opaque, full-bleed), `android-maskable-192/512.png` (opaque, 85%), `logo-512.png` (the tile) | For the website and app stores. `logo-512.png` is also the company logo wherever a square logo is asked for (Google's JSON-LD, mail and store developer pages). |
 | `social/` | `social-avatar-1024.png` (opaque, circle-safe), `og-1200x630.png` (+ `.jpg`, q90) | Avatars everywhere. The link-preview card follows the style of `assets/og/aura.jpg`. |
 | `email/` | `sig-lockup-light@2x.png` (384×112, opaque white, shown at **192×56**), `sig-lockup-dark@2x.png` (352×112, opaque `#0f0b0a`, shown at **176×56**) | PNG on purpose, because Gmail and Outlook do not show SVG in mail. The backgrounds are opaque so dark-mode mail apps cannot drop the ink word onto black. |
 
@@ -188,68 +198,85 @@ of the one before.
 - Redraw, retrace or "clean up" the spark or the word. Don't re-type the word in Fraunces.
 - Recolour the mark, including into a line's colours. Use only the three mono inks.
 - Stretch, squash, rotate, skew, outline or crop the mark.
-- Add effects: glow, shadow, bevel, gradient, texture or 3-D. The 3-D faceted star in
-  today's `assets/og.jpg` is exactly this mistake.
+- Add effects: glow, shadow, bevel, gradient, texture or 3-D. The faceted 3-D star of the
+  retired `assets/og.jpg` (section 10) is exactly this mistake.
 - Put the bare gold spark on white or ivory.
 - Set the name in capitals ("VIGYAAN") or in a sans-serif as a logo.
 - Rearrange the lockup (word on the left, a different gap or size) or invent new
   lockups. Horizontal and stacked are the only two.
-- Mix it with the Aura icon. **Aura is a separate brand**: it has its own icon (the
-  master is `aura-mobile/assets/logo/aura-icon-master.png`), its own violet world
-  and its own ads. Aura says "by Vigyaan" in text and never shows the spark.
+- Mix it with the Aura icon. **Aura is a separate brand**, with its own icon, its own
+  violet world and its own ads. Aura says "by Vigyaan" in text and never shows the
+  spark.
 
 ## 9. Where each file goes
 
-| Use | File | Status on 2026-10-21 |
-|---|---|---|
-| Website header and footer | `assets/logo/spark.svg` (= `masters/spark.svg`) | **Live** since PR #20 |
-| Website favicon (SVG) | `masters/spark-tile.svg` | Live `assets/logo/favicon.svg` is still the **older 09-19 geometry** (shorter rays, all-`#c4a06a`). Swap pending on the founder's word. |
-| Favicon PNG and ICO | `exports/icons/favicon-32.png`, `favicon.ico` | Live `favicon-32.png` still shows the **09-19 oil-and-starfield painting**. Pending. |
-| iPhone home screen | `exports/icons/apple-touch-180.png` | Live `apple-touch-180.png` is the old painting. Pending. |
-| Android / PWA | `exports/icons/android-maskable-192/512.png` | The site has no web manifest today |
-| Google company logo (JSON-LD `Organization.logo`) | `exports/icons/logo-512.png` | Live `vigyaan-mark-512.png` is the old painting. Pending. |
-| Link previews (`og:image` of `/` and `/studio/`) | `exports/social/og-1200x630.jpg` | Live `assets/og.jpg` is a **third mark** (a 3-D star with spaced caps). Pending. After a swap, re-scrape in the Facebook Sharing Debugger. |
-| Email signature (Zoho, setu@ and aura@) | `signature/zoho-signature.html`, `zoho-signature-aura.html` (logo `exports/email/sig-lockup-light@2x.png`) | Ready. **The founder pastes it** (`signature/ZOHO_STEPS.md`). |
-| GitHub `setukansara-ops` avatar, WhatsApp, Facebook, Reddit, a Vigyaan X account (if one is made), Zoho org logo, Play developer page | `exports/social/social-avatar-1024.png` (or `icons/logo-512.png` where a square logo is asked for) | His click, each one. Today GitHub shows the default identicon. The others were not inspected (unknown). |
-| Documents, letterhead, invoices, decks on white | `masters/lockup-horizontal-light.svg` (PNG `lockup-horizontal-light-h256/512`). One ink: `lockup-horizontal-mono.svg` or `mono-light.svg`. | Ready |
-| Dark slides and Vigyaan (not Aura) end cards | `lockup-horizontal.svg`, `lockup-stacked.svg` | Ready |
-| **Attar packaging** (cartons, bottle wraps, labels) | `spark-mono.svg` / `lockup-stacked-mono.svg` / `lockup-horizontal-mono.svg` in gold foil or ivory, on the Attars plum-black `#140c11` | **The founder's call.** The current `/wip/` proofs use the **retired 05-19 lozenge spark** and spaced sans "VIGYAAN™", so they must be re-set before any print run. Whether the name carries ™ is his decision (never ®). |
-| Aura app, Aura ads, Aura flyers | **Not this kit** | Aura's own icon |
+| Use | File |
+|---|---|
+| Website header and footer | `assets/logo/spark.svg` (= `masters/spark.svg`) |
+| Website favicon (SVG) | `masters/spark-tile.svg` |
+| Favicon PNG and ICO | `exports/icons/favicon-32.png`, `favicon.ico` |
+| iPhone home screen | `exports/icons/apple-touch-180.png` |
+| Android / PWA | `exports/icons/android-maskable-192/512.png` |
+| Google company logo (JSON-LD `Organization.logo`) | `exports/icons/logo-512.png` |
+| Link previews (`og:image`) | `exports/social/og-1200x630.jpg` |
+| Email signature | `exports/email/sig-lockup-light@2x.png`, shown at 192×56. The signature HTML is in the kit's `signature/` folder, which the website does not serve. |
+| Social profile pictures and organisation logos | `exports/social/social-avatar-1024.png`, or `exports/icons/logo-512.png` where a square logo is asked for |
+| Documents, letterhead, invoices, decks on white | `masters/lockup-horizontal-light.svg` (PNG `lockup-horizontal-light-h256/512`). One ink: `lockup-horizontal-mono.svg` or `mono-light.svg`. |
+| Dark slides and Vigyaan (not Aura) end cards | `lockup-horizontal.svg`, `lockup-stacked.svg` |
+| Attar packaging (cartons, bottle wraps, labels) | `spark-mono.svg` / `lockup-stacked-mono.svg` / `lockup-horizontal-mono.svg` in gold foil or ivory, on the Attars plum-black `#140c11` |
+| Aura app, Aura ads, Aura flyers | **Not this kit.** Aura has its own icon. |
 
 ## 10. Retired marks. Never use these.
 
-They stay in the website repo's history only. None is referenced by a live page.
+They are retired by v1.0 and must not be used for anything new. On 2026-10-21, this
+version's date, the files were still in the website repo. None was referenced by a live
+page except `assets/og.jpg` (the `og:image` of `/` and `/studio/`) and the 09-19 PNGs
+`assets/logo/favicon-32.png`, `apple-touch-180.png` (both linked by every page) and
+`vigyaan-mark-512.png` (the home page's JSON-LD logo), pending a swap to the v1.0 files
+in section 9. The swap's status is tracked outside this frozen folder.
 
 - `assets/brand/mark.png` and `assets/logo/dp-warm-oil-stars-1024.png`: the 09-19
   oil-and-starfield painting. The two files are byte-identical.
+- The 2026-10-21 contents of `assets/logo/favicon-32.png`, `apple-touch-180.png` and
+  `vigyaan-mark-512.png`: the same painting at icon sizes. A swap replaces those
+  contents with the v1.0 exports. The paths themselves can stay.
 - `assets/logo/dp-warm-oil-1024.png`, `dp-warm-gold-1024.png`, `dp-warm-rings-1024.png`,
   `dp-dark-1024.png`, `dp-gradient-1024.png`, `dp-wordmark-1024.png`: the 09-19
   avatar experiments.
 - `assets/logo/vigyaan-mark.svg` (the 05-19 blue-violet-green lozenge spark),
-  `vigyaan-mark-mono.svg` (its one-colour form, still on the packaging proofs) and
-  `vigyaan-icon.svg` (it on a gradient tile). Copies are also bundled, unreferenced, in
-  `aura-mobile/assets/logo/`.
+  `vigyaan-mark-mono.svg` (its one-colour form) and `vigyaan-icon.svg` (it on a gradient
+  tile).
 - `assets/og.jpg`: the faceted 3-D gold star with "VIGYAAN" in spaced caps.
 
 ## 11. Checking the files
 
-`SHA256SUMS` lists every file in this folder (GNU `sha256sum` format).
-- PowerShell: `powershell -ExecutionPolicy Bypass -File verify.ps1` prints `ALL OK`
-  or names the first file that changed.
-- Git Bash: `cd v1.0 && sha256sum -c SHA256SUMS`.
+`SHA256SUMS` lists every file in this folder except itself (GNU `sha256sum` format).
+Its own SHA-256 is pinned outside the folder, in two places: the kit's `../README.md`
+and `SUMS_SHA` in the website repo's `tools/lint.mjs`. So a changed file cannot pass by
+also changing its line in `SHA256SUMS`: that changes the pin, and the pin lives in a
+file someone has to edit visibly.
+- PowerShell: `powershell -ExecutionPolicy Bypass -File verify.ps1` checks the pin, then
+  every file. It prints `ALL OK` or names each file that changed or is missing.
+- Git Bash: `cd v1.0 && sha256sum SHA256SUMS && sha256sum -c SHA256SUMS`. Compare the first
+  line's hash with the pin by eye.
 
 All files carry the Windows **read-only** attribute (`attrib +R`). That stops
-accidental saves. It is not a lock: the checksums, the copy in the website repo and
-its lint gate are the real guard.
+accidental saves. It is not a lock: Git Bash's `rm -f` ignores it. The pinned checksums,
+the copy in the website repo and its lint gate are the real guard.
 
-**The website copy** is at `https://vigyaan.ai/brand/v1.0/…` (repo `brand/v1.0/`).
-- It holds the same files at the same relative paths, minus `source/`,
-  `verification/`, `signature/` and `verify.ps1`. Its `SHA256SUMS` is this one, so
-  `sha256sum -c --ignore-missing SHA256SUMS` passes there.
+**The website repo** (`setukansara-ops/vigyaan-ai-website`, folder `brand/v1.0/`) holds
+every file in this folder at the same relative paths.
+- The website serves all of it at `https://vigyaan.ai/brand/v1.0/…` except `source/`,
+  `verification/`, `signature/` and `verify.ps1`. Those are versioned in the repo but
+  left out of the deploy by `.vercelignore`. On a copy downloaded from the website, use
+  `sha256sum -c --ignore-missing SHA256SUMS`.
 - `brand/.gitattributes` marks the copy as binary, so git never rewrites its line
   endings.
 - `node tools/lint.mjs` fails if:
-  - any file there stops matching `SHA256SUMS`
+  - `SHA256SUMS` is not the pinned `SUMS_SHA`
+  - any file there stops matching `SHA256SUMS`, a file is not listed, or a listed
+    file is missing
+  - `VERSION` still says the founder's approval is pending
   - `assets/logo/spark.svg` stops matching `masters/spark.svg`
   - a page renders a retired mark
 - The site has no CI. The gate runs whenever the lint is run.
@@ -260,25 +287,38 @@ its lint gate are the real guard.
    here or under `/brand/v1.0/` on the website. Emails already sent load their logo
    from that URL.
 2. **The mark changes only on the founder's explicit word**: a message from him that
-   says to change the logo. A redesign idea, a "cleaner" export or an agent's
-   suggestion is not that word.
+   says to change the logo. A redesign idea, a "cleaner" export or a helper's
+   suggestion is not that word. **Every new folder, `v1.0.1/` included, needs the
+   founder's explicit word.**
 3. **A change is a new version folder** (`v1.1/` or `v2.0/`) next to `v1.0/`, built
    from that decision. It has its own `VERSION` (with the date and his words),
-   `SHA256SUMS` and a "what changed" note. `../README.md` then points at the new
+   `SHA256SUMS` and a "what changed" note. **A new folder is a complete kit, never a
+   delta**: it holds every file, changed or not. `../README.md` then points at the new
    folder. Nothing is overwritten.
 4. A missing size or format is also a new version (`v1.0.1/`), never a quiet addition
    to `v1.0/`.
-5. Agents and helpers (Claude included) **copy from this folder and never redraw**. If
-   something needed is missing, they say so and ask. They do not improvise a variant.
+5. **The PR that adds a new folder also updates the gate.** It adds the folder to
+   `tools/lint.mjs` (`KITS`: its path and its `SUMS_SHA`; `SPARK_SHA` if the spark
+   changed) and moves the `/brand/` page links to it. v1.0 stays in `KITS`, because
+   v1.0 never changes.
+6. Anyone preparing a file with the mark, a person or a tool (AI assistants included),
+   **copies from this folder and never redraws**. If something needed is missing, they
+   say so and ask the founder. They do not improvise a variant.
 
 ## 13. Provenance and proof
 
-The full write-up is in `verification/README.md`.
-- At 10× scale, the outlined wordmark lands on **the same ink box** as Chrome's live
-  Fraunces text (39.9, 7.2 → 113.4, 25.8), with a mean pixel difference of 0.25/255.
-- In the live vigyaan.ai header at 4× pixel density, the spark region is
-  **pixel-identical**. The text differs by a mean of 1.9/255 and never by more than
-  124/255: antialiasing only, no offset.
+The full write-up is in `verification/README.md`. Every measurement below was made in
+headless Chrome 155 at 4× pixel density, the renderer the masters were built in.
+- At 10× scale, the outlined wordmark lands on **the same ink box** as that renderer's
+  live Fraunces text (39.9, 7.2 → 113.4, 25.8), with a mean pixel difference of
+  0.25/255.
+- In the live vigyaan.ai header, the spark region is **pixel-identical**. The text
+  differs by a mean of 1.9/255 and never by more than 124/255, with a best shift of
+  0, 0.
+- That match holds for that renderer. A second Chromium (1.5× density, live Fraunces)
+  painted the live text about 1 CSS px lower than the master, with the same horizontal
+  extent and an identical spark. The difference is invisible at 30 px, and the master's
+  baseline is a fixed decision (section 2).
 
 Build:
 - headless Chrome 155.0.8059.80 on Windows 11
@@ -288,20 +328,13 @@ Build:
 
 ## 14. Declared gaps
 
-1. The website's favicon SVG and PNG, apple-touch icon, JSON-LD logo and `og.jpg` are
-   **not yet** this system (section 9). This kit's PR deliberately does not change
-   their bytes. The swap is a separate change, on the founder's word.
-2. On phones (under 400 px), the live header sets the word at 1.12rem (0.597 S) next to
+1. On phones (under 400 px), the live header sets the word at 1.12rem (0.597 S) next to
    the same 30 px spark. The footer sets it at 1.3rem with no tracking. The masters
    follow the desktop header (1.22rem, −0.01em). Neither CSS rule was changed.
-3. Chrome paints a text baseline on a whole CSS pixel. The desktop header lays the
-   baseline out at 21.39 px below the top of the spark and paints it at 21.0. The
-   master uses **21.0**, which is what visitors see. The difference is 0.39 px at
-   S = 30.
-4. The stacked lockup is new in v1.0 (section 2). It is not on the site and no one has
-   approved it yet.
-5. Zoho, GitHub, Facebook, WhatsApp, Reddit, X and Play Console were **not opened**.
-   No account was changed, and the click-paths in `signature/ZOHO_STEPS.md` come from
-   Zoho's documented layout, not a session.
-6. PNGs re-rendered on another machine or browser may differ by antialiasing pixels.
+2. Renderers place a text baseline differently. In headless Chrome 155 at 4× density,
+   the desktop header lays the baseline out at 21.39 px below the top of the spark and
+   paints it at 21.0. The master fixes the baseline at **21.0** (0.7 S) as a decision.
+   One other renderer measured (a second Chromium at 1.5× density) painted the live
+   text about 1 CSS px lower. The master does not move with any renderer.
+3. PNGs re-rendered on another machine or browser may differ by antialiasing pixels.
    The SVG masters are the truth.

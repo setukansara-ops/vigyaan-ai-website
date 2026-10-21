@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- Vigyaan brand kit v1.0 — the house link-preview card (1200x630), in the style of assets/og/aura.jpg and og/attars.jpg.
+     The wordmark and the tile are the kit's outlined masters (no font involved); only the supporting copy uses Outfit / Fraunces from Google Fonts. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Outfit:wght@300..600&display=swap">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1200px;height:630px;overflow:hidden;-webkit-font-smoothing:antialiased}
+body{position:relative;font-family:"Outfit",system-ui,sans-serif;color:#f4ece1;
+  background:
+    radial-gradient(760px 520px at 78% 50%, rgba(201,164,106,.14), transparent 64%),
+    radial-gradient(900px 520px at 85% -8%, rgba(201,164,106,.13), transparent 62%),
+    radial-gradient(700px 500px at -10% 40%, rgba(201,164,106,.06), transparent 60%),
+    #0f0b0a}
+.l{position:absolute;left:86px;top:0;width:600px}
+.eb{position:absolute;top:112px;font-weight:600;font-size:17px;letter-spacing:.24em;text-transform:uppercase;color:#c9a46a}
+.wm{position:absolute;top:166px;left:0;display:block}
+.sub{position:absolute;top:300px;font-weight:400;font-size:35px;line-height:1.28;color:#f4ece1;width:560px}
+.sub em{font-family:"Fraunces",serif;font-style:italic;font-weight:420;color:#e2c48e}
+.chips{position:absolute;top:432px;display:flex;gap:14px}
+.chip{display:inline-flex;align-items:center;gap:11px;height:52px;padding:0 22px;border-radius:999px;background:rgba(244,236,225,.06);box-shadow:inset 0 0 0 1.5px rgba(244,236,225,.18);font-weight:500;font-size:21px;color:#f4ece1}
+.chip i{width:10px;height:10px;border-radius:50%;display:block}
+.chip small{font-size:21px;font-weight:400;color:#ae9e8e}
+.ft{position:absolute;top:556px;font-size:18px;color:#ae9e8e;letter-spacing:.01em}
+.disc{position:absolute;left:655px;top:120px;width:390px;height:390px;border-radius:50%;
+  background:radial-gradient(circle at 50% 46%, rgba(214,178,119,.34), rgba(196,160,106,.16) 58%, rgba(196,160,106,.07) 100%);
+  box-shadow:inset 0 0 0 1.5px rgba(232,211,168,.22)}
+.tile{position:absolute;left:750px;top:215px;width:200px;height:200px;display:block}
+</style></head><body>
+<div class="l">
+  <p class="eb">A New Jersey studio</p>
+  <img class="wm" id="wm" src="WM" alt="Vigyaan">
+  <p class="sub">A house for things that<br><em>stay</em> with you.</p>
+  <div class="chips"><span class="chip"><i style="background:#a78bfa"></i>Aura <small>the app</small></span><span class="chip"><i style="background:#d9b26a"></i>Attars <small>the oils</small></span></div>
+  <p class="ft">vigyaan.ai</p>
+</div>
+<div class="disc"></div>
+<img class="tile" src="TILE" alt="">
+<script>
+// wordmark: 66 px from its ink top to its baseline (13.791 of the master's 18.573-unit ink height)
+const k = 66 / 13.791, w = document.getElementById('wm'); w.style.width = (73.571 * k) + 'px'; w.style.height = (18.573 * k) + 'px';
+</script>
+</body></html>

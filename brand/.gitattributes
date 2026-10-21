@@ -1,3 +1,3 @@
-# brand/v1.0/ is the frozen Vigyaan brand kit (BRAND.md section 12). Keep its bytes exactly as
+# brand/v<N>/ folders are the frozen Vigyaan brand kits (brand/v1.0/BRAND.md section 12). Keep their bytes exactly as
 # committed on every platform, so SHA256SUMS and tools/lint.mjs hold on Windows checkouts too.
-v1.0/** -text
+v*/** -text
