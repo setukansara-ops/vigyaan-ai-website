@@ -78,10 +78,14 @@ const cur = on => (on ? ' aria-current="page"' : '');
 // (the aura branch below) are Aura's own and do not use it.
 const ICON_V = '2';
 
+// The house branch also sets apple-mobile-web-app-title, the name "Add to Home Screen" gives the
+// icon on an iPhone. Without it Safari offers the page <title> ("Vigyaan — Aura, attars, and what
+// comes next"), which the home screen cuts off. Apple: "By default, the <title> tag is used" (Safari
+// Web Content Guide, Configuring Web Applications). The Aura branch is unchanged.
 function head({ world = 'house' } = {}) {
   const icon = world === 'aura'
     ? '<link rel="icon" type="image/png" sizes="192x192" href="/assets/aura/icon-192.png">\n<link rel="apple-touch-icon" href="/assets/aura/icon-192.png">'
-    : `<link rel="icon" type="image/svg+xml" href="/assets/logo/favicon.svg?v=${ICON_V}">\n<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo/favicon-32.png?v=${ICON_V}">\n<link rel="apple-touch-icon" href="/assets/logo/apple-touch-180.png?v=${ICON_V}">`;
+    : `<link rel="icon" type="image/svg+xml" href="/assets/logo/favicon.svg?v=${ICON_V}">\n<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo/favicon-32.png?v=${ICON_V}">\n<link rel="apple-touch-icon" href="/assets/logo/apple-touch-180.png?v=${ICON_V}">\n<meta name="apple-mobile-web-app-title" content="Vigyaan">`;
   return `
 ${icon}
 <link rel="preconnect" href="https://fonts.googleapis.com">
