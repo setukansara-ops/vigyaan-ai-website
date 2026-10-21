@@ -2,7 +2,9 @@
 
 **Version 1.0, set 21 October 2026.** Source: `setukansara-ops/vigyaan-ai-website` at
 `ecc9f99e` (PR #20, the redesign that went live on vigyaan.ai that day). The founder
-approved the whole kit the same day. His words are in `VERSION`.
+approved the whole kit the same day. His words are in `VERSION`. A review before
+release then changed text and tooling only: the ™ rule in his own words, and a
+stricter `verify.ps1`. `VERSION` lists both (the `changed:` line). No logo file changed.
 
 **This version is final.** Nothing in this folder is ever edited, re-exported,
 replaced or deleted. A change to the mark happens only on the founder's explicit
@@ -52,10 +54,12 @@ The geometry, in a 32-unit box with no background:
   header's 1.22rem. SOFT 0, WONK 0.
 - Tracking −0.01em.
 
-**The ™ symbol.** In running text (website, packaging, documents), write Vigyaan™
-where the name is used as a brand. Never ®. The logo itself (wordmark, lockups, tile)
-carries no symbol. The founder set this on 21 October 2026 (`VERSION`, the `symbol:`
-line).
+**The ™ symbol.** In website and packaging text, the name is written Vigyaan™, never
+Vigyaan®. The logo itself (wordmark, lockups, tile) carries no symbol. The founder set
+this on 21 October 2026 in these words: "Vigyaan™ is written in website and packaging
+text; the logo stays clean with no symbol" (`VERSION`, the `symbol:` line). The
+company's legal name, Vigyaan LLC, is written without a symbol, as in the email
+signature.
 
 The wordmark is **outlined**. It is not set in type. The paths come from Chrome's own
 render of the live header: printed to PDF, where Chrome embeds the exact
@@ -164,8 +168,8 @@ of the one before.
 - The site's CSS request is
   `https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Outfit:wght@300..600&display=swap`.
 - **Never typeset "Vigyaan" as the logo.** Use the outlined files. In running text the
-  name is just a word, in whatever font the text uses, with ™ where it is used as a
-  brand (section 1).
+  name is just a word, in whatever font the text uses. In website and packaging text
+  it is written Vigyaan™ (section 1).
 - Aura's marketing videos use Segoe UI. That is Aura's ad family, not Vigyaan's.
 
 ## 6. Grounds and contrast
@@ -209,12 +213,13 @@ of the one before.
   retired `assets/og.jpg` (section 10) is exactly this mistake.
 - Put the bare gold spark on white or ivory.
 - Set the name in capitals ("VIGYAAN") or in a sans-serif as a logo.
-- Add ™ or ® to the logo. ™ goes in running text only, and ® never (section 1).
+- Add ™ or ® to the logo. ™ belongs in website and packaging text, and ® is never
+  used (section 1).
 - Rearrange the lockup (word on the left, a different gap or size) or invent new
   lockups. Horizontal and stacked are the only two.
 - Mix it with the Aura icon. **Aura is a separate brand**, with its own icon, its own
-  violet world and its own ads. Aura says "by Vigyaan" in text and never shows the
-  spark.
+  violet world and its own ads. Aura says "by Vigyaan" in text ("by Vigyaan™" in
+  website and packaging text, section 1) and never shows the spark.
 
 ## 9. Where each file goes
 
@@ -262,15 +267,21 @@ in section 9. The swap's status is tracked outside this frozen folder.
 Its own SHA-256 is pinned outside the folder, in two places: the kit's `../README.md`
 and `SUMS_SHA` in the website repo's `tools/lint.mjs`. So a changed file cannot pass by
 also changing its line in `SHA256SUMS`: that changes the pin, and the pin lives in a
-file someone has to edit visibly.
+file someone has to edit visibly. Only the repo's pin has a history (git), so it is the
+authority. `../README.md` is not versioned, so a copy outside git is proven by
+comparing it with `brand/v1.0/` in the repo (`diff -r`), or its pin with `SUMS_SHA` in
+`tools/lint.mjs` on the repo's `main`.
 - PowerShell: `powershell -ExecutionPolicy Bypass -File verify.ps1` checks the pin, then
-  every file. It prints `ALL OK` or names each file that changed or is missing.
+  every listed file, then that the folder holds no file the list leaves out. It prints
+  `ALL OK` or names each file that changed, is missing or is not listed.
 - Git Bash: `cd v1.0 && sha256sum SHA256SUMS && sha256sum -c SHA256SUMS`. Compare the first
-  line's hash with the pin by eye.
+  line's hash with the pin by eye. This does not see an extra file, so also check that
+  `find . -type f | wc -l` is one more than `wc -l < SHA256SUMS`.
 
 All files carry the Windows **read-only** attribute (`attrib +R`). That stops
-accidental saves. It is not a lock: Git Bash's `rm -f` ignores it. The pinned checksums,
-the copy in the website repo and its lint gate are the real guard.
+accidental saves. It is not a lock: Git Bash's `rm -f` ignores it, and it does not stop a
+new file being added to a folder. The pinned checksums, `verify.ps1`, the copy in the
+website repo and its lint gate are the real guard.
 
 **The website repo** (`setukansara-ops/vigyaan-ai-website`, folder `brand/v1.0/`) holds
 every file in this folder at the same relative paths.
