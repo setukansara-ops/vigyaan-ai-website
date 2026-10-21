@@ -12,9 +12,17 @@
 //   <!-- shell:footer --> … <!-- /shell:footer -->
 //   <!-- shell:scripts --> … <!-- /shell:scripts -->
 //
-// A NEW LINE: add it to LINES below, add a [data-world="<key>"] token block in
-// css/house.css, copy /attars/ to /<line>/, and add one door on the home page.
-// Then run this script; every header, menu and footer picks the line up.
+// A NEW LINE, every step (the same list heads css/house.css):
+//   1. css/house.css: a [data-world="<key>"] token block with every token the
+//      Aura and Attars blocks set (--bg … --accent-ink, --glow, --halo,
+//      --door-bg, --door-texture), plus a body[data-world="<key>"] background
+//   2. LINES below: key, name, href, brand, dot + dotGlow colours, menuNote,
+//      footer links and note. Then run this script: the header, phone menu,
+//      footer column (and the footer's --lines column count), the footer's
+//      brand list and every dot are written from LINES
+//   3. copy /attars/ to /<line>/ (products at /<line>/<product>/)
+//   4. home page: one <article class="door" data-world="<key>"> in .doors;
+//      the door takes its colours from the token block, no CSS of its own
 //
 // tools/ is excluded from the deploy by .vercelignore.
 
@@ -30,12 +38,13 @@ const PLAY = 'https://play.google.com/store/apps/details?id=ai.vigyaan.aura';
 const LINES = [
   {
     key: 'aura', name: 'Aura', href: '/aura/', menuNote: 'the app',
+    brand: 'Aura by Vigyaan', dot: '#a78bfa', dotGlow: '#7c3aed',
     footer: [
       ['Get the app', '/aura/get/'],
       ['Meet Aura', '/aura/'],
       ['Help &amp; support', '/aura/#support'],
       ['Privacy Policy', '/aura/privacy.html'],
-      ['Terms of Use', '/aura/terms.html'],
+      ['Terms of Service', '/aura/terms.html'],
       ['Delete your account', '/aura/delete-account.html'],
       ['For campuses', '/aura/campus/'],
     ],
@@ -43,6 +52,7 @@ const LINES = [
   },
   {
     key: 'attar', name: 'Attars', href: '/attars/', menuNote: 'the oils',
+    brand: 'Attars by Vigyaan', dot: '#d9b26a', dotGlow: 'rgba(217,170,96,.8)',
     footer: [
       ['The oils', '/attars/#oils'],
       ['How ordering works', '/attars/#ordering'],
@@ -58,7 +68,7 @@ const PLAY_SVG = '<svg viewBox="0 0 512 512" aria-hidden="true"><path fill="#00d
 const MENU_SVG = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>';
 const BAG_SVG = '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 10V6.5a3 3 0 0 1 6 0V10" stroke-linecap="round"/></svg>';
 
-const dot = key => `<span class="dot-${key}" aria-hidden="true"></span>`;
+const dot = key => { const l = LINES.find(x => x.key === key); return `<span class="dot" style="--dot:${l.dot};--dot-glow:${l.dotGlow}" aria-hidden="true"></span>`; };
 const cur = on => (on ? ' aria-current="page"' : '');
 
 function head({ world = 'house' } = {}) {
@@ -84,7 +94,9 @@ function header({ world = 'house', current = '' } = {}) {
     world === 'attar' ? `      <a href="/wholesale/"${cur(current === 'wholesale')}>Wholesale</a>` : '',
   ].filter(Boolean).join('\n');
   const end = [
-    world === 'aura' ? '      <a class="pill-sm" href="/aura/get/">Get the app</a>' : '',
+    // On /aura/ itself the pill jumps to the store badges in the hero; on the
+    // chooser it is not shown (that page IS the chooser); elsewhere it opens it.
+    world === 'aura' && current !== 'get' ? `      <a class="pill-sm" href="${current === 'aura' ? '#get' : '/aura/get/'}">Get the app</a>` : '',
     world === 'attar' ? `      <a class="bag" href="/cart/" aria-label="Request list">${BAG_SVG}<span class="count" data-bagcount hidden>0</span></a>` : '',
   ].filter(Boolean).join('\n');
   const here = '<small>you are here</small>';
@@ -134,7 +146,7 @@ ${l.footer.map(([t, h]) => `          <li><a href="${h}">${t}</a></li>`).join('\
   return `
 <footer class="site">
   <div class="wrap">
-    <div class="fgrid">
+    <div class="fgrid" style="--lines:${LINES.length}">
       <div class="about">
         <a class="fbrand" href="/"><img src="/assets/logo/spark.svg" alt="" width="30" height="30">Vigyaan</a>
         <p class="muted small" style="margin-top:.9rem;max-width:20rem">A small house in New Jersey. We make a few things, slowly, and name the next one when it&rsquo;s real.</p>
@@ -152,7 +164,7 @@ ${cols}
     </div>
     <div class="fbottom">
       <span>&copy; 2026 Vigyaan LLC &middot; New Jersey</span>
-      <span>Aura by Vigyaan &middot; Attars by Vigyaan</span>
+      <span>${LINES.map(l => l.brand).join(' &middot; ')}</span>
     </div>
   </div>
 </footer>

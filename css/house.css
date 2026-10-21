@@ -1,9 +1,20 @@
 /* ==========================================================================
    Vigyaan — "Two worlds, one house"
    One shell (header, footer, type, spacing, buttons) shared by every page.
-   Each line is a "world": a token block keyed by <body data-world="…">.
-   A future line = one new [data-world="<line>"] block below, a copy of
-   /attars/, and one entry in tools/shell.mjs (nav, menu, footer column).
+   Each line is a "world": a token block keyed by data-world="…" — on <body>
+   for a line's own pages, and on the line's door on the home page.
+
+   A NEW LINE, every step (the same list is in tools/shell.mjs):
+     1. a [data-world="<key>"] token block below — every token the Aura and
+        Attars blocks set, including --halo, --door-bg and --door-texture;
+        and, if the line has a page background, a body[data-world="<key>"] rule
+     2. an entry in LINES in tools/shell.mjs (name, href, brand, dot colours,
+        footer links), then `node tools/shell.mjs` — header, phone menu,
+        footer columns, footer brand list and the dots all come from LINES
+     3. a copy of /attars/ at /<line>/ (the line template below is token-driven)
+     4. one <article class="door" data-world="<key>"> on the home page
+   Nothing below is keyed to "aura" or "attar" except the token blocks, the
+   page backgrounds, and the Aura page's own components.
    ========================================================================== */
 
 /* ---------- House tokens (home, studio, 404) ---------- */
@@ -16,9 +27,13 @@
   --muted: #ae9e8e;          /* 7.0:1 on --bg */
   --line: rgba(244, 236, 225, 0.11);
   --accent: #c9a46a;          /* house gold, 8.1:1 on --bg */
+  --accent-2: #c9a46a;
   --accent-soft: #ead6ad;
   --accent-ink: #120c0b;
   --glow: rgba(201, 164, 106, 0.16);
+  --halo: rgba(201, 164, 106, 0.30);
+  --door-bg: linear-gradient(160deg, #241a17, #0f0b0a);
+  --door-texture: none;
 
   --display: "Fraunces", ui-serif, Georgia, serif;
   --body: "Outfit", ui-sans-serif, system-ui, sans-serif;
@@ -29,14 +44,16 @@
   --max: 76rem;
 }
 
-/* ---------- World: Aura (night sky — the app's own palette) ---------- */
+/* ---------- World: Aura (cool night sky — the app's own palette) ---------- */
 /* breathing_session_screen.dart: #1E1B4B -> #3B0764; circle #A78BFA -> #7C3AED;
-   phase text #C4B5FD. Same values as /aura/get. */
+   phase text #C4B5FD. Same values as /aura/get. Aura is the COOL world:
+   indigo leaning blue, lavender accents. */
 [data-world="aura"] {
   --bg: #0b0920;
   --bg-2: #15113a;
-  --surface: rgba(255, 255, 255, 0.045);
-  --raised: rgba(255, 255, 255, 0.08);
+  /* Opaque on purpose: a card hides whatever is painted behind it. */
+  --surface: color-mix(in srgb, #fff 4.5%, #0b0920);
+  --raised: color-mix(in srgb, #fff 8%, #0b0920);
   --fg: #f5f3ff;
   --muted: #c3bde6;          /* 10:1 on --bg */
   --line: rgba(196, 181, 253, 0.16);
@@ -46,22 +63,37 @@
   --accent-soft: #ede9fe;
   --accent-ink: #1e1b4b;
   --glow: rgba(124, 58, 237, 0.35);
+  --halo: rgba(139, 92, 246, 0.42);
+  --dot: #a78bfa;
+  --door-bg:
+    radial-gradient(420px 360px at 50% 100%, rgba(167,139,250,.55), rgba(99,102,241,.18) 45%, transparent 72%),
+    linear-gradient(160deg, #1b1a52 0%, #1d1562 58%, #2b1470 100%);
+  --door-texture: url("/assets/texture/stars.svg") 0 0 / 420px 420px;
 }
 
-/* ---------- World: Attars (warm oil, amber) ---------- */
+/* ---------- World: Attars (warm plum-black and gold) ---------- */
+/* The oils' own renders and the carton proofs are aubergine and gold, so the
+   world is too: a warm, red-leaning plum-black with gold accents. Attars is
+   the WARM world; Aura's indigo is the cool one. */
 [data-world="attar"] {
-  --bg: #120b07;
-  --bg-2: #1c120c;
-  --surface: #1c130d;
-  --raised: #281b12;
-  --fg: #f7ecdc;
-  --muted: #bfab92;          /* 8.3:1 on --bg */
-  --line: rgba(232, 190, 120, 0.16);
-  --accent: #dcae63;          /* 9.6:1 on --bg */
-  --accent-2: #dcae63;
-  --accent-soft: #f1d5a1;
-  --accent-ink: #1a0f07;
-  --glow: rgba(220, 150, 60, 0.22);
+  --bg: #140c11;
+  --bg-2: #1e1219;
+  --surface: #1e131a;
+  --raised: #2b1b25;
+  --fg: #f7ede1;
+  --muted: #c9b3a3;          /* 9.1:1 on --bg */
+  --line: rgba(217, 178, 106, 0.17);
+  --accent: #d9b26a;          /* 9.4:1 on --bg */
+  --accent-2: #d9b26a;
+  --accent-soft: #f0d9a8;
+  --accent-ink: #1a0f0a;
+  --glow: rgba(217, 170, 96, 0.24);
+  --halo: rgba(217, 170, 96, 0.36);
+  --dot: #d9b26a;
+  --door-bg:
+    radial-gradient(440px 360px at 50% 100%, rgba(217,170,96,.42), rgba(120,46,86,.20) 50%, transparent 74%),
+    linear-gradient(160deg, #2d1624 0%, #1e1018 55%, #140a10 100%);
+  --door-texture: url("/assets/texture/grain.png") 0 0 / 160px 160px;
 }
 
 /* ---------- Base ---------- */
@@ -82,20 +114,32 @@ body[data-world="house"] {
     radial-gradient(700px 500px at -10% 40%, rgba(201,164,106,.05), transparent 60%),
     var(--bg);
 }
+html:has(> body[data-world="aura"]) { background: #0b0920; }
+html:has(> body[data-world="attar"]) { background: #140c11; }
 body[data-world="aura"] {
+  isolation: isolate; /* lets the star layer below sit behind content but above this background */
   background:
-    url("../assets/texture/stars.svg") 0 0 / 520px 520px repeat,
-    radial-gradient(1100px 760px at 78% -6%, rgba(124,58,237,.42), transparent 62%),
-    radial-gradient(900px 700px at -12% 34%, rgba(59,7,100,.55), transparent 60%),
-    radial-gradient(1000px 800px at 110% 72%, rgba(76,29,149,.35), transparent 62%),
-    linear-gradient(180deg, #16123f 0%, #0d0b28 34%, #0b0920 100%);
+    radial-gradient(1100px 760px at 78% -6%, rgba(109,64,237,.40), transparent 62%),
+    radial-gradient(900px 700px at -12% 34%, rgba(49,24,120,.55), transparent 60%),
+    radial-gradient(1000px 800px at 110% 72%, rgba(67,56,202,.28), transparent 62%),
+    linear-gradient(180deg, #15133f 0%, #0d0b28 34%, #0b0920 100%);
+}
+/* Stars never sit on reading text. They live on one fixed layer that is
+   masked to the margins outside the 76rem content column, so on a phone (no
+   margins) there are none behind text at all. The hero sky (.sky) and the
+   Aura door carry their own stars, away from their words. */
+body[data-world="aura"]::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: url("../assets/texture/stars.svg") 0 0 / 520px 520px repeat;
+  -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(50% - 41rem), transparent calc(50% - 36rem), transparent calc(50% + 36rem), #000 calc(50% + 41rem), #000 100%);
+          mask-image: linear-gradient(90deg, #000 0, #000 calc(50% - 41rem), transparent calc(50% - 36rem), transparent calc(50% + 36rem), #000 calc(50% + 41rem), #000 100%);
 }
 body[data-world="attar"] {
   background:
     url("../assets/texture/grain.png") 0 0 / 160px 160px repeat,
-    radial-gradient(1000px 680px at 82% -10%, rgba(220,150,60,.24), transparent 62%),
-    radial-gradient(800px 600px at -14% 46%, rgba(150,80,30,.20), transparent 62%),
-    linear-gradient(180deg, #1a100a 0%, #120b07 40%, #100a06 100%);
+    radial-gradient(1000px 680px at 82% -10%, rgba(217,170,96,.17), transparent 62%),
+    radial-gradient(800px 600px at -14% 46%, rgba(122,40,86,.26), transparent 62%),
+    linear-gradient(180deg, #1d1018 0%, #140c11 40%, #110a0f 100%);
 }
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; height: auto; }
@@ -268,20 +312,28 @@ footer.site { border-top: 1px solid var(--line); padding: 4rem 0 2.5rem; margin-
 .fbrand { display: inline-flex; align-items: center; gap: .6rem; font-family: var(--display); font-size: 1.3rem; font-weight: 600; }
 .fbrand img { width: 30px; height: 30px; }
 .fbottom { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; font-size: .82rem; color: var(--muted); }
-.dot-aura, .dot-attar { display: inline-block; flex: none; width: 8px; height: 8px; border-radius: 50%; margin-right: .5rem; vertical-align: middle; }
-.dot-aura { background: #a78bfa; box-shadow: 0 0 10px #7c3aed; }
-.dot-attar { background: #dcae63; box-shadow: 0 0 10px rgba(220,150,60,.8); }
+/* A line's dot: tools/shell.mjs writes its colours from LINES as --dot/--dot-glow. */
+.dot { display: inline-block; flex: none; width: 8px; height: 8px; border-radius: 50%; margin-right: .5rem; vertical-align: middle; background: var(--dot, var(--accent)); box-shadow: 0 0 10px var(--dot-glow, var(--dot, var(--accent))); }
+/* One column per line: shell.mjs sets --lines on .fgrid from LINES. */
 @media (min-width: 860px) {
-  .fgrid { grid-template-columns: 1.3fr 1fr 1fr 1.1fr; }
+  .fgrid { grid-template-columns: 1.3fr repeat(var(--lines, 2), minmax(0, 1fr)) 1.1fr; gap: 2.5rem 2rem; }
   .fgrid .about { grid-column: auto; }
 }
 
 /* ==========================================================================
    HOME — the house front: one door per line and a slot for what's next
    ========================================================================== */
-.home-hero { padding: clamp(3.5rem, 8vw, 6rem) 0 clamp(2.5rem, 5vw, 3.5rem); text-align: center; }
-.home-hero .display { max-width: 14ch; margin: 1.25rem auto 0; }
-.home-hero .lede { margin: 1.4rem auto 0; }
+.home-hero { padding: clamp(2.25rem, 4vw, 2.75rem) 0 clamp(1.75rem, 3vw, 2.25rem); text-align: center; }
+.home-hero .display { max-width: 14ch; margin: 1rem auto 0; font-size: clamp(2.55rem, 5.2vw, 4.2rem); }
+.home-hero .lede { margin: 1.1rem auto 0; }
+/* Desktop: an editorial split — headline left, the one-line promise right —
+   so the doors and their pictures start on the first screen. */
+@media (min-width: 900px) {
+  .home-hero .wrap { display: grid; grid-template-columns: 1.2fr 1fr; column-gap: clamp(2rem, 5vw, 5rem); align-items: end; text-align: left; }
+  .home-hero .eyebrow { grid-column: 1 / -1; }
+  .home-hero .display { margin: .9rem 0 0; }
+  .home-hero .lede { margin: 0 0 .4rem; max-width: 30rem; }
+}
 /* Doors: 2-up today. A third line goes 3-up; past three they pair up again. */
 .doors { display: grid; gap: 1.25rem; }
 @media (min-width: 900px) {
@@ -289,62 +341,57 @@ footer.site { border-top: 1px solid var(--line); padding: 4rem 0 2.5rem; margin-
   .doors:has(> .door:nth-child(3)) { grid-template-columns: repeat(3, 1fr); }
   .doors:has(> .door:nth-child(4)) { grid-template-columns: 1fr 1fr; }
 }
+/* A door takes every colour from its line's [data-world] token block, so a
+   new line's door needs no CSS of its own: <article class="door" data-world="<key>">. */
 .door {
+  --d-accent: var(--accent); --d-muted: var(--muted);
   position: relative; overflow: hidden; isolation: isolate;
   display: flex; flex-direction: column;
-  border-radius: var(--r-xl); padding: clamp(1.6rem, 3vw, 2.6rem) clamp(1.6rem, 3vw, 2.6rem) 0;
+  border-radius: var(--r-xl); padding: clamp(1.4rem, 2.2vw, 1.85rem) clamp(1.6rem, 3vw, 2.6rem) 0;
   border: 1px solid rgba(255,255,255,.08);
+  background: var(--door-bg); color: var(--fg);
   transition: transform .35s ease, box-shadow .35s ease;
+}
+/* The door's texture (Aura's stars, Attars' grain) is masked away from the
+   words in the top-left and lives around the picture at the bottom. */
+.door::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: var(--door-texture);
+  -webkit-mask-image: radial-gradient(85% 70% at 62% 100%, #000 30%, transparent 78%);
+          mask-image: radial-gradient(85% 70% at 62% 100%, #000 30%, transparent 78%);
 }
 .door:hover { transform: translateY(-4px); box-shadow: 0 40px 80px -40px rgba(0,0,0,.8); }
 .door:focus-within { box-shadow: 0 0 0 2px var(--d-accent); }
 .door .top { display: flex; align-items: center; gap: 1rem; }
 .door .eyebrow { color: var(--d-accent); }
 .eyebrow .num { font-family: var(--display); font-style: italic; font-weight: 450; letter-spacing: 0; text-transform: none; font-size: 1rem; }
-.door h2 { font-size: clamp(2.6rem, 4.6vw, 3.6rem); line-height: 1; margin-top: 1.3rem; }
+.door h2 { font-size: clamp(2.6rem, 4.2vw, 3.25rem); line-height: 1; margin-top: .85rem; }
 .door h2 a::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: inherit; } /* the whole door is the link */
 .door h2 a:focus-visible { outline: none; }
-.door .desc { margin-top: .85rem; max-width: 25rem; color: var(--d-muted); font-size: 1.05rem; }
-.door .go { margin-top: 1.5rem; display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; }
+.door .desc { margin-top: .7rem; max-width: 25rem; color: var(--d-muted); font-size: 1.05rem; }
+.door .go { margin-top: 1.05rem; display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; }
 .door .go .btn { min-height: 46px; padding: 0 1.15rem; font-size: .93rem; }
+.door:hover .go .btn-accent { background: var(--accent-soft); }
 .door .go .alt { position: relative; z-index: 2; display: inline-flex; align-items: center; min-height: 46px; padding: 0 .2rem; font-size: .93rem; font-weight: 500; color: var(--d-accent); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: color-mix(in srgb, var(--d-accent) 45%, transparent); }
 .door .go .alt:hover { text-decoration-color: var(--d-accent); }
 .door .go .tag { font-size: .9rem; color: var(--d-muted); }
-.door .visual { position: relative; height: 300px; margin-top: 2.2rem; pointer-events: none; }
-.door-aura {
-  --d-accent: #c4b5fd; --d-muted: #cdc7ee;
-  background:
-    url("../assets/texture/stars.svg") 0 0 / 420px 420px,
-    radial-gradient(420px 360px at 50% 100%, rgba(167,139,250,.6), rgba(124,58,237,.2) 45%, transparent 72%),
-    linear-gradient(160deg, #1e1b4b 0%, #2a0f57 60%, #3b0764 100%);
-  color: #f5f3ff;
-}
-.door-aura .btn-accent { background: #c4b5fd; color: #1e1b4b; }
-.door-aura:hover .btn-accent { background: #ede9fe; }
-.door-aura .icon { width: 52px; height: 52px; border-radius: 14px; box-shadow: 0 10px 30px rgba(124,58,237,.6); }
-.door-aura .phone { --pw: 250px; position: absolute; left: 50%; top: 0; margin-left: -125px; }
-.door-attar {
-  --d-accent: #e7bb72; --d-muted: #d8c4a8;
-  background:
-    url("../assets/texture/grain.png") 0 0 / 160px 160px,
-    radial-gradient(440px 360px at 50% 100%, rgba(226,160,74,.45), rgba(160,90,30,.15) 50%, transparent 74%),
-    linear-gradient(160deg, #2c1a0e 0%, #1d110a 55%, #140b06 100%);
-  color: #f7ecdc;
-}
-.door-attar .btn-accent { background: #dcae63; color: #1a0f07; }
-.door-attar:hover .btn-accent { background: #f1d5a1; }
-.door-attar .icon { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; background: rgba(220,174,99,.12); box-shadow: inset 0 0 0 1px rgba(232,190,120,.35); }
-.arches { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); display: flex; align-items: flex-end; gap: 14px; }
-.arch { overflow: hidden; border-radius: 999px 999px 0 0; box-shadow: 0 0 0 1px rgba(241,213,161,.28), 0 30px 60px -20px rgba(0,0,0,.7); }
+.door .go .tag .alt { min-height: 0; display: inline; padding: 0; font-size: inherit; }
+.door .icon { width: 46px; height: 46px; border-radius: 13px; box-shadow: 0 10px 30px var(--glow); }
+.door span.icon { display: grid; place-items: center; color: var(--d-accent); background: color-mix(in srgb, var(--accent) 12%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent); }
+.door .visual { position: relative; height: 300px; margin-top: 1.25rem; pointer-events: none; }
+.door .visual .phone { --pw: 250px; position: absolute; left: 50%; top: 0; margin-left: calc(var(--pw) / -2); }
+/* Arches are fluid: they shrink with a narrow door (3-up) instead of overflowing it. */
+.arches { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: min(100%, 438px); display: flex; align-items: flex-end; justify-content: center; gap: 3.2%; }
+.arch { overflow: hidden; border-radius: 999px 999px 0 0; box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent-soft) 30%, transparent), 0 30px 60px -20px rgba(0,0,0,.7); }
 .arch img { width: 100%; height: 100%; object-fit: cover; }
-.arches .arch { width: 132px; height: 236px; }
-.arches .arch:nth-child(2) { height: 286px; width: 146px; }
+.arches .arch { width: 30.1%; aspect-ratio: 132 / 236; }
+.arches .arch:nth-child(2) { width: 33.3%; aspect-ratio: 146 / 286; }
 @media (max-width: 899px) {
-  .door .visual { height: 270px; margin-top: 1.8rem; }
-  .door-aura .phone { --pw: 224px; margin-left: -112px; }
-  .arches { gap: 10px; }
-  .arches .arch { width: 94px; height: 196px; }
-  .arches .arch:nth-child(2) { width: 106px; height: 240px; }
+  .door .visual { height: 270px; margin-top: 1.5rem; }
+  .door .visual .phone { --pw: 224px; }
+  .arches { width: min(100%, 314px); }
+  .arches .arch { width: 30%; aspect-ratio: 94 / 196; }
+  .arches .arch:nth-child(2) { width: 33.8%; aspect-ratio: 106 / 240; }
 }
 .next {
   position: relative;
@@ -359,6 +406,10 @@ footer.site { border-top: 1px solid var(--line); padding: 4rem 0 2.5rem; margin-
 /* ==========================================================================
    AURA — night-sky world
    ========================================================================== */
+/* Indic script text: the /aura/ page loads a Noto subset for exactly these words. */
+.deva { font-family: "Noto Sans Devanagari", var(--body); }
+.gujr { font-family: "Noto Sans Gujarati", var(--body); }
+
 .a-hero { padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(3rem, 6vw, 5rem); }
 .a-hero .grid { display: grid; gap: 3rem; align-items: center; }
 @media (min-width: 980px) { .a-hero .grid { grid-template-columns: 1.08fr .92fr; gap: 2rem; } }
@@ -370,7 +421,7 @@ footer.site { border-top: 1px solid var(--line); padding: 4rem 0 2.5rem; margin-
 .chip img { width: 24px; height: 24px; border-radius: 7px; }
 .a-hero h1 { margin-top: 1.4rem; max-width: 12.5ch; }
 .a-hero .lede { margin-top: 1.4rem; }
-.a-hero .stores { margin-top: 2.1rem; }
+.a-hero .stores { margin-top: 2.1rem; scroll-margin-top: 110px; }
 .offer {
   margin-top: 1.25rem; display: inline-flex; align-items: center; gap: .6rem; flex-wrap: wrap;
   font-size: .95rem; color: var(--muted);
@@ -380,10 +431,21 @@ footer.site { border-top: 1px solid var(--line); padding: 4rem 0 2.5rem; margin-
   background: linear-gradient(90deg, rgba(167,139,250,.28), rgba(124,58,237,.22));
   box-shadow: inset 0 0 0 1px rgba(196,181,253,.45); color: #f5f3ff; font-weight: 600; letter-spacing: .01em;
 }
+@media (max-width: 479px) { .offer > span { display: none; } } /* the chip alone; the Pro band says the full line */
 .meta { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; font-size: .88rem; color: var(--muted); list-style: none; }
-.meta li { display: inline-flex; align-items: center; gap: .45rem; }
-.meta li::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--accent-2); }
+.meta > li { display: flex; align-items: center; }
+.meta > li::before { content: ""; flex: none; width: 4px; height: 4px; margin-right: .5rem; border-radius: 50%; background: var(--accent-2); }
+/* The three language names: separators drawn here, evenly, not typed into the text. */
+.meta .langs span + span::before { content: "\00b7"; display: inline-block; padding-inline: .42em; color: var(--muted); font-family: var(--body); }
+.meta .deva, .meta .gujr { font-size: .95em; line-height: 1; }
 .sky { position: relative; height: 640px; display: grid; place-items: center; }
+/* The hero's own stars: around the sky, never in the text column beside it. */
+.sky::before {
+  content: ""; position: absolute; inset: -40px -10% -40px 4%; pointer-events: none;
+  background: url("../assets/texture/stars.svg") 0 0 / 520px 520px;
+  -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
+          mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
+}
 /* The app's breathing circle, values copied from breathing_session_screen.dart
    (as on /aura/get): radial #A78BFA 40% -> #7C3AED, glow #7C3AED/50% blur 40
    spread 8, the calm 4-4-6 cadence. Dimmed here because it sits behind a phone. */
@@ -408,9 +470,16 @@ footer.site { border-top: 1px solid var(--line); padding: 4rem 0 2.5rem; margin-
 @media (prefers-reduced-motion: reduce) { .sky .breath { animation: none; transform: scale(.85); } }
 @media (max-width: 979px) {
   .sky { height: 480px; }
+  .sky::before { inset: -20px 0; }
   .sky .breath { width: 360px; height: 360px; }
   .sky .r1 { width: 420px; height: 420px; } .sky .r2 { width: 500px; height: 500px; }
   .sky .phone { --pw: 240px; }
+}
+/* Two equal store badges on a phone, side by side, wherever they appear. */
+@media (max-width: 559px) {
+  .stores { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+  .store { justify-content: center; gap: .55rem; padding: 0 .7rem; }
+  .store strong { font-size: 1.06rem; }
 }
 
 .talk { display: grid; gap: 1rem; margin-top: clamp(1rem, 3vw, 2rem); }
@@ -420,11 +489,44 @@ footer.site { border-top: 1px solid var(--line); padding: 4rem 0 2.5rem; margin-
 .talk .t h2 { font-family: var(--body); font-size: 1rem; font-weight: 600; letter-spacing: 0; line-height: 1.4; }
 .talk .t p { margin-top: .2rem; font-size: .93rem; color: var(--muted); }
 
-.bento { display: grid; gap: 1.25rem; grid-template-columns: 1fr; }
-@media (min-width: 760px) { .bento { grid-template-columns: repeat(6, 1fr); } .tile.big { grid-column: span 3; } .tile.sm { grid-column: span 2; } }
+/* ---- Daylight band: the two conversation screens. They are the app's light
+   theme, so they sit together on purpose, on the app's own lavender-and-mint
+   ground, and never alternate with the dark screens in the night tiles. ---- */
+.daylight {
+  --fg: #1e1b4b; --muted: #47447a; --accent: #6d28d9; --line: rgba(76,29,149,.14); --glow: rgba(124,58,237,.28);
+  color: var(--fg);
+  display: grid; gap: 2.25rem 2.5rem;
+  padding: clamp(1.6rem, 3vw, 2.6rem) clamp(1.25rem, 3vw, 2.6rem) 0;
+  border-radius: 32px; overflow: hidden;
+  background:
+    radial-gradient(620px 440px at 88% -4%, rgba(167,243,208,.62), transparent 62%),
+    radial-gradient(720px 520px at -6% 104%, rgba(196,181,253,.72), transparent 62%),
+    linear-gradient(160deg, #f6f4ff 0%, #ede9fe 52%, #e6f5ef 100%);
+  box-shadow: 0 50px 100px -50px rgba(0,0,0,.7);
+}
+@media (min-width: 1000px) { .daylight { grid-template-columns: 1fr 1fr; } }
+.daylight .dtile { display: flex; flex-direction: column; }
+.daylight .k { font-size: .76rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); }
+.daylight h3 { margin-top: .7rem; font-size: clamp(1.55rem, 2.4vw, 2rem); line-height: 1.12; color: var(--fg); }
+.daylight h3 em { color: var(--accent); }
+.daylight p:not(.k) { margin-top: .6rem; color: var(--muted); font-size: 1rem; max-width: 30rem; }
+/* Zoomed so the bubble that proves the line reads at 12px or more:
+   the app's 14sp text on a 412dp screen, drawn 354px wide. */
+.daylight .shot { position: relative; height: 360px; margin-top: 1.6rem; overflow: hidden;
+  -webkit-mask-image: linear-gradient(0deg, #000 76%, transparent 100%); mask-image: linear-gradient(0deg, #000 76%, transparent 100%); }
+.daylight .shot .phone { --pw: 372px; position: absolute; left: 50%; bottom: -2px; transform: translateX(-50%);
+  background: linear-gradient(160deg, #3a3466, #16132e 60%, #2a2550);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.12) inset, 0 40px 80px -30px rgba(30,27,75,.55); }
+@media (max-width: 759px) {
+  .daylight .shot { height: 360px; margin-inline: calc(-1 * clamp(1.25rem, 3vw, 2.6rem)); }
+}
+.daylight .note { grid-column: 1 / -1; margin: -1rem 0 1.4rem; font-size: .82rem; color: var(--muted); }
+
+.bento { display: grid; gap: 1.25rem; grid-template-columns: 1fr; margin-top: 1.25rem; }
+@media (min-width: 760px) { .bento { grid-template-columns: repeat(6, 1fr); } .tile.big { grid-column: span 3; } .tile.sm { grid-column: span 2; } .tile.wide { grid-column: 1 / -1; } }
 .tile {
   position: relative; overflow: hidden; border-radius: 28px;
-  background: linear-gradient(180deg, rgba(255,255,255,.065), rgba(255,255,255,.02));
+  background: linear-gradient(180deg, color-mix(in srgb, #fff 6.5%, #0b0920), color-mix(in srgb, #fff 2%, #0b0920));
   border: 1px solid var(--line);
   padding: clamp(1.5rem, 2.6vw, 2.2rem) clamp(1.5rem, 2.6vw, 2.2rem) 0;
   display: flex; flex-direction: column;
@@ -453,24 +555,45 @@ footer.site { border-top: 1px solid var(--line); padding: 4rem 0 2.5rem; margin-
 }
 .tile .glow { position: absolute; width: 420px; height: 420px; border-radius: 50%; bottom: -200px; left: 50%; margin-left: -210px; background: radial-gradient(circle, rgba(124,58,237,.45), transparent 65%); pointer-events: none; }
 
+/* Language tile: the proof is live text, set in real Devanagari and Gujarati. */
+.tile.lang { padding-bottom: clamp(1.5rem, 2.6vw, 2.2rem); display: grid; gap: 1.5rem 3rem; align-items: center; }
+@media (min-width: 900px) { .tile.lang { grid-template-columns: .9fr 1.1fr; } }
+.tile.lang p:not(.k) { margin-bottom: 0; }
+.specimen { position: relative; margin: 0; padding: 1.4rem 1.5rem 1.2rem; border-radius: 22px; background: color-mix(in srgb, #fff 3%, #0b0920); border: 1px solid var(--line); overflow: hidden; }
+.specimen::after { content: ""; position: absolute; right: -90px; top: -90px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(124,58,237,.38), transparent 66%); pointer-events: none; }
+.specimen ul { position: relative; z-index: 1; list-style: none; display: grid; }
+.specimen li { display: grid; grid-template-columns: 6.5rem 1fr; align-items: baseline; gap: .25rem 1rem; padding: .8rem 0; border-bottom: 1px solid var(--line); }
+.specimen li:last-child { border-bottom: 0; }
+.specimen .lk { font-size: .74rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.specimen .lk.deva, .specimen .lk.gujr { letter-spacing: .02em; font-size: .88rem; text-transform: none; }
+.specimen .say { font-size: clamp(1.2rem, 2vw, 1.5rem); line-height: 1.35; color: var(--fg); }
+.specimen figcaption { position: relative; z-index: 1; margin-top: .9rem; font-size: .82rem; color: var(--muted); }
+@media (max-width: 479px) { .specimen li { grid-template-columns: 1fr; } }
+
 .privacy, .careband { display: grid; gap: 1.5rem 3rem; padding: clamp(1.75rem, 4vw, 3rem); border-radius: 28px; border: 1px solid var(--line); }
-.privacy { background: linear-gradient(135deg, rgba(167,139,250,.10), rgba(255,255,255,.02)); }
+.privacy { background: linear-gradient(135deg, color-mix(in srgb, #a78bfa 10%, #0b0920), color-mix(in srgb, #fff 2%, #0b0920)); }
 @media (min-width: 900px) { .privacy, .careband { grid-template-columns: .8fr 1.2fr; align-items: start; } }
 .badge-ic { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; background: rgba(167,139,250,.16); color: var(--accent); margin-bottom: 1.25rem; }
 .privacy .body p, .careband .body p { color: var(--muted); font-size: 1.05rem; }
 .privacy .body p + p, .careband .body p + p { margin-top: .9rem; }
 .privacy .body strong, .careband .body strong { color: var(--fg); font-weight: 500; }
 .privacy .body .arrow { margin-top: 1.25rem; }
-.careband { background: rgba(255,255,255,.025); }
+.careband { background: color-mix(in srgb, #fff 2.5%, #0b0920); }
+/* Helpline rows: every number is a tap target (tel:/sms:), on an opaque row. */
 .lines { list-style: none; display: grid; gap: .6rem; margin-top: 1.25rem; }
-.lines li { display: flex; flex-wrap: wrap; gap: .2rem 1rem; justify-content: space-between; padding: .85rem 1.1rem; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); font-size: .95rem; }
-.lines li span:first-child { color: var(--muted); }
+.lines li { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; justify-content: space-between; padding: .75rem .8rem .75rem 1.1rem; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); font-size: .95rem; }
+.lines li > span:first-child { color: var(--muted); flex: 1 0 9rem; }
 .lines li strong { font-weight: 500; }
+.lines .nums { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: flex-end; }
+.lines .nums a { display: inline-flex; align-items: center; gap: .45rem; min-height: 44px; padding: 0 .95rem; border-radius: 999px; color: var(--fg); font-weight: 500; background: color-mix(in srgb, #a78bfa 14%, #0b0920); box-shadow: inset 0 0 0 1px rgba(196,181,253,.34); transition: box-shadow .2s, background .2s; }
+.lines .nums a:hover { background: color-mix(in srgb, #a78bfa 24%, #0b0920); box-shadow: inset 0 0 0 1px var(--accent); }
+.lines .nums b { font-weight: 600; color: var(--accent-soft); font-variant-numeric: tabular-nums; white-space: nowrap; }
+@media (max-width: 559px) { .lines .nums { justify-content: flex-start; } .lines li > span:first-child { flex-basis: 100%; } }
 
 .pro { text-align: center; position: relative; overflow: hidden; border-radius: 36px; padding: clamp(3rem, 7vw, 5.5rem) var(--gutter);
   background:
-    radial-gradient(520px 380px at 50% 115%, rgba(167,139,250,.55), rgba(124,58,237,.22) 45%, transparent 70%),
-    linear-gradient(180deg, rgba(30,27,75,.85), rgba(59,7,100,.55));
+    radial-gradient(520px 380px at 50% 115%, rgba(167,139,250,.55), rgba(99,102,241,.22) 45%, transparent 70%),
+    linear-gradient(180deg, #1c1a4d, #22104d);
   border: 1px solid rgba(196,181,253,.22);
 }
 .pro .h2 { max-width: 16ch; margin: .9rem auto 0; }
@@ -479,12 +602,16 @@ footer.site { border-top: 1px solid var(--line); padding: 4rem 0 2.5rem; margin-
 .pro .includes li { font-size: .9rem; padding: .45rem .9rem; border-radius: 999px; background: rgba(255,255,255,.06); box-shadow: inset 0 0 0 1px rgba(196,181,253,.25); color: var(--fg); }
 .pro .stores { justify-content: center; margin-top: 2rem; }
 .pro .fine { margin: 1.25rem auto 0; font-size: .88rem; color: var(--muted); max-width: 36rem; }
+@media (max-width: 559px) {
+  .pro .includes { display: grid; grid-template-columns: 1fr 1fr; }
+  .pro .includes li { display: grid; place-items: center; min-height: 3.4rem; padding: .5rem .7rem; border-radius: 16px; line-height: 1.3; }
+}
 
 .support { display: grid; gap: 2.5rem 4rem; }
 @media (min-width: 980px) { .support { grid-template-columns: .85fr 1.15fr; } }
 .contact { display: grid; gap: .75rem; margin-top: 1.75rem; }
-.contact a { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.15rem; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); transition: border-color .2s; }
-.contact a:hover { border-color: var(--accent-2); }
+.contact .crow { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.15rem; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); transition: border-color .2s; color: var(--fg); text-decoration: none; }
+.contact a.crow:hover { border-color: var(--accent-2); }
 .contact .ic { flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: rgba(167,139,250,.16); color: var(--accent); }
 .contact b { display: block; font-weight: 500; color: var(--fg); overflow-wrap: anywhere; }
 .contact .what { display: block; font-size: .86rem; color: var(--muted); }
@@ -503,13 +630,17 @@ footer.site { border-top: 1px solid var(--line); padding: 4rem 0 2.5rem; margin-
 .faq .a li { margin: .25rem 0; }
 .faq .a a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(196,181,253,.4); }
 .faq .a strong { color: var(--fg); font-weight: 500; }
-.crisis { margin-top: 2rem; display: flex; gap: 1rem; align-items: flex-start; padding: 1.25rem 1.4rem; border-radius: 18px; background: rgba(255,255,255,.03); border: 1px solid var(--line); font-size: .93rem; color: var(--muted); }
+.crisis { margin-top: 2rem; display: flex; gap: 1rem; align-items: flex-start; padding: 1.25rem 1.4rem; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); font-size: .93rem; color: var(--muted); }
 .crisis svg { color: var(--accent); flex: none; margin-top: .15rem; }
 .crisis strong { color: var(--fg); }
+.crisis a { color: var(--fg); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(196,181,253,.5); white-space: nowrap; }
+.crisis a:hover { text-decoration-color: var(--accent); }
 
 /* ==========================================================================
    LINE TEMPLATE — /attars/ is the first line built on it. Every block here is
-   generic (.l-hero, .story, .goods, .flow, .trade) so a future line copies it.
+   generic (.l-hero, .story, .goods, .flow, .trade) and takes its colours only
+   from the world tokens (--accent, --accent-soft, --halo, --bg-2, --raised …),
+   so a future line copies the page and sets one token block, nothing more.
    ========================================================================== */
 .l-hero { padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(2.5rem, 5vw, 4rem); }
 .l-hero .grid { display: grid; gap: 3rem; align-items: center; }
@@ -518,11 +649,13 @@ footer.site { border-top: 1px solid var(--line); padding: 4rem 0 2.5rem; margin-
 .l-hero .lede { margin-top: 1.4rem; }
 .l-hero .row { margin-top: 2.1rem; }
 .facts { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; }
-.fact { font-size: .86rem; padding: .4rem .8rem; border-radius: 999px; color: var(--accent-soft); box-shadow: inset 0 0 0 1px var(--line); background: rgba(220,174,99,.06); }
+.fact { font-size: .86rem; padding: .4rem .8rem; border-radius: 999px; color: var(--accent-soft); box-shadow: inset 0 0 0 1px var(--line); background: color-mix(in srgb, var(--accent) 6%, transparent); }
+.fact a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--accent) 50%, transparent); }
+.fact a:hover { text-decoration-color: var(--accent); }
 .altar { position: relative; height: 600px; display: grid; place-items: center; }
-.altar .halo { position: absolute; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(226,160,74,.45), rgba(160,90,30,.14) 50%, transparent 70%); }
+.altar .halo { position: absolute; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, var(--halo), color-mix(in srgb, var(--halo) 30%, transparent) 50%, transparent 70%); }
 .altar .motes { position: absolute; inset: 0; background: url("../assets/texture/motes.svg") center / 520px 520px; opacity: .9; }
-.altar .arch-xl { position: relative; z-index: 2; width: 380px; height: 520px; border-radius: 999px 999px 28px 28px; overflow: hidden; box-shadow: 0 0 0 1px rgba(241,213,161,.3), 0 0 0 10px rgba(241,213,161,.05), 0 60px 120px -40px rgba(0,0,0,.85); }
+.altar .arch-xl { position: relative; z-index: 2; width: 380px; height: 520px; border-radius: 999px 999px 28px 28px; overflow: hidden; box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent-soft) 30%, transparent), 0 0 0 10px color-mix(in srgb, var(--accent-soft) 5%, transparent), 0 60px 120px -40px rgba(0,0,0,.85); }
 .altar .arch-xl img { width: 100%; height: 100%; object-fit: cover; }
 .seal { position: absolute; z-index: 3; width: 132px; height: 132px; left: calc(50% - 250px); bottom: 70px; animation: spin 40s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
@@ -549,11 +682,11 @@ footer.site { border-top: 1px solid var(--line); padding: 4rem 0 2.5rem; margin-
 @media (min-width: 1080px) { .goods { grid-template-columns: repeat(4, 1fr); } }
 .good {
   display: flex; flex-direction: column; padding: .9rem .9rem 1.25rem; border-radius: 26px;
-  background: linear-gradient(180deg, rgba(255,235,200,.05), rgba(255,235,200,.015));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent-soft) 5%, transparent), color-mix(in srgb, var(--accent-soft) 1.5%, transparent));
   border: 1px solid var(--line); transition: border-color .25s, transform .25s;
 }
-.good:hover { border-color: rgba(232,190,120,.38); transform: translateY(-3px); }
-.good .img { display: block; aspect-ratio: 4 / 5; border-radius: 999px 999px 18px 18px; overflow: hidden; background: #1a0f0a; }
+.good:hover { border-color: color-mix(in srgb, var(--accent) 40%, transparent); transform: translateY(-3px); }
+.good .img { display: block; aspect-ratio: 4 / 5; border-radius: 999px 999px 18px 18px; overflow: hidden; background: var(--bg-2); }
 .good .img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
 .good:hover .img img { transform: scale(1.04); }
 .good .txt { padding: 1.1rem .35rem 0; display: flex; flex-direction: column; flex: 1; }
@@ -561,7 +694,7 @@ footer.site { border-top: 1px solid var(--line); padding: 4rem 0 2.5rem; margin-
 .good h3 { margin-top: .4rem; font-size: 1.55rem; }
 .good h3 a:hover { color: var(--accent-soft); }
 .notes { margin-top: .7rem; display: flex; flex-wrap: wrap; gap: .35rem; list-style: none; }
-.notes li { font-size: .8rem; padding: .25rem .6rem; border-radius: 999px; color: var(--accent-soft); background: rgba(220,174,99,.08); box-shadow: inset 0 0 0 1px rgba(232,190,120,.18); }
+.notes li { font-size: .8rem; padding: .25rem .6rem; border-radius: 999px; color: var(--accent-soft); background: color-mix(in srgb, var(--accent) 8%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 20%, transparent); }
 .good .blurb { margin-top: .75rem; color: var(--muted); font-size: .94rem; }
 .good .buy { margin-top: auto; padding-top: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
 .price { font-family: var(--display); font-size: 1.6rem; color: var(--fg); }
@@ -586,7 +719,7 @@ footer.site { border-top: 1px solid var(--line); padding: 4rem 0 2.5rem; margin-
 .flow-foot { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; justify-content: space-between; }
 
 .trade { display: grid; gap: 1.5rem 3rem; align-items: center; padding: clamp(1.75rem, 4vw, 3rem); border-radius: 28px;
-  background: linear-gradient(120deg, rgba(220,174,99,.16), rgba(220,174,99,.03) 60%);
+  background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 16%, transparent), color-mix(in srgb, var(--accent) 3%, transparent) 60%);
   border: 1px solid var(--line); }
 @media (min-width: 900px) { .trade { grid-template-columns: 1.3fr auto; } }
 .trade p:not(.eyebrow) { margin-top: .6rem; color: var(--muted); max-width: 38rem; }
@@ -601,8 +734,8 @@ footer.site { border-top: 1px solid var(--line); padding: 4rem 0 2.5rem; margin-
 .backlink::before { content: "←"; }
 .p-photo { position: relative; display: grid; place-items: center; }
 @media (min-width: 900px) { .p-photo { position: sticky; top: 100px; } }
-.p-photo .halo { position: absolute; width: 90%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(226,160,74,.38), rgba(160,90,30,.12) 50%, transparent 70%); }
-.p-photo .arch-xl { position: relative; width: min(100%, 420px); aspect-ratio: 4 / 5; border-radius: 999px 999px 28px 28px; overflow: hidden; box-shadow: 0 0 0 1px rgba(241,213,161,.3), 0 0 0 10px rgba(241,213,161,.05), 0 60px 120px -40px rgba(0,0,0,.85); }
+.p-photo .halo { position: absolute; width: 90%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--halo) 85%, transparent), color-mix(in srgb, var(--halo) 28%, transparent) 50%, transparent 70%); }
+.p-photo .arch-xl { position: relative; width: min(100%, 420px); aspect-ratio: 4 / 5; border-radius: 999px 999px 28px 28px; overflow: hidden; box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent-soft) 30%, transparent), 0 0 0 10px color-mix(in srgb, var(--accent-soft) 5%, transparent), 0 60px 120px -40px rgba(0,0,0,.85); }
 .p-photo .arch-xl img { width: 100%; height: 100%; object-fit: cover; }
 .p-copy h1 { margin-top: 1rem; font-size: clamp(2.6rem, 5vw, 4rem); line-height: 1.02; }
 .p-copy .price { display: block; margin-top: .75rem; font-size: 2rem; color: var(--accent); }
@@ -632,15 +765,19 @@ select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
 .cart h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: 1.05; margin-top: .9rem; }
 .cart .lede { margin-top: 1rem; }
 .lines-list { list-style: none; margin-top: 2rem; border-top: 1px solid var(--line); }
-.lines-list li { display: grid; grid-template-columns: 1fr auto; gap: .5rem 1rem; align-items: center; padding: 1.1rem 0; border-bottom: 1px solid var(--line); }
+/* Phone: name and line total on one row, the controls under them.
+   640px and up: name | controls | total, on one row. */
+.lines-list li { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "info lt" "ctl ctl"; gap: .7rem 1rem; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+.lines-list .info { grid-area: info; min-width: 0; }
+@media (min-width: 640px) { .lines-list li { grid-template-columns: 1fr auto 4.5rem; grid-template-areas: "info ctl lt"; } }
 .lines-list .nm { font-weight: 500; }
-.lines-list .each { font-size: .88rem; color: var(--muted); }
-.lines-list .ctl { display: flex; align-items: center; gap: .4rem; }
+.lines-list .each { margin-top: .15rem; font-size: .86rem; line-height: 1.4; color: var(--muted); }
+.lines-list .ctl { grid-area: ctl; display: flex; align-items: center; gap: .4rem; }
 .lines-list .ctl button { width: 40px; height: 40px; border-radius: 999px; border: 0; cursor: pointer; background: var(--raised); color: var(--fg); font-size: 1.1rem; line-height: 1; }
 .lines-list .ctl button:hover { background: var(--line); }
 .lines-list .ctl .q { min-width: 1.6rem; text-align: center; font-variant-numeric: tabular-nums; }
 .lines-list .ctl .rm { width: auto; padding: 0 .85rem; font-size: .85rem; background: transparent; color: var(--muted); box-shadow: inset 0 0 0 1px var(--line); }
-.lines-list .lt { grid-column: 2; text-align: right; font-family: var(--display); font-size: 1.2rem; }
+.lines-list .lt { grid-area: lt; text-align: right; font-family: var(--display); font-size: 1.2rem; font-variant-numeric: tabular-nums; }
 .total { display: flex; justify-content: space-between; align-items: baseline; padding: 1.25rem 0 0; font-size: 1.05rem; }
 .total strong { font-family: var(--display); font-size: 1.8rem; font-weight: 560; color: var(--accent); }
 .sendform { margin-top: 2rem; padding: clamp(1.5rem, 3vw, 2.25rem); border-radius: 24px; background: var(--surface); border: 1px solid var(--line); }
@@ -663,8 +800,8 @@ select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
 .prose p { margin: .8rem 0; }
 .prose ul, .prose ol { margin: .5rem 0 .9rem 1.4rem; }
 .prose li { margin: .3rem 0; padding-left: .2rem; }
-.prose a { color: var(--accent); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent); text-underline-offset: 3px; overflow-wrap: anywhere; }
-.prose a:hover { text-decoration-color: var(--accent); }
+.prose a:not(.btn, .crow) { color: var(--accent); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent); text-underline-offset: 3px; overflow-wrap: anywhere; }
+.prose a:not(.btn, .crow):hover { text-decoration-color: var(--accent); }
 .prose strong, .prose b { color: var(--fg); font-weight: 600; }
 .prose em, .prose i { color: var(--fg); }
 .prose .scope { margin-top: 3.5rem; padding-top: 1.75rem; border-top: 1px solid var(--line); font-size: .92rem; color: var(--muted); line-height: 1.7; }
@@ -692,6 +829,34 @@ select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
 @media (min-width: 640px) { .prose ul.offers { grid-template-columns: 1fr 1fr; } }
 .prose ul.offers li { margin: 0; padding: 1.1rem 1.25rem; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); color: var(--fg); }
 
+/* ---------- /aura/get/ — the desktop chooser (phones never see it) ---------- */
+.getpage { overflow-x: clip; text-align: center; padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(3rem, 7vw, 5rem); }
+.getpage .eyebrow { margin-top: .4rem; }
+.getpage h1 { margin-top: .5rem; color: var(--accent); font-size: clamp(3rem, 7vw, 4.6rem); }
+.getpage .lede { margin: 1rem auto 0; max-width: 31rem; text-wrap: balance; }
+.getpage .stores { justify-content: center; margin-top: 2rem; }
+.getpage .hint { margin-top: 1.5rem; font-size: .9rem; color: var(--muted); line-height: 1.9; }
+.get-hero { position: relative; width: 15rem; height: 15rem; margin: 0 auto .3rem; display: grid; place-items: center; }
+.get-hero::before { content: ""; position: absolute; inset: -5rem -9rem; pointer-events: none; background: url("../assets/texture/stars.svg") 0 0 / 520px 520px;
+  -webkit-mask-image: radial-gradient(closest-side, #000 40%, transparent 100%); mask-image: radial-gradient(closest-side, #000 40%, transparent 100%); }
+.get-hero .breath { position: absolute; inset: 0; margin: auto; width: 14rem; height: 14rem; border-radius: 50%;
+  background: radial-gradient(circle, #A78BFA 40%, #7C3AED 100%); box-shadow: 0 0 40px 8px rgba(124, 58, 237, .5);
+  animation: app-breathe 14s ease-in-out infinite; }
+.get-hero img { position: relative; width: 6.6rem; height: 6.6rem; border-radius: 1.5rem; box-shadow: 0 14px 34px rgba(30, 27, 75, .55); }
+.phase { position: relative; height: 1.3rem; margin-bottom: 1.1rem; }
+.phase span { position: absolute; left: 0; right: 0; font-size: .72rem; font-weight: 600; letter-spacing: .32em; text-transform: uppercase; color: var(--accent); opacity: 0; }
+.phase .p-in { animation: ph-in 14s linear infinite; }
+.phase .p-ho { animation: ph-ho 14s linear infinite; }
+.phase .p-ex { animation: ph-ex 14s linear infinite; }
+@keyframes ph-in { 0%,2% {opacity:0;} 6%,24% {opacity:1;} 28.6%,100% {opacity:0;} }
+@keyframes ph-ho { 0%,28.6% {opacity:0;} 32%,53% {opacity:1;} 57.1%,100% {opacity:0;} }
+@keyframes ph-ex { 0%,57.1% {opacity:0;} 61%,95% {opacity:1;} 100% {opacity:0;} }
+@media (prefers-reduced-motion: reduce) {
+  .get-hero .breath { animation: none; transform: scale(.85); }
+  .phase span { animation: none; }
+  .phase .p-in { opacity: .8; }
+}
+
 /* ---------- 404 ---------- */
 .lost { min-height: 60vh; display: grid; place-items: center; text-align: center; padding-block: 4rem; }
 .lost .display { max-width: 14ch; margin: 1rem auto 0; }
@@ -703,9 +868,9 @@ select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
   position: fixed; left: var(--gutter); right: var(--gutter); bottom: 24px; margin-inline: auto; width: max-content; transform: translateY(140%); z-index: 60;
   display: flex; align-items: center; gap: 1rem; padding: .6rem .6rem .6rem 1.2rem; border-radius: 999px;
   max-width: calc(100vw - 2 * var(--gutter));
-  background: #2a1c12; color: #f7ecdc; border: 1px solid rgba(232,190,120,.35); box-shadow: 0 20px 50px rgba(0,0,0,.6);
+  background: var(--raised); color: var(--fg); border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); box-shadow: 0 20px 50px rgba(0,0,0,.6);
   transition: transform .35s ease, visibility 0s .35s; font-size: .95rem; visibility: hidden;
 }
 .toast.show { transform: translateY(0); visibility: visible; transition: transform .35s ease; }
-.toast a { flex: none; padding: .55rem .95rem; border-radius: 999px; background: #dcae63; color: #1a0f07; font-weight: 500; font-size: .88rem; }
+.toast a { flex: none; padding: .55rem .95rem; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font-weight: 500; font-size: .88rem; }
 @media (prefers-reduced-motion: reduce) { .toast, .toast.show { transition: none; } .btn:hover, .door:hover, .good:hover, .store:hover { transform: none; } }

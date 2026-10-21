@@ -31,6 +31,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&amp;family=Outfit:wght@300..600&amp;display=swap">
 <link rel="stylesheet" href="/css/house.css">
 <!-- /shell:head -->
+<!-- Only the Hindi and Gujarati words on this page, subset with text= (a few KB). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500&amp;family=Noto+Sans+Gujarati:wght@400;500&amp;display=swap&amp;text=%E0%A4%B9%E0%A4%BF%E0%A4%A8%E0%A5%8D%E0%A4%A6%E0%A5%80%E0%A4%AC%E0%A4%BE%E0%A4%A4%E0%A4%95%E0%A4%B0%E0%A5%87%E0%A4%B2%E0%A4%8F%E0%A4%9F%E0%A5%88%E0%A4%AA%E0%A4%82%E0%AA%97%E0%AB%81%E0%AA%9C%E0%AA%B0%E0%AA%BE%E0%AA%A4%E0%AB%80%E0%AA%B5%E0%AA%95%E0%AA%AE%E0%AA%9F%E0%AB%87%E0%AB%85%E0%AA%AA%E0%AB%8B">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"MobileApplication","name":"Aura by Vigyaan","url":"https://vigyaan.ai/aura/","operatingSystem":"iOS, Android","applicationCategory":"HealthApplication","installUrl":"https://vigyaan.ai/aura/get/","sameAs":["https://apps.apple.com/app/id6771584896","https://play.google.com/store/apps/details?id=ai.vigyaan.aura"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Vigyaan LLC","url":"https://vigyaan.ai/","email":"support@vigyaan.ai"}}
 </script>
@@ -44,19 +46,19 @@
     <a class="brand" href="/" aria-label="Vigyaan, home"><img src="/assets/logo/spark.svg" alt="" width="30" height="30">Vigyaan</a>
     <a class="crumb" href="/aura/">Aura</a>
     <nav class="desk" aria-label="Main">
-      <a href="/aura/" aria-current="page"><span class="dot-aura" aria-hidden="true"></span>Aura</a>
-      <a href="/attars/"><span class="dot-attar" aria-hidden="true"></span>Attars</a>
+      <a href="/aura/" aria-current="page"><span class="dot" style="--dot:#a78bfa;--dot-glow:#7c3aed" aria-hidden="true"></span>Aura</a>
+      <a href="/attars/"><span class="dot" style="--dot:#d9b26a;--dot-glow:rgba(217,170,96,.8)" aria-hidden="true"></span>Attars</a>
       <a href="/studio/">Studio</a>
       <a href="/aura/#support">Help</a>
     </nav>
     <div class="nav-end">
-      <a class="pill-sm" href="/aura/get/">Get the app</a>
+      <a class="pill-sm" href="#get">Get the app</a>
       <details class="menu">
         <summary aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></summary>
         <nav class="panel" aria-label="Menu">
           <a href="/"><span>Vigyaan</span><small>home</small></a>
-          <a href="/aura/" aria-current="page"><span><span class="dot-aura" aria-hidden="true"></span>Aura</span><small>you are here</small></a>
-          <a href="/attars/"><span><span class="dot-attar" aria-hidden="true"></span>Attars</span><small>the oils</small></a>
+          <a href="/aura/" aria-current="page"><span><span class="dot" style="--dot:#a78bfa;--dot-glow:#7c3aed" aria-hidden="true"></span>Aura</span><small>you are here</small></a>
+          <a href="/attars/"><span><span class="dot" style="--dot:#d9b26a;--dot-glow:rgba(217,170,96,.8)" aria-hidden="true"></span>Attars</span><small>the oils</small></a>
           <a href="/studio/"><span>Studio</span><small>about us</small></a>
           <a href="/aura/#support"><span>Aura help</span><small>support</small></a>
           <div class="get">
@@ -82,7 +84,7 @@
         <h1 class="display" id="aura-title">The companion who actually <em>remembers</em> you.</h1>
         <p class="lede">Tap once and just talk. Aura answers in a warm, natural voice, hands-free, and carries what matters — your people, your plans, the small wins — into every conversation, spoken or typed.</p>
 
-        <div class="stores">
+        <div class="stores" id="get">
           <a class="store" href="https://apps.apple.com/app/id6771584896" aria-label="Download Aura on the App Store">
             <svg viewBox="0 0 384 512" fill="#fff" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
             <span><small>Download on the</small><strong>App Store</strong></span>
@@ -95,7 +97,7 @@
         <p class="offer"><b><svg width="14" height="14" viewBox="0 0 24 24" fill="#c4b5fd" aria-hidden="true"><path d="M12 1.5l2.3 7.4 7.7.1-6.2 4.6 2.3 7.4L12 16.5l-6.1 4.5 2.3-7.4L2 9l7.7-.1z"/></svg>1 year of Pro free &middot; no card</b><span>for every new account</span></p>
         <ul class="meta">
           <li>iPhone &amp; Android</li>
-          <li>English &middot; <span lang="hi">हिन्दी</span> &middot; <span lang="gu">ગુજરાતી</span></li>
+          <li class="langs" aria-label="English, Hindi, Gujarati"><span>English</span><span class="deva" lang="hi">हिन्दी</span><span class="gujr" lang="gu">ગુજરાતી</span></li>
           <li>For adults 18+</li>
         </ul>
       </div>
@@ -123,7 +125,7 @@
       <div class="talk">
         <div class="t"><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg></span><div><h2>Tap once and just talk</h2><p>Hands-free, in a warm, natural voice. Tap to interrupt her anytime.</p></div></div>
         <div class="t"><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span><div><h2>She looks things up</h2><p>A place nearby, something on the web, what people are saying on X.</p></div></div>
-        <div class="t"><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 12h2M7 8v8M11 5v14M15 9v6M19 11v2"/></svg></span><div><h2>Notes on how you spoke</h2><p>After a call in English, she can write you notes — what went well, what to work on — on your <em>Your voice</em> page.</p></div></div>
+        <div class="t"><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 12h2M7 8v8M11 5v14M15 9v6M19 11v2"/></svg></span><div><h2>Notes on how you spoke</h2><p>After a call in English, she can write you notes — what went well, what to work on — on the <em>Your voice</em> page.</p></div></div>
       </div>
     </div>
   </section>
@@ -136,39 +138,56 @@
         <h2 class="h2" id="does">Tell her once. She <em>carries</em> it forward.</h2>
         <p class="lede">Most apps forget you the moment you close them. Aura brings your world into every conversation.</p>
       </div>
-      <div class="bento">
-        <article class="tile big">
+
+      <!-- Daylight band: the two conversation screens are the app's LIGHT theme,
+           so they sit together here, on the app's own lavender ground, and the
+           dark screens stay in the night tiles below. Never alternate them. -->
+      <div class="daylight">
+        <article class="dtile">
           <p class="k">She remembers</p>
-          <h3>Days later, she still knows.</h3>
-          <p>Mention the dish your friends loved. Next time, she brings it back — and says how she knows.</p>
-          <div class="shot from-bottom"><span class="glow"></span><div class="phone"><img src="/assets/aura/screens/chat-remembers.webp" alt="A chat: asked what she made last time that everyone loved, Aura answers that it was Mom&rsquo;s dal, and that people asked for seconds." width="600" height="1223" loading="lazy"></div></div>
+          <h3>Days later, she still&nbsp;knows.</h3>
+          <p>Mention the dish your friends loved. Next time you ask, she brings it back.</p>
+          <div class="shot"><div class="phone"><img src="/assets/aura/screens/chat-remembers.webp" alt="A chat: asked what she made last time that everyone loved, Aura answers that it was Mom&rsquo;s dal, and that people asked for seconds." width="900" height="1834" loading="lazy"></div></div>
         </article>
+        <article class="dtile">
+          <p class="k">Reminders</p>
+          <h3>Say it once.</h3>
+          <p>&ldquo;Remind me Friday at 6.&rdquo; Say it in chat or on a call, and it lands on your phone.</p>
+          <div class="shot"><div class="phone"><img src="/assets/aura/screens/reminder-chat.webp" alt="A chat: asked to remind about lentils on Friday at 6 pm, Aura confirms and shows a reminder card for Friday at 6:00 PM." width="900" height="1834" loading="lazy"></div></div>
+        </article>
+        <p class="note">Screens from the release app, on a made-up demo account; the replies are examples from a test server.</p>
+      </div>
+
+      <!-- Night tiles: the dark screens, and the language tile in live text. -->
+      <div class="bento">
         <article class="tile big">
           <p class="k">Your sky</p>
           <h3>See everything she remembers.</h3>
           <p>Search it, pin what matters, delete anything, permanently. As her memories of you gather, they light stars, one constellation at a time.</p>
           <div class="shot from-top"><span class="glow"></span><div class="phone"><img src="/assets/aura/screens/memory-sky.webp" alt="The Memory tab at night: a finished Leo constellation, nine of nine stars, above the list of memories." width="600" height="1223" loading="lazy"></div></div>
         </article>
-        <article class="tile sm">
-          <p class="k">Reminders</p>
-          <h3>Say it once.</h3>
-          <p>&ldquo;Remind me Friday at 6.&rdquo; Say it in chat or on a call, and it lands on your phone.</p>
-          <div class="shot from-bottom"><span class="glow"></span><div class="phone"><img src="/assets/aura/screens/reminder-chat.webp" alt="A chat: asked to remind about lentils on Friday at 6 pm, Aura confirms and shows a reminder card." width="600" height="1223" loading="lazy"></div></div>
-        </article>
-        <article class="tile sm">
+        <article class="tile big">
           <p class="k">Breathe</p>
           <h3>A minute to come back.</h3>
-          <p>Guided breathing for sleep, calm and reset. Your streak stays on your phone.</p>
+          <p>Guided breathing for sleep, calm and reset, whenever you need it.</p>
           <div class="shot from-bottom"><span class="glow"></span><div class="phone"><img src="/assets/aura/screens/breathing.webp" alt="A guided breathing session: a violet circle counting, and the words Breathe in." width="600" height="1223" loading="lazy"></div></div>
         </article>
-        <article class="tile sm">
-          <p class="k">Your language</p>
-          <h3>English, Hindi or Gujarati.</h3>
-          <p>Choose your language when you sign up, and chat with her in it.</p>
-          <div class="shot from-top"><span class="glow"></span><div class="phone"><img src="/assets/aura/screens/home-gujarati.webp" alt="Aura&rsquo;s home screen with Gujarati chosen: Tap to talk, with a Gujarati line beneath it." width="600" height="1223" loading="lazy"></div></div>
+        <article class="tile wide lang">
+          <div>
+            <p class="k">Your language</p>
+            <h3>English, Hindi or Gujarati.</h3>
+            <p>Choose your language when you sign up, and chat with her in it.</p>
+          </div>
+          <figure class="specimen">
+            <ul>
+              <li><span class="lk">English</span><span class="say">Tap to talk</span></li>
+              <li lang="hi"><span class="lk deva">हिन्दी</span><span class="say deva">बात करने के लिए टैप करें</span></li>
+              <li lang="gu"><span class="lk gujr">ગુજરાતી</span><span class="say gujr">વાત કરવા માટે ટૅપ કરો</span></li>
+            </ul>
+            <figcaption>&ldquo;Tap to talk,&rdquo; as Aura&rsquo;s home screen says it in each language.</figcaption>
+          </figure>
         </article>
       </div>
-      <p class="tiny" style="margin-top:1rem">Screens from the release app, on a made-up demo account.</p>
     </div>
   </section>
 
@@ -182,7 +201,7 @@
           <h2 class="h2 sm" id="priv-title" style="margin-top:.8rem">Yours to see, and yours to delete.</h2>
         </div>
         <div class="body">
-          <p><strong>Your profile and memories live on servers we control.</strong> To write each reply, the recent conversation — and any photo you share, or your voice on a call — goes to our AI partner, xAI, which processes it only for that job. It doesn&rsquo;t keep it, and it doesn&rsquo;t train on it.</p>
+          <p><strong>Your profile and memories live on servers we control.</strong> To write each reply, the recent conversation — and any photo you share, or your voice on a call — goes to our AI partner, xAI. For your voice notes, the recording of your side goes to xAI again after the call, to be transcribed. xAI processes it only for those jobs. It doesn&rsquo;t keep it, and it doesn&rsquo;t train on it.</p>
           <p>We record your side of each call, never Aura&rsquo;s, and keep it on our own servers until you delete that conversation or your account. We never sell your data, and you can see everything Aura remembers and delete it, permanently, anytime.</p>
           <a class="arrow" href="/aura/privacy.html">Read the Privacy Policy</a>
         </div>
@@ -201,10 +220,11 @@
         </div>
         <div class="body">
           <p>Aura is for adults 18 and older. She&rsquo;s a wellness and self-reflection companion — <strong>not therapy, not a medical device, and not a crisis service.</strong></p>
-          <p>When a message sounds like a crisis, her reply carries helplines that answer around the clock.</p>
-          <ul class="lines">
-            <li><span>In the US</span><strong>Call or text 988</strong></li>
-            <li><span>In India</span><strong>iCall &middot; Vandrevala Foundation</strong></li>
+          <p>When a message sounds like a crisis, her reply puts helplines on the screen beside it. These answer around the clock:</p>
+          <ul class="lines" aria-label="Helplines that answer around the clock">
+            <li><span>In the US</span><span class="nums"><a href="tel:988">Call <b>988</b></a><a href="sms:988">Text <b>988</b></a></span></li>
+            <li><span>In India</span><span class="nums"><a href="tel:+919999666555">Vandrevala Foundation <b>+91 9999 666 555</b></a><a href="tel:18005990019">KIRAN <b>1800-599-0019</b></a></span></li>
+            <li><span>Anywhere else</span><span class="nums"><a href="https://findahelpline.com/" rel="noopener"><b>findahelpline.com</b></a></span></li>
             <li><span>In danger right now?</span><strong>Call your local emergency number</strong></li>
           </ul>
         </div>
@@ -218,14 +238,14 @@
       <div class="pro">
         <p class="eyebrow">Aura Pro</p>
         <h2 class="h2" id="pro-title">A full year of Pro, <em>free.</em></h2>
-        <p>Every new account gets a full year of Aura Pro, free — no card needed.</p>
+        <p>Every new account gets one, with no card needed.</p>
         <ul class="includes" aria-label="What your year of Pro includes">
           <li>Unlimited chat</li>
           <li>300 voice minutes a month</li>
           <li>Up to an hour of voice a day</li>
           <li>What people are saying on X</li>
         </ul>
-        <div class="stores">
+        <div class="stores" id="get">
           <a class="store" href="https://apps.apple.com/app/id6771584896" aria-label="Download Aura on the App Store">
             <svg viewBox="0 0 384 512" fill="#fff" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
             <span><small>Download on the</small><strong>App Store</strong></span>
@@ -249,12 +269,12 @@
         <h2 class="h2 sm" id="support-title" style="margin-top:.9rem">A small team that reads every message.</h2>
         <p class="muted" style="margin-top:1rem;max-width:30rem">Email us and we&rsquo;ll get back to you, usually within two business days. Include your account email, your device and its OS version, and what happened, and we can help faster.</p>
         <div class="contact">
-          <a href="mailto:support@vigyaan.ai"><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg></span><span><b>support@vigyaan.ai</b><span class="what">Help with the app</span></span></a>
-          <a href="mailto:privacy@vigyaan.ai"><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 3l7 3v5.5c0 4.4-3 8-7 9.5-4-1.5-7-5.1-7-9.5V6z"/></svg></span><span><b>privacy@vigyaan.ai</b><span class="what">Privacy and data requests</span></span></a>
+          <a class="crow" href="mailto:support@vigyaan.ai"><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg></span><span><b>support@vigyaan.ai</b><span class="what">Help with the app</span></span></a>
+          <a class="crow" href="mailto:privacy@vigyaan.ai"><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 3l7 3v5.5c0 4.4-3 8-7 9.5-4-1.5-7-5.1-7-9.5V6z"/></svg></span><span><b>privacy@vigyaan.ai</b><span class="what">Privacy and data requests</span></span></a>
         </div>
         <div class="links">
           <a href="/aura/privacy.html">Privacy Policy</a>
-          <a href="/aura/terms.html">Terms of Use</a>
+          <a href="/aura/terms.html">Terms of Service</a>
           <a href="/aura/delete-account.html">Delete your account</a>
           <a href="/aura/campus/">Aura for campuses</a>
         </div>
@@ -287,7 +307,7 @@
           </details>
           <details>
             <summary>Is my data private?</summary>
-            <div class="a"><p>Your account, history and memories are stored on infrastructure we control. To write a reply, the recent conversation — and any photo, or your voice on a call — goes to our AI partner xAI, which doesn&rsquo;t keep it and doesn&rsquo;t train on it. Memories marked sensitive are left out of what we send, except on voice calls, which xAI hears live. We never sell your data or use it for ads. <a href="/aura/privacy.html">The full Privacy Policy</a></p></div>
+            <div class="a"><p>Your account, history and memories are stored on infrastructure we control. To write a reply, the recent conversation — and any photo, or your voice on a call — goes to our AI partner xAI, which doesn&rsquo;t keep it and doesn&rsquo;t train on it. Memories marked sensitive are left out of everything we send to xAI, calls included. What you say on a call, xAI hears live, and your voice notes are made from those words. We never sell your data or use it for ads. <a href="/aura/privacy.html">The full Privacy Policy</a></p></div>
           </details>
           <details>
             <summary>Who can use Aura?</summary>
@@ -300,7 +320,7 @@
         </div>
         <div class="crisis">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>
-          <p>If you&rsquo;re in crisis or thinking about harming yourself, please reach out now. In the US, call or text <strong>988</strong>. Elsewhere, call your local emergency number.</p>
+          <p>If you&rsquo;re in crisis or thinking about harming yourself, please reach out now. In the US, call or text <a href="tel:988">988</a>. In India, call Vandrevala Foundation on <a href="tel:+919999666555">+91&nbsp;9999&nbsp;666&nbsp;555</a> or KIRAN on <a href="tel:18005990019">1800-599-0019</a>, at any hour. Anywhere else, find a line at <a href="https://findahelpline.com/" rel="noopener">findahelpline.com</a>, or call your local emergency number.</p>
         </div>
       </div>
     </div>
@@ -310,26 +330,26 @@
 <!-- shell:footer -->
 <footer class="site">
   <div class="wrap">
-    <div class="fgrid">
+    <div class="fgrid" style="--lines:2">
       <div class="about">
         <a class="fbrand" href="/"><img src="/assets/logo/spark.svg" alt="" width="30" height="30">Vigyaan</a>
         <p class="muted small" style="margin-top:.9rem;max-width:20rem">A small house in New Jersey. We make a few things, slowly, and name the next one when it&rsquo;s real.</p>
       </div>
       <div>
-        <h2><span class="dot-aura" aria-hidden="true"></span>Aura</h2>
+        <h2><span class="dot" style="--dot:#a78bfa;--dot-glow:#7c3aed" aria-hidden="true"></span>Aura</h2>
         <ul>
           <li><a href="/aura/get/">Get the app</a></li>
           <li><a href="/aura/">Meet Aura</a></li>
           <li><a href="/aura/#support">Help &amp; support</a></li>
           <li><a href="/aura/privacy.html">Privacy Policy</a></li>
-          <li><a href="/aura/terms.html">Terms of Use</a></li>
+          <li><a href="/aura/terms.html">Terms of Service</a></li>
           <li><a href="/aura/delete-account.html">Delete your account</a></li>
           <li><a href="/aura/campus/">For campuses</a></li>
         </ul>
         <p class="note">A wellness companion for adults 18+. Not therapy, and not a crisis service.</p>
       </div>
       <div>
-        <h2><span class="dot-attar" aria-hidden="true"></span>Attars</h2>
+        <h2><span class="dot" style="--dot:#d9b26a;--dot-glow:rgba(217,170,96,.8)" aria-hidden="true"></span>Attars</h2>
         <ul>
           <li><a href="/attars/#oils">The oils</a></li>
           <li><a href="/attars/#ordering">How ordering works</a></li>

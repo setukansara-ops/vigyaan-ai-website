@@ -37,8 +37,8 @@
   <div class="wrap navrow">
     <a class="brand" href="/" aria-label="Vigyaan, home"><img src="/assets/logo/spark.svg" alt="" width="30" height="30">Vigyaan</a>
     <nav class="desk" aria-label="Main">
-      <a href="/aura/"><span class="dot-aura" aria-hidden="true"></span>Aura</a>
-      <a href="/attars/"><span class="dot-attar" aria-hidden="true"></span>Attars</a>
+      <a href="/aura/"><span class="dot" style="--dot:#a78bfa;--dot-glow:#7c3aed" aria-hidden="true"></span>Aura</a>
+      <a href="/attars/"><span class="dot" style="--dot:#d9b26a;--dot-glow:rgba(217,170,96,.8)" aria-hidden="true"></span>Attars</a>
       <a href="/studio/">Studio</a>
     </nav>
     <div class="nav-end">
@@ -46,8 +46,8 @@
         <summary aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></summary>
         <nav class="panel" aria-label="Menu">
           <a href="/" aria-current="page"><span>Vigyaan</span><small>you are here</small></a>
-          <a href="/aura/"><span><span class="dot-aura" aria-hidden="true"></span>Aura</span><small>the app</small></a>
-          <a href="/attars/"><span><span class="dot-attar" aria-hidden="true"></span>Attars</span><small>the oils</small></a>
+          <a href="/aura/"><span><span class="dot" style="--dot:#a78bfa;--dot-glow:#7c3aed" aria-hidden="true"></span>Aura</span><small>the app</small></a>
+          <a href="/attars/"><span><span class="dot" style="--dot:#d9b26a;--dot-glow:rgba(217,170,96,.8)" aria-hidden="true"></span>Attars</span><small>the oils</small></a>
           <a href="/studio/"><span>Studio</span><small>about us</small></a>
           <a href="/aura/#support"><span>Aura help</span><small>support</small></a>
           <div class="get">
@@ -74,11 +74,12 @@
     </div>
   </section>
 
-  <!-- One door per line, each opening onto its own world. A new line takes the
-       next number; css/house.css re-flows the grid (2-up, 3-up, then pairs). -->
+  <!-- One door per line, each opening onto its own world. A door takes all its
+       colours from its line's [data-world] token block in css/house.css. A new
+       line takes the next number; the grid re-flows (2-up, 3-up, then pairs). -->
   <section class="wrap" aria-label="Our lines">
     <div class="doors">
-      <article class="door door-aura">
+      <article class="door" data-world="aura">
         <div class="top">
           <img class="icon" src="/assets/aura/icon-128.webp" alt="" width="52" height="52">
           <p class="eyebrow"><span class="num">01</span>Live on iPhone &amp; Android</p>
@@ -95,22 +96,22 @@
         </div>
       </article>
 
-      <article class="door door-attar">
+      <article class="door" data-world="attar">
         <div class="top">
-          <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e7bb72" stroke-width="1.5" stroke-linejoin="round"><path d="M12 2.8c-3.2 4.6-5.6 7.6-5.6 11a5.6 5.6 0 0 0 11.2 0c0-3.4-2.4-6.4-5.6-11z"/><path d="M9.4 15.2a2.8 2.8 0 0 0 2.6 2.4" stroke-linecap="round"/></svg></span>
+          <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12 2.8c-3.2 4.6-5.6 7.6-5.6 11a5.6 5.6 0 0 0 11.2 0c0-3.4-2.4-6.4-5.6-11z"/><path d="M9.4 15.2a2.8 2.8 0 0 0 2.6 2.4" stroke-linecap="round"/></svg></span>
           <p class="eyebrow"><span class="num">02</span>First drop &middot; requests open</p>
         </div>
         <h2><a href="/attars/">Attars</a></h2>
         <p class="desc">Alcohol-free perfume oils in 6&nbsp;ml glass roll-ons. First Rain, Night Bloom and Jasmine.</p>
         <div class="go">
           <span class="btn btn-accent" aria-hidden="true">See the oils</span>
-          <span class="tag">$8 each &middot; any three $18</span>
+          <span class="tag">$8 each &middot; <a class="alt" href="/attars/discovery-trio/">a trio of any three, $18</a></span>
         </div>
         <div class="visual">
           <div class="arches">
-            <div class="arch"><img src="/assets/attars/first-rain-480.webp" alt="First Rain, a 6 ml roll-on" loading="lazy" width="480" height="480"></div>
-            <div class="arch"><img src="/assets/attars/jasmine-480.webp" alt="Jasmine, a 6 ml roll-on" loading="lazy" width="480" height="480"></div>
-            <div class="arch"><img src="/assets/attars/night-bloom-480.webp" alt="Night Bloom, a 6 ml roll-on" loading="lazy" width="480" height="480"></div>
+            <div class="arch"><img src="/assets/attars/first-rain-480.webp" srcset="/assets/attars/first-rain-480.webp 480w, /assets/attars/first-rain-800.webp 800w" sizes="240px" alt="First Rain, a 6 ml roll-on" loading="lazy" width="480" height="480"></div>
+            <div class="arch"><img src="/assets/attars/jasmine-480.webp" srcset="/assets/attars/jasmine-480.webp 480w, /assets/attars/jasmine-800.webp 800w" sizes="290px" alt="Jasmine, a 6 ml roll-on" loading="lazy" width="480" height="480"></div>
+            <div class="arch"><img src="/assets/attars/night-bloom-480.webp" srcset="/assets/attars/night-bloom-480.webp 480w, /assets/attars/night-bloom-800.webp 800w" sizes="240px" alt="Night Bloom, a 6 ml roll-on" loading="lazy" width="480" height="480"></div>
           </div>
         </div>
       </article>
@@ -131,26 +132,26 @@
 <!-- shell:footer -->
 <footer class="site">
   <div class="wrap">
-    <div class="fgrid">
+    <div class="fgrid" style="--lines:2">
       <div class="about">
         <a class="fbrand" href="/"><img src="/assets/logo/spark.svg" alt="" width="30" height="30">Vigyaan</a>
         <p class="muted small" style="margin-top:.9rem;max-width:20rem">A small house in New Jersey. We make a few things, slowly, and name the next one when it&rsquo;s real.</p>
       </div>
       <div>
-        <h2><span class="dot-aura" aria-hidden="true"></span>Aura</h2>
+        <h2><span class="dot" style="--dot:#a78bfa;--dot-glow:#7c3aed" aria-hidden="true"></span>Aura</h2>
         <ul>
           <li><a href="/aura/get/">Get the app</a></li>
           <li><a href="/aura/">Meet Aura</a></li>
           <li><a href="/aura/#support">Help &amp; support</a></li>
           <li><a href="/aura/privacy.html">Privacy Policy</a></li>
-          <li><a href="/aura/terms.html">Terms of Use</a></li>
+          <li><a href="/aura/terms.html">Terms of Service</a></li>
           <li><a href="/aura/delete-account.html">Delete your account</a></li>
           <li><a href="/aura/campus/">For campuses</a></li>
         </ul>
         <p class="note">A wellness companion for adults 18+. Not therapy, and not a crisis service.</p>
       </div>
       <div>
-        <h2><span class="dot-attar" aria-hidden="true"></span>Attars</h2>
+        <h2><span class="dot" style="--dot:#d9b26a;--dot-glow:rgba(217,170,96,.8)" aria-hidden="true"></span>Attars</h2>
         <ul>
           <li><a href="/attars/#oils">The oils</a></li>
           <li><a href="/attars/#ordering">How ordering works</a></li>
