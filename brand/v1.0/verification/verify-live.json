@@ -1,0 +1,70 @@
+{
+ "desk": {
+  "info": {
+   "box": [
+    144,
+    18.390625,
+    113.78125,
+    31.21875
+   ],
+   "img": [
+    144,
+    19,
+    30,
+    30
+   ],
+   "size": "19.52px",
+   "ls": "-0.1952px",
+   "color": "rgb(244, 236, 225)",
+   "fam": "Fraunces, ui-serif, Georgia, serif",
+   "w": "600",
+   "loaded": true
+  },
+  "after": [
+   144,
+   19,
+   114,
+   30
+  ],
+  "clip": {
+   "x": 140,
+   "y": 15,
+   "width": 122,
+   "height": 38
+  }
+ },
+ "phone": {
+  "info": {
+   "box": [
+    16,
+    19,
+    107.8125,
+    30
+   ],
+   "img": [
+    16,
+    19,
+    30,
+    30
+   ],
+   "size": "17.92px",
+   "ls": "-0.1792px",
+   "color": "rgb(244, 236, 225)",
+   "fam": "Fraunces, ui-serif, Georgia, serif",
+   "w": "600",
+   "loaded": true
+  },
+  "after": [
+   16,
+   19,
+   114,
+   30
+  ],
+  "clip": {
+   "x": 12,
+   "y": 15,
+   "width": 116,
+   "height": 38
+  }
+ }
+}

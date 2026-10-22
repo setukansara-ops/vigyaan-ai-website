@@ -37,7 +37,7 @@ const PLAY = 'https://play.google.com/store/apps/details?id=ai.vigyaan.aura';
 // sends /css/house.css and /js/site.js with max-age=14400 (4 hours) while pages revalidate on
 // every visit, so a returning visitor would get new HTML on the old CSS/JS. Bump ASSET_V whenever
 // a change to house.css or site.js must land together with the pages, then run this script.
-const ASSET_V = '2026-10-21';
+const ASSET_V = '2026-10-21b';
 
 // The lines, in the order they appear in the nav, the menu and the footer.
 const LINES = [

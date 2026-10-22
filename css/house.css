@@ -852,3 +852,40 @@ footer.site { border-top: 1px solid var(--line); padding: 4rem 0 2.5rem; margin-
 .lost .row { justify-content: center; margin-top: 2rem; }
 
 @media (prefers-reduced-motion: reduce) { .btn:hover, .door:hover, .good:hover, .store:hover { transform: none; } }
+
+/* ---------- /brand/ — the logo kit (files frozen under /brand/v1.0/) ---------- */
+.bk { padding-bottom: clamp(3rem, 6vw, 5rem); }
+.bk h2 { font-size: clamp(1.45rem, 2.4vw, 1.75rem); line-height: 1.2; margin: 3.25rem 0 1.1rem; }
+.bk-stage { display: grid; gap: 1rem; }
+@media (min-width: 720px) { .bk-stage { grid-template-columns: 1fr 1fr; } }
+.bk-panel { display: grid; justify-items: center; align-content: center; gap: 1.6rem; min-height: 15.5rem; padding: 2.75rem 1.5rem 1.4rem; border-radius: var(--r-lg); border: 1px solid var(--line); }
+.bk-panel img { width: min(342px, 84%); height: auto; }
+.bk-panel figcaption { font-size: .74rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+.bk-dark { background: #0f0b0a; color: var(--muted); }
+.bk-light { background: #fff; color: #5b4f46; }
+.bk-files { list-style: none; display: grid; gap: .7rem; }
+.bk-files li { display: grid; grid-template-columns: 5.25rem minmax(0, 1fr); align-items: center; gap: .9rem 1.1rem; padding: .8rem; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); }
+@media (min-width: 640px) { .bk-files li { grid-template-columns: 7rem minmax(0, 1fr) auto; padding: .8rem 1rem .8rem .8rem; } }
+.bk-thumb { display: grid; place-items: center; height: 4.5rem; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--line); }
+.bk-thumb.bk-dark { box-shadow: inset 0 0 0 1px rgba(244,236,225,.14); }
+.bk-thumb img { max-width: 84%; }
+.bk-thumb .bk-round { border-radius: 50%; }
+.bk-files h3 { font-family: var(--body); font-size: 1rem; font-weight: 600; letter-spacing: 0; color: var(--fg); }
+.bk-files p { color: var(--muted); font-size: .92rem; line-height: 1.5; margin-top: .15rem; }
+.bk-get { display: flex; flex-wrap: wrap; gap: .45rem; grid-column: 1 / -1; margin: 0; }
+@media (min-width: 640px) { .bk-get { grid-column: auto; justify-content: flex-end; } }
+.bk-files .bk-get a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 1rem; border-radius: 999px; font-size: .88rem; font-weight: 500; color: var(--fg); box-shadow: inset 0 0 0 1px var(--line); transition: box-shadow .2s, color .2s; }
+.bk-files .bk-get a:hover { color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.bk-all { margin-top: 1.1rem; color: var(--muted); font-size: .95rem; }
+.bk-swatches { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(8.75rem, 1fr)); gap: .7rem; }
+.bk-swatches li { display: grid; gap: .15rem; padding: .55rem .55rem .8rem; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); }
+.bk-swatches .sw { display: block; height: 4.25rem; border-radius: 10px; margin-bottom: .55rem; box-shadow: inset 0 0 0 1px rgba(244,236,225,.2); }
+.bk-swatches b { font-size: .9rem; font-weight: 600; padding-inline: .2rem; }
+.bk-swatches code { font: 400 .84rem/1.3 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--muted); padding-inline: .2rem; }
+.bk-type p { color: var(--muted); margin-top: .6rem; max-width: 40rem; }
+.bk-type .f-display { font-family: var(--display); font-weight: 600; font-size: 1.5rem; color: var(--fg); margin-right: .35rem; }
+.bk-type .f-body { font-family: var(--body); font-weight: 500; font-size: 1.35rem; color: var(--fg); margin-right: .35rem; }
+.bk-dont { list-style: none; display: grid; gap: .5rem; }
+.bk-dont li { position: relative; padding-left: 1.5rem; color: var(--muted); }
+.bk-dont li::before { content: ""; position: absolute; left: .15rem; top: .62em; width: .7rem; height: 1.5px; background: var(--accent); transform: rotate(-45deg); box-shadow: 0 0 0 0 transparent; }
+.bk-dont li::after { content: ""; position: absolute; left: .15rem; top: .62em; width: .7rem; height: 1.5px; background: var(--accent); transform: rotate(45deg); }

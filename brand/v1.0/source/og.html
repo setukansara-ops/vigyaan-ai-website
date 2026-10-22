@@ -1,0 +1,68 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- Vigyaan brand kit v1.0 — the house link-preview card (1200x630): the founder's pick "Option A" (2026-10-21), the tile centred above the ivory word.
+     It replaced the first v1.0 card (word left, tile right) before release, on his word (VERSION). The same fonts, night ground family and chips; the same copy or less (no new claims).
+     The tile and the word are the kit's masters (spark-tile.svg, wordmark.svg) placed as files and scaled uniformly, in the geometry of the
+     kit's stacked lockup (masters/lockup-stacked*.svg, viewBox 0 0 55.178 50.53 at S = 30): the box S centred above the word, the word's
+     ink 1.83927 S wide, 0.22 S from the bottom of the box to the word's ink top. Clear space 0.5 S on every side (BRAND.md section 7),
+     and all of it (tile + word + clear space) inside the centre square x 285..915. No effect touches the mark: the warm glow is the ground. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Outfit:wght@300..600&display=swap">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1200px;height:630px;overflow:hidden;-webkit-font-smoothing:antialiased}
+body{position:relative;font-family:"Outfit",system-ui,sans-serif;color:#f4ece1;background:#0f0b0a}
+.eb{position:absolute;left:0;width:1200px;text-align:center;font-weight:600;font-size:17px;line-height:20px;letter-spacing:.24em;text-indent:.24em;text-transform:uppercase;color:#c9a46a}
+.tile,.wm{position:absolute;display:block}
+.sub{position:absolute;left:0;width:1200px;text-align:center;font-weight:400;font-size:30px;line-height:38px;color:#f4ece1}
+.sub em{font-family:"Fraunces",serif;font-style:italic;font-weight:420;color:#e2c48e}
+.chip{position:absolute;display:inline-flex;align-items:center;gap:11px;height:52px;padding:0 22px;border-radius:999px;background:rgba(244,236,225,.06);box-shadow:inset 0 0 0 1.5px rgba(244,236,225,.18);font-weight:500;font-size:21px;color:#f4ece1;white-space:nowrap}
+.chip i{width:10px;height:10px;border-radius:50%;display:block}
+.chip small{font-size:21px;font-weight:400;color:#ae9e8e}
+</style></head><body>
+<p class="eb" id="eb">A New Jersey studio</p>
+<img class="tile" id="tile" src="TILE" alt="">
+<img class="wm" id="wm" src="WM" alt="Vigyaan">
+<p class="sub" id="sub">A house for things that <em>stay</em> with you.</p>
+<span class="chip" id="c1"><i style="background:#a78bfa"></i>Aura <small>the app</small></span>
+<span class="chip" id="c2"><i style="background:#d9b26a"></i>Attars <small>the oils</small></span>
+<script>
+// geometry, all from the stacked-lockup master (masters/lockup-stacked.svg, viewBox 0 0 55.178 50.53 at S = 30)
+const S = 180;                              // the tile box, px; even, so the tile lands on whole pixels at x = 600 - S/2
+const WMW = 55.178 / 30 * S;                // word ink width  = 1.83927 S
+const WMH = WMW * 18.573 / 73.571;          // word ink height (wordmark.svg's viewBox is its ink box, 73.571 x 18.573)
+const GAP = 0.22 * S;                       // bottom of the box -> the word's ink top
+const LH = S + GAP + WMH;                   // lockup height = 1.68433 S
+const CS = 0.5 * S;                         // clear space around a lockup, BRAND.md section 7
+// one centred column, spaced on the text's INK (measured in this renderer: the eyebrow's capitals sit 3..17 px into its 20 px line,
+// the tagline's ink 8..38 px into its 38 px line), so the clear space is real and nothing is spent on empty line-box:
+// eyebrow ink | SAFE + 0.5 S | tile + word | 0.5 S + SAFE | tagline ink, centred in 630 with a 2 px optical lift
+const EB_IN = [3, 17], SUB_IN = [8, 38], SAFE = 2;
+const span = (EB_IN[1] - EB_IN[0]) + SAFE + CS + LH + CS + SAFE + (SUB_IN[1] - SUB_IN[0]);
+const inkTop = Math.round((630 - span) / 2) - 2;
+const y0 = inkTop - EB_IN[0];                                         // top of the eyebrow's line box
+const tileY = Math.round(inkTop + (EB_IN[1] - EB_IN[0]) + SAFE + CS), tileX = 600 - S / 2;
+const wmY = tileY + S + GAP, wmX = 600 - WMW / 2, zoneBot = wmY + WMH + CS;
+const subY = Math.ceil(zoneBot + SAFE - SUB_IN[0]);                   // top of the tagline's line box
+const $ = id => document.getElementById(id);
+Object.assign($('tile').style, { left: tileX + 'px', top: tileY + 'px', width: S + 'px', height: S + 'px' });
+Object.assign($('wm').style, { left: wmX + 'px', top: wmY + 'px', width: WMW + 'px', height: WMH + 'px' });
+$('eb').style.top = y0 + 'px';
+$('sub').style.top = subY + 'px';
+// the ground: house night #0f0b0a, the kit card's warm washes made symmetric, and a quiet glow centred on the tile (ground only)
+document.body.style.background = [
+  `radial-gradient(420px 380px at 600px ${tileY + S / 2}px, rgba(214,178,119,.19), rgba(196,160,106,.08) 46%, rgba(196,160,106,0) 74%)`,
+  `radial-gradient(980px 420px at 50% -14%, rgba(201,164,106,.10), transparent 62%)`,
+  `radial-gradient(620px 520px at -6% 104%, rgba(201,164,106,.05), transparent 60%)`,
+  `radial-gradient(620px 520px at 106% 104%, rgba(201,164,106,.05), transparent 60%)`,
+  '#0f0b0a'].join(',');
+// the two chips sit low, mirrored, their text on the tagline's baseline, outside the centre square (x < 285 and x > 915)
+const baseline = el => { const p = document.createElement('span'); p.style.cssText = 'display:inline-block;width:0;height:0;vertical-align:baseline';
+  el.appendChild(p); const y = p.getBoundingClientRect().top; p.remove(); return y; };
+const place = () => {
+  const c1 = $('c1'), c2 = $('c2'), b = baseline($('sub'));
+  for (const [c, cx] of [[c1, 150], [c2, 1050]]) { c.style.top = '0px'; const off = baseline(c.querySelector('small')) - c.getBoundingClientRect().top;
+    c.style.left = Math.round(cx - c.getBoundingClientRect().width / 2) + 'px'; c.style.top = Math.round(b - off) + 'px'; }
+};
+place(); document.fonts.ready.then(place);
+window.__geom = { S, WMW, WMH, GAP, LH, CS, tileX, tileY, wmX, wmY, zoneTop: tileY - CS, zoneBot, y0, subY };
+</script>
+</body></html>
