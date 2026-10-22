@@ -78,7 +78,7 @@ for (const f of pages) {
   if (/class="dot-(aura|attar)"|door-aura|door-attar/.test(s)) say(f, 'C7 line-keyed class still used');
   // brand kit v1.0: the header/footer mark is the frozen spark; retired Vigyaan marks never come back
   for (const m of body.matchAll(/<a class="f?brand"[^>]*>\s*<img src="([^"]+)"/g)) if (m[1] !== '/assets/logo/spark.svg') say(f, 'brand mark is not /assets/logo/spark.svg: ' + m[1]);
-  const retired = s.match(/dp-(?:warm-oil-stars|warm-oil|warm-gold|warm-rings|dark|gradient|wordmark)-1024\.png|vigyaan-mark(?:-mono)?\.svg|vigyaan-icon\.svg|assets\/brand\/mark\.png/);
+  const retired = s.match(/dp-(?:warm-oil-stars|warm-oil|warm-gold|warm-rings|dark|gradient|wordmark)-1024\.png|vigyaan-mark(?:-mono)?\.svg|vigyaan-icon\.svg|assets\/brand\/mark\.png|assets\/og\.jpg/);
   if (retired) say(f, 'retired Vigyaan mark referenced (brand/v1.0/BRAND.md section 10): ' + retired[0]);
 }
 
@@ -124,6 +124,24 @@ for (const f of pages) {
   // a Windows checkout (core.autocrlf) holds this text file with CRLF; compare the committed (LF) form
   const live = readFileSync(join(ROOT, 'assets', 'logo', 'spark.svg'), 'utf8').replace(/\r\n/g, '\n');
   if (sha(live) !== SPARK_SHA) say(join(ROOT, 'assets', 'logo', 'spark.svg'), 'the live mark drifted from SPARK_SHA, the current kit\'s masters/spark.svg (founder\'s explicit word + a new kit version first)');
+  // The icon swap (the founder's "Yes, prepare it", VERSION old uses:): the house favicons, the iPhone
+  // home-screen icon, the JSON-LD logo, /favicon.ico and the link-preview card of / and /studio/ are byte
+  // copies of the current kit's files (BRAND.md section 9), at the paths pages already link. Copy the kit
+  // file; never re-render or re-compress. The SVG is compared in its committed (LF) form, like spark.svg.
+  const SWAPS = [
+    ['assets/logo/favicon.svg', 'masters/spark-tile.svg'],
+    ['assets/logo/favicon-32.png', 'exports/icons/favicon-32.png'],
+    ['assets/logo/apple-touch-180.png', 'exports/icons/apple-touch-180.png'],
+    ['assets/logo/vigyaan-mark-512.png', 'exports/icons/logo-512.png'],
+    ['favicon.ico', 'exports/icons/favicon.ico'],
+    ['assets/og/vigyaan.jpg', 'exports/social/og-1200x630.jpg'],
+  ];
+  if (current) for (const [site, kit] of SWAPS) {
+    const p = join(ROOT, ...site.split('/'));
+    if (!existsSync(p)) { say(p, `missing: must be a byte copy of brand/${current.dir}/${kit}`); continue; }
+    const buf = site.endsWith('.svg') ? Buffer.from(readFileSync(p, 'utf8').replace(/\r\n/g, '\n')) : readFileSync(p);
+    if (sha(buf) !== current.sums.get(kit)) say(p, `not a byte copy of brand/${current.dir}/${kit} (copy the kit file; never re-render)`);
+  }
 }
 console.log(pages.length, 'pages,', issues, 'issues');
 process.exit(issues ? 1 : 0);
