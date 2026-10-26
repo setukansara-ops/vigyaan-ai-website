@@ -1,5 +1,6 @@
 User-agent: *
 Disallow: /cart/
 Disallow: /wip/
+Disallow: /cdn-cgi/
 
 Sitemap: https://vigyaan.ai/sitemap.xml

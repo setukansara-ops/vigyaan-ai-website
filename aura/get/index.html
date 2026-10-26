@@ -13,6 +13,8 @@
     <meta property="og:image" content="https://vigyaan.ai/assets/logo/aura-icon.png">
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#16123f">
+    <!-- Not for search results: phones are sent straight to their store by the script below, so Google (which crawls as an Android phone) sees a redirect, not a page. /aura/ is the page to index. Kept out of sitemap.xml too. -->
+    <meta name="robots" content="noindex">
 
     <!-- Send phones straight to their store. Runs before first paint; the
          page below is the desktop/unknown-device fallback (and what link
