@@ -55,6 +55,10 @@ for (const f of pages) {
   for (const [re, why] of d45) if (re.test(s)) say(f, 'D45: ' + why);
   // (attar pages only: Aura's MobileApplication JSON-LD carries its real free-app offer)
   if (/<body data-world="attar"/.test(s) && /"offers"\s*:/.test(s)) say(f, 'D45: JSON-LD offer while nothing is on sale');
+  // ...and so no Product JSON-LD either: Google's product snippets reject a Product with no offer, review or
+  // rating (Search Console, 2026-10-31: 'Either "offers", "review", or "aggregateRating" should be
+  // specified'). It comes back, with its real offer, the day the attars go on sale.
+  if (/<body data-world="attar"/.test(s) && /"@type"\s*:\s*"Product"/.test(s)) say(f, 'D45: Product JSON-LD while nothing is on sale (Google rejects a Product with no offer)');
   for (const m of s.matchAll(/([\d.]+)(?:&nbsp;| )fl(?:&nbsp;| )oz((?:&nbsp;| )\(6(?:&nbsp;| )ml\))?/g)) if (m[1] !== '0.20' || !m[2]) say(f, 'D45: net contents not "0.20 fl oz (6 ml)": ' + m[0]);
   // In visible text the figure never breaks across lines (no plain space anywhere inside it), and any
   // page whose visible text describes a roll-on shows the full figure at least once.
