@@ -53,8 +53,19 @@ for (const f of pages) {
   // The (R) check skips brand/: a brand-usage page may quote the rule itself ("Vigyaan(TM), never (R)").
   if (!rel.startsWith('brand/')) d45.push([/®|&reg;/, 'brand is Vigyaan&trade;, never &reg;']);
   for (const [re, why] of d45) if (re.test(s)) say(f, 'D45: ' + why);
-  // (attar pages only: Aura's MobileApplication JSON-LD carries its real free-app offer)
-  if (/<body data-world="attar"/.test(s) && /"offers"\s*:/.test(s)) say(f, 'D45: JSON-LD offer while nothing is on sale');
+  // Attar JSON-LD (attar pages only: Aura's MobileApplication JSON-LD carries its real free-app offer).
+  // Google's product snippets reject a Product with no offer, review or rating (Search Console,
+  // 2026-10-31: 'Either "offers", "review", or "aggregateRating" should be specified'), and the founder
+  // put the 3-pack's price in ("Price 24.99", 2026-10-31). So a Product always carries an offer; only the
+  // 3-pack has one (singles are not sold online, D36); its price is "24.99" USD; and while the page says
+  // "coming soon" the offer is OutOfStock, never InStock or PreOrder (nothing can be bought yet, D45).
+  if (/<body data-world="attar"/.test(s)) {
+    const product = /"@type"\s*:\s*"Product"/.test(s), offer = /"offers"\s*:/.test(s);
+    if (product && !offer) say(f, 'D45: Product JSON-LD with no offer (Google rejects it)');
+    if (offer && rel !== 'attars/discovery-trio/index.html') say(f, 'D45: JSON-LD offer on a page that sells nothing alone (only the 3-pack has a price)');
+    if (offer && !/"price"\s*:\s*"24\.99"\s*,\s*"priceCurrency"\s*:\s*"USD"/.test(s)) say(f, 'D45: the 3-pack offer is "24.99" USD');
+    if (offer && /coming soon/i.test(vis) && !/"availability"\s*:\s*"https:\/\/schema\.org\/OutOfStock"/.test(s)) say(f, 'D45: a coming-soon offer is OutOfStock (nothing can be bought yet)');
+  }
   for (const m of s.matchAll(/([\d.]+)(?:&nbsp;| )fl(?:&nbsp;| )oz((?:&nbsp;| )\(6(?:&nbsp;| )ml\))?/g)) if (m[1] !== '0.20' || !m[2]) say(f, 'D45: net contents not "0.20 fl oz (6 ml)": ' + m[0]);
   // In visible text the figure never breaks across lines (no plain space anywhere inside it), and any
   // page whose visible text describes a roll-on shows the full figure at least once.
