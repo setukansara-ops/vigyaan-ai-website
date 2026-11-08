@@ -15,7 +15,8 @@
     { "source": "/aura/delete-account/", "destination": "/aura/delete-account.html", "permanent": true }
   ],
   "rewrites": [
-    { "source": "/brand/v1.0/:f(SHA256SUMS|VERSION)/", "destination": "/brand/v1.0/:f" }
+    { "source": "/brand/v1.0/:f(SHA256SUMS|VERSION)/", "destination": "/brand/v1.0/:f" },
+    { "source": "/brand/v1.1/:f(SHA256SUMS|VERSION)/", "destination": "/brand/v1.1/:f" }
   ],
   "headers": [
     {

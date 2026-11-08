@@ -75,11 +75,11 @@ const dot = key => { const l = LINES.find(x => x.key === key); return `<span cla
 const cur = on => (on ? ' aria-current="page"' : '');
 
 // Cache-busting for the house icons. Their files are byte copies of the brand kit
-// (brand/v1.0/BRAND.md section 9) at the same paths, so every old link keeps working. The query
+// (brand/v1.1/BRAND.md section 9) at the same paths, so every old link keeps working. The query
 // makes a browser that cached the old icons fetch the new ones (vigyaan.ai sits behind Cloudflare,
 // which sends them with max-age=14400). Bump ICON_V whenever an icon's bytes change. Aura's icons
 // (the aura branch below) are Aura's own and do not use it.
-const ICON_V = '2';
+const ICON_V = '3';
 
 // The house branch also sets apple-mobile-web-app-title, the name "Add to Home Screen" gives the
 // icon on an iPhone. Without it Safari offers the page <title> ("Vigyaan — Aura, attars, and what

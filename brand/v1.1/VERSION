@@ -1,0 +1,12 @@
+Vigyaan brand kit
+version:  1.1
+date:     2026-11-08
+status:   FINAL. It changes only on the founder's explicit word, as a new version folder (BRAND.md section 12). Never edit this folder.
+approved: 2026-11-08, approved by the founder in chat. He had asked about v1.0's spark: "I’m bit confused as to why you have created 3 dots and not 4 on eqch side to show evenly ?", and was shown v1.0's 3 dots next to two 4-dot mock-ups, marked preview only. He then asked: "Assuming we now have 3rd business product and no one is buying anything yet … can you imagine something more beautiful and meaningful and propose me some designs for v1.1?" He was shown five directions, A to E, on one page. A was "Three lights, room for one more": v1.0's spark kept, its dots made to mean one light for each line, set evenly on three corners, with an open ring on the fourth corner for the next line. He answered: "I like A the most which doesn’t require to change whole lot. Let’s implement that."
+changed:  from v1.0, the spark's dots only. Three even dots (6.8,6.8 / 25.2,6.8 / 25.2,25.2, r 0.95, #c4a06a) and an open ring (6.8,25.2, r 0.74, no fill, stroke 0.42, #c4a06a) replace v1.0's three uneven dots, in every master that carries the spark. Every export was rendered again from the new masters, and the email signature points at /brand/v1.1/. The rays, the bindu, the wordmark, the lockup geometry, the colours, the fonts and the link-card design are v1.0's. Proof: verification/README.md.
+carried:  v1.0's symbol: answer (Vigyaan™ in website and packaging text, no symbol on the logo) and old uses: answer (the house icons are byte copies of the current kit at the same web addresses) still apply. BRAND.md sections 1 and 9.
+from:     v1.0 (brand/v1.0/, SHA256SUMS pin 87aabf54647aeffb76faec76852a069ab885b5c1cab0490609c4b54a5e06df9e), unchanged and still served, because email already sent loads its signature logo.
+mark:     assets/logo/spark.svg = masters/spark.svg = source/inputs/spark.svg, sha256 24368e7c10f5b38737e598009fee61e5f4a5d0f4d5ec6e8d660581dc2d40edcb
+wordmark: "Vigyaan", Fraunces SemiBold 600 (Google Fonts v38), opsz 19.52, SOFT 0, WONK 0, tracking -0.01em, outlined to paths (v1.0's outlines, source/inputs/wordmark.json, unchanged)
+web copy: https://vigyaan.ai/brand/v1.1/ (repo setukansara-ops/vigyaan-ai-website, folder brand/v1.1/; source/, verification/, signature/ and verify.ps1 are in the repo but not served)
+built:    headless Chrome 157.0.8103.38 (Skia), Pillow 12.2.0 (Python 3.14), node 24.16.0, Windows 11
