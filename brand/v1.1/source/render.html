@@ -1,0 +1,13 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}html,body{background:transparent;overflow:hidden}
+#c{position:absolute;left:0;top:0;display:block}
+#i{position:absolute;display:block}
+</style></head><body><div id="c"><img id="i" alt=""></div>
+<script>
+// ?src=<url>&w=<canvas w>&h=<canvas h>&iw=&ih=&x=&y=&bg=<css colour or empty>
+const q = new URLSearchParams(location.search), c = document.getElementById('c'), i = document.getElementById('i');
+c.style.width = q.get('w') + 'px'; c.style.height = q.get('h') + 'px'; if (q.get('bg')) c.style.background = q.get('bg');
+i.style.left = (q.get('x') || 0) + 'px'; i.style.top = (q.get('y') || 0) + 'px';
+i.style.width = (q.get('iw') || q.get('w')) + 'px'; i.style.height = (q.get('ih') || q.get('h')) + 'px';
+i.src = q.get('src');
+</script></body></html>

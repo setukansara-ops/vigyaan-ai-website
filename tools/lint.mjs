@@ -90,11 +90,11 @@ for (const f of pages) {
   // brand kit v1.0: the header/footer mark is the frozen spark; retired Vigyaan marks never come back
   for (const m of body.matchAll(/<a class="f?brand"[^>]*>\s*<img src="([^"]+)"/g)) if (m[1] !== '/assets/logo/spark.svg') say(f, 'brand mark is not /assets/logo/spark.svg: ' + m[1]);
   const retired = s.match(/dp-(?:warm-oil-stars|warm-oil|warm-gold|warm-rings|dark|gradient|wordmark)-1024\.png|vigyaan-mark(?:-mono)?\.svg|vigyaan-icon\.svg|assets\/brand\/mark\.png|assets\/og\.jpg/);
-  if (retired) say(f, 'retired Vigyaan mark referenced (brand/v1.0/BRAND.md section 10): ' + retired[0]);
+  if (retired) say(f, 'retired Vigyaan mark referenced (brand/v1.1/BRAND.md section 10): ' + retired[0]);
 }
 
 // Brand kit gate. Every brand/v<N>/ in KITS is FINAL: a change is a new, complete version folder on
-// the founder's explicit word, never an edit (brand/v1.0/BRAND.md section 12). For each kit this fails when
+// the founder's explicit word, never an edit (brand/v1.1/BRAND.md section 12). For each kit this fails when
 //  - SHA256SUMS itself is not the pinned SUMS_SHA (so a re-export cannot pass by rewriting its own lines;
 //    any change to the kit has to edit this file visibly, in the same diff),
 //  - any file in the folder is not byte-identical to its SHA256SUMS line, or is not listed,
@@ -104,12 +104,13 @@ for (const f of pages) {
 // It also fails when assets/logo/spark.svg (the live header + footer mark) drifts from SPARK_SHA.
 // The pins are mirrored in C:/Project/Vigyaan/Brand/README.md on the 5090 (read by verify.ps1).
 // A new version: add it to KITS with its SUMS_SHA, move SPARK_SHA if the spark changed, and move the
-// /brand/ page links (BRAND.md 12.5). v1.0 stays in KITS: it never changes.
+// /brand/ page links (BRAND.md 12.5). Earlier versions stay in KITS: they never change. The last entry is the current kit.
 {
   const KITS = [
     { dir: 'v1.0', SUMS_SHA: '87aabf54647aeffb76faec76852a069ab885b5c1cab0490609c4b54a5e06df9e' },
+    { dir: 'v1.1', SUMS_SHA: '71e7b3fe6fd8e71c196962b9b292c32e979d6c52d74f69d249f333a087809b7d' }, // the founder's word, 2026-11-08 (brand/v1.1/VERSION): even dots + an open ring
   ];
-  const SPARK_SHA = '3db121447238d2c78a3c809599c31ce85260a07133e4430686e0d3f0f686c824'; // spark.svg at ecc9f99e = brand/v1.0/masters/spark.svg
+  const SPARK_SHA = '24368e7c10f5b38737e598009fee61e5f4a5d0f4d5ec6e8d660581dc2d40edcb'; // brand/v1.1/masters/spark.svg (v1.0's was 3db12144…c824)
   const sha = buf => createHash('sha256').update(buf).digest('hex');
   let current = null;
   for (const n of readdirSync(join(ROOT, 'brand'))) if (/^v\d/.test(n) && !KITS.some(k => k.dir === n)) say(join(ROOT, 'brand', n), 'brand kit: version folder not in KITS in tools/lint.mjs, so nothing guards it');

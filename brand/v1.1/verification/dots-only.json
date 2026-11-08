@@ -1,0 +1,604 @@
+{
+ "exports_checked": 66,
+ "exports_with_change_outside_dot_regions": 0,
+ "rows": [
+  {
+   "file": "email/sig-lockup-dark@2x.png",
+   "size": [
+    352,
+    112
+   ],
+   "pixels_changed": 119,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "email/sig-lockup-light@2x.png",
+   "size": [
+    384,
+    112
+   ],
+   "pixels_changed": 162,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "icons/android-maskable-192.png",
+   "size": [
+    192,
+    192
+   ],
+   "pixels_changed": 358,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "icons/android-maskable-512.png",
+   "size": [
+    512,
+    512
+   ],
+   "pixels_changed": 2102,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "icons/apple-touch-180.png",
+   "size": [
+    180,
+    180
+   ],
+   "pixels_changed": 432,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "icons/favicon-16.png",
+   "size": [
+    16,
+    16
+   ],
+   "pixels_changed": 16,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "icons/favicon-32.png",
+   "size": [
+    32,
+    32
+   ],
+   "pixels_changed": 36,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "icons/favicon-48.png",
+   "size": [
+    48,
+    48
+   ],
+   "pixels_changed": 56,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "icons/logo-512.png",
+   "size": [
+    512,
+    512
+   ],
+   "pixels_changed": 2857,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-horizontal-h1024.png",
+   "size": [
+    3891,
+    1024
+   ],
+   "pixels_changed": 10756,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-horizontal-h128.png",
+   "size": [
+    486,
+    128
+   ],
+   "pixels_changed": 245,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-horizontal-h256.png",
+   "size": [
+    973,
+    256
+   ],
+   "pixels_changed": 806,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-horizontal-h32.png",
+   "size": [
+    122,
+    32
+   ],
+   "pixels_changed": 35,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-horizontal-h48.png",
+   "size": [
+    182,
+    48
+   ],
+   "pixels_changed": 56,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-horizontal-h512.png",
+   "size": [
+    1946,
+    512
+   ],
+   "pixels_changed": 2859,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-horizontal-h64.png",
+   "size": [
+    243,
+    64
+   ],
+   "pixels_changed": 87,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-horizontal-light-h1024.png",
+   "size": [
+    3891,
+    1024
+   ],
+   "pixels_changed": 10754,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-horizontal-light-h128.png",
+   "size": [
+    486,
+    128
+   ],
+   "pixels_changed": 245,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-horizontal-light-h256.png",
+   "size": [
+    973,
+    256
+   ],
+   "pixels_changed": 806,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-horizontal-light-h32.png",
+   "size": [
+    122,
+    32
+   ],
+   "pixels_changed": 35,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-horizontal-light-h48.png",
+   "size": [
+    182,
+    48
+   ],
+   "pixels_changed": 56,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-horizontal-light-h512.png",
+   "size": [
+    1946,
+    512
+   ],
+   "pixels_changed": 2859,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-horizontal-light-h64.png",
+   "size": [
+    243,
+    64
+   ],
+   "pixels_changed": 87,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-stacked-h1024.png",
+   "size": [
+    1118,
+    1024
+   ],
+   "pixels_changed": 3975,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-stacked-h128.png",
+   "size": [
+    140,
+    128
+   ],
+   "pixels_changed": 116,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-stacked-h256.png",
+   "size": [
+    280,
+    256
+   ],
+   "pixels_changed": 322,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-stacked-h48.png",
+   "size": [
+    52,
+    48
+   ],
+   "pixels_changed": 26,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-stacked-h512.png",
+   "size": [
+    559,
+    512
+   ],
+   "pixels_changed": 1095,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-stacked-h64.png",
+   "size": [
+    70,
+    64
+   ],
+   "pixels_changed": 45,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-stacked-light-h1024.png",
+   "size": [
+    1118,
+    1024
+   ],
+   "pixels_changed": 3975,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-stacked-light-h128.png",
+   "size": [
+    140,
+    128
+   ],
+   "pixels_changed": 116,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-stacked-light-h256.png",
+   "size": [
+    280,
+    256
+   ],
+   "pixels_changed": 322,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-stacked-light-h48.png",
+   "size": [
+    52,
+    48
+   ],
+   "pixels_changed": 26,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-stacked-light-h512.png",
+   "size": [
+    559,
+    512
+   ],
+   "pixels_changed": 1095,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "lockup/lockup-stacked-light-h64.png",
+   "size": [
+    70,
+    64
+   ],
+   "pixels_changed": 45,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "mono/mono-dark-1024.png",
+   "size": [
+    1024,
+    1024
+   ],
+   "pixels_changed": 10226,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "mono/mono-dark-128.png",
+   "size": [
+    128,
+    128
+   ],
+   "pixels_changed": 233,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "mono/mono-dark-256.png",
+   "size": [
+    256,
+    256
+   ],
+   "pixels_changed": 772,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "mono/mono-dark-512.png",
+   "size": [
+    512,
+    512
+   ],
+   "pixels_changed": 2740,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "mono/mono-dark-64.png",
+   "size": [
+    64,
+    64
+   ],
+   "pixels_changed": 89,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "mono/mono-light-1024.png",
+   "size": [
+    1024,
+    1024
+   ],
+   "pixels_changed": 10226,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "mono/mono-light-128.png",
+   "size": [
+    128,
+    128
+   ],
+   "pixels_changed": 233,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "mono/mono-light-256.png",
+   "size": [
+    256,
+    256
+   ],
+   "pixels_changed": 772,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "mono/mono-light-512.png",
+   "size": [
+    512,
+    512
+   ],
+   "pixels_changed": 2740,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "mono/mono-light-64.png",
+   "size": [
+    64,
+    64
+   ],
+   "pixels_changed": 89,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "social/social-avatar-1024.png",
+   "size": [
+    1024,
+    1024
+   ],
+   "pixels_changed": 7889,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "spark/spark-1024.png",
+   "size": [
+    1024,
+    1024
+   ],
+   "pixels_changed": 10746,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "spark/spark-128.png",
+   "size": [
+    128,
+    128
+   ],
+   "pixels_changed": 236,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "spark/spark-16.png",
+   "size": [
+    16,
+    16
+   ],
+   "pixels_changed": 16,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "spark/spark-180.png",
+   "size": [
+    180,
+    180
+   ],
+   "pixels_changed": 432,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "spark/spark-192.png",
+   "size": [
+    192,
+    192
+   ],
+   "pixels_changed": 475,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "spark/spark-256.png",
+   "size": [
+    256,
+    256
+   ],
+   "pixels_changed": 796,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "spark/spark-32.png",
+   "size": [
+    32,
+    32
+   ],
+   "pixels_changed": 36,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "spark/spark-48.png",
+   "size": [
+    48,
+    48
+   ],
+   "pixels_changed": 56,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "spark/spark-512.png",
+   "size": [
+    512,
+    512
+   ],
+   "pixels_changed": 2857,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "spark/spark-64.png",
+   "size": [
+    64,
+    64
+   ],
+   "pixels_changed": 89,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "tile/spark-tile-1024.png",
+   "size": [
+    1024,
+    1024
+   ],
+   "pixels_changed": 10745,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "tile/spark-tile-128.png",
+   "size": [
+    128,
+    128
+   ],
+   "pixels_changed": 236,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "tile/spark-tile-16.png",
+   "size": [
+    16,
+    16
+   ],
+   "pixels_changed": 16,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "tile/spark-tile-180.png",
+   "size": [
+    180,
+    180
+   ],
+   "pixels_changed": 432,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "tile/spark-tile-192.png",
+   "size": [
+    192,
+    192
+   ],
+   "pixels_changed": 473,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "tile/spark-tile-256.png",
+   "size": [
+    256,
+    256
+   ],
+   "pixels_changed": 796,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "tile/spark-tile-32.png",
+   "size": [
+    32,
+    32
+   ],
+   "pixels_changed": 36,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "tile/spark-tile-48.png",
+   "size": [
+    48,
+    48
+   ],
+   "pixels_changed": 56,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "tile/spark-tile-512.png",
+   "size": [
+    512,
+    512
+   ],
+   "pixels_changed": 2857,
+   "changed_outside_dot_regions": 0
+  },
+  {
+   "file": "tile/spark-tile-64.png",
+   "size": [
+    64,
+    64
+   ],
+   "pixels_changed": 89,
+   "changed_outside_dot_regions": 0
+  }
+ ],
+ "link_card": {
+  "pixels_changed": 433,
+  "changed_outside_dot_regions": 0
+ }
+}
